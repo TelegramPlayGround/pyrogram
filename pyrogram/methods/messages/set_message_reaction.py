@@ -46,11 +46,11 @@ class SetMessageReaction:
             message_id (``int``):
                 Identifier of the target message. If the message belongs to a media group, the reaction is set to the first non-deleted message in the group instead.
 
-            emoji (List of :obj:`~pyrogram.types.ReactionType` *optional*):
+            reaction (List of :obj:`~pyrogram.types.ReactionType` *optional*):
                 New list of reaction types to set on the message.
                 Pass None as emoji (default) to retract the reaction.
 
-            big (``bool``, *optional*):
+            is_big (``bool``, *optional*):
                 Pass True to set the reaction with a big animation.
                 Defaults to False.
 
