@@ -23,8 +23,9 @@ jobs:
           rm -rf docs
           touch .nojekyll
           git checkout --orphan gh-pages
+          git config user.email "14043624+delivrance@users.noreply.github.com"
+          git config user.name "GitHub Action <Dan>"
           git add ./* -A
           git commit -m "DocGen: Update documentatio"
           git push origin gh-pages --force
-
           
