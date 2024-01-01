@@ -28,9 +28,9 @@ class SetMessageReaction:
         self: "pyrogram.Client",
         chat_id: Union[int, str],
         message_id: int = None,
-        reaction: List[types.ReactionType] = [],
+        reaction: List["types.ReactionType"] = [],
         is_big: bool = False
-    ) -> bool:
+    ) -> "types.MessageReactions":
         """Use this method to change the chosen reactions on a message.
         Service messages can't be reacted to.
         Automatically forwarded messages from
@@ -55,13 +55,19 @@ class SetMessageReaction:
                 Defaults to False.
 
         Returns:
-            ``bool``: On success, True is returned.
+            :obj: `~pyrogram.types.MessageReactions`: On success, True is returned.
 
         Example:
             .. code-block:: python
 
+                # Send a reaction as a bot
+                await app.set_message_reaction(chat_id, message_id, [ReactionTypeEmoji(emoji="👍")])
+
+                # Send multiple reaction as a premium user
+                await app.set_message_reaction(chat_id, message_id, [ReactionTypeEmoji(emoji="👍"),ReactionTypeEmoji(emoji="😍")],True)
+
                 # Retract a reaction
-                await app.send_reaction(chat_id, message_id=message_id)
+                await app.set_message_reaction(chat_id, message_id=message_id)
         """
         if message_id is not None:
             r = await self.invoke(
@@ -71,7 +77,7 @@ class SetMessageReaction:
                     reaction=[
                         r.write(self)
                         for r in reaction
-                    ],
+                    ] if reaction else [raw.types.ReactionEmpty()],
                     big=is_big
                 )
             )
