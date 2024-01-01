@@ -5,6 +5,9 @@ RM := rm -rf
 
 .PHONY: venv build docs
 
+all: clean venv build docs
+	echo Done
+
 venv:
 	$(RM) $(VENV)
 	python3 -m venv $(VENV)

@@ -1,0 +1,31 @@
+on:
+  workflow_dispatch: {} # Allow manually kicking off builds
+name: Build DOCs
+jobs:
+  build:
+    name: build-doc
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 1
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.9'
+
+    - name: Install dependencies
+      run: |
+          make
+          rm -rf .github compiler pyrogram tests .gitignore COPYING*
+          rm -f MANIFEST* Makefile NOTICE README.md *requirements.txt
+          rm -f setup.py tox.ini
+          mv docs/build/html/* .
+          rm -rf docs
+          touch .nojekyll
+          git checkout --orphan gh-pages
+          git add ./* -A
+          git commit -m "DocGen: Update documentatio"
+          git push origin gh-pages --force
+
+          
