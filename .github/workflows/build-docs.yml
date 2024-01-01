@@ -1,6 +1,5 @@
-on:
-  workflow_dispatch: {} # Allow manually kicking off builds
 name: Build DOCs
+on: [workflow_dispatch, push]
 jobs:
   build:
     name: build-doc
