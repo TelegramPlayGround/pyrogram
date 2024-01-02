@@ -35,7 +35,7 @@ Index
     - :class:`EditedMessageHandler`
 
     - :class:`MessageReactionUpdatedHandler`
-
+    - :class:`MessageReactionCountUpdatedHandler`
     - :class:`InlineQueryHandler`
     - :class:`ChosenInlineResultHandler`
     - :class:`CallbackQueryHandler`
@@ -64,7 +64,7 @@ Details
 .. autoclass:: EditedMessageHandler()
 
 .. autoclass:: MessageReactionUpdatedHandler()
-
+.. autoclass:: MessageReactionCountUpdatedHandler()
 .. autoclass:: InlineQueryHandler()
 .. autoclass:: ChosenInlineResultHandler()
 .. autoclass:: CallbackQueryHandler()
