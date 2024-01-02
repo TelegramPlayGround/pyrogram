@@ -99,6 +99,21 @@ class ReactionType(Object):
         self.emoji = emoji
         self.custom_emoji_id = custom_emoji_id
 
+    @staticmethod
+    def _parse(
+        client: "pyrogram.Client",
+        update: "raw.types.Reaction",
+    ) -> Optional["ReactionType"]:
+        if isinstance(update, raw.types.ReactionEmpty):
+            return None
+        elif isinstance(update, raw.types.ReactionEmoji):
+            return ReactionTypeEmoji(
+                emoji=update.emoticon
+            )
+        elif isinstance(update, raw.types.ReactionCustomEmoji):
+            return ReactionTypeCustomEmoji(
+                custom_emoji_id=update.document_id
+            )
 
     def write(self, client: "pyrogram.Client"):
         raise NotImplementedError
