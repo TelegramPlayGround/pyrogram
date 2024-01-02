@@ -25,10 +25,8 @@ from ..object import Object
 from ..update import Update
 
 
-class MessageReactionUpdated(Object, Update):
-    """This object represents a change of a reaction on a message performed by a user.
-    A reaction to a message was changed by a user.
-    The update isn't received for reactions set by bots.
+class MessageReactionCountUpdated(Object, Update):
+    """Reactions to a message with anonymous reactions were changed.
 
     These updates are heavy and their changes may be delayed by a few minutes.
 
@@ -39,21 +37,11 @@ class MessageReactionUpdated(Object, Update):
         message_id (``int``):
             Unique identifier of the message inside the chat
 
-        user (:obj:`~pyrogram.types.User`, *optional*):
-            The user that changed the reaction, if the user isn't anonymous
-
-        actor_chat (:obj:`~pyrogram.types.Chat`, *optional*):
-            The chat on behalf of which the reaction was changed, if the user is anonymous
-
         date (:py:obj:`~datetime.datetime`):
             Date of change of the reaction
 
-        old_reaction (:obj:`~pyrogram.types.ReactionType`):
-            Previous list of reaction types that were set by the user
-
-        new_reaction (:obj:`~pyrogram.types.ReactionType`):
-            New list of reaction types that have been set by the user
-
+        reactions (:obj:`~pyrogram.types.ReactionCount`):
+            List of reactions that are present on the message
     """
 
     def __init__(
@@ -62,26 +50,20 @@ class MessageReactionUpdated(Object, Update):
         client: "pyrogram.Client" = None,
         chat: "types.Chat",
         message_id: int,
-        user: "types.User",
-        actor_chat: "types.Chat",
         date: datetime,
-        old_reaction: List["types.ReactionType"],
-        new_reaction: List["types.ReactionType"]
+        reactions: List["types.ReactionCount"]
     ):
         super().__init__(client)
 
         self.chat = chat
         self.message_id = message_id
-        self.user = user
-        self.actor_chat = actor_chat
         self.date = date
-        self.old_reaction = old_reaction
-        self.new_reaction = new_reaction
+        self.reactions = reactions
 
     @staticmethod
     def _parse(
         client: "pyrogram.Client",
-        update: "raw.types.UpdateBotMessageReaction",
+        update: "raw.types.UpdateBotMessageReactions",
         users: Dict[int, "raw.types.User"],
         chats: Dict[int, "raw.types.Chat"]
     ) -> "MessageReactionUpdated":
@@ -93,34 +75,15 @@ class MessageReactionUpdated(Object, Update):
         else:
             chat = types.Chat._parse_chat_chat(client, chats[raw_peer_id])
 
-        user = None
-        actor_chat = None
-
-        raw_actor_peer_id = utils.get_raw_peer_id(update.actor)
-        actor_peer_id = utils.get_peer_id(update.actor)
-
-        if actor_peer_id > 0:
-            user = types.User._parse(client, users[raw_actor_peer_id])
-        else:
-            actor_chat = types.Chat._parse_channel_chat(client, chats[raw_actor_peer_id])
-
-        return MessageReactionUpdated(
+        return MessageReactionCountUpdated(
             client=client,
             chat=chat,
             message_id=update.msg_id,
-            user=user,
-            actor_chat=actor_chat,
             date=utils.timestamp_to_datetime(update.date),
-            old_reaction=[
-                types.ReactionType._parse(
+            reactions=[
+                types.ReactionCount._parse(
                     client,
                     rt
-                ) for rt in update.old_reactions
-            ],
-            new_reaction=[
-                types.ReactionType._parse(
-                    client,
-                    rt
-                ) for rt in update.new_reactions
+                ) for rt in update.reactions
             ]
         )
