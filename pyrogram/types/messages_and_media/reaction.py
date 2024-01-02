@@ -140,6 +140,8 @@ class ReactionTypeEmoji(ReactionType):
         
 
 class ReactionTypeCustomEmoji(ReactionType):
+    """The reaction is based on a custom emoji.
+    """
 
     def __init__(
         self,
@@ -154,4 +156,35 @@ class ReactionTypeCustomEmoji(ReactionType):
     def write(self, client: "pyrogram.Client") -> "raw.base.Reaction":
         return raw.types.ReactionCustomEmoji(
             document_id=self.custom_emoji_id
+        )
+
+
+class ReactionCount(Object):
+    """Represents a reaction added to a message along with the number of times it was added.
+    """
+
+    def __init__(
+        self,
+        *,
+        type: ReactionType,
+        total_count: int,
+        chosen_order: int
+    ):
+        super().__init__()
+        self.type = type
+        self.total_count = total_count
+        self.chosen_order = chosen_order
+
+    @staticmethod
+    def _parse(
+        client: "pyrogram.Client",
+        update: "raw.types.ReactionCount",
+    ) -> Optional["ReactionCount"]:
+        return ReactionCount(
+            type=ReactionType._parse(
+                client,
+                update.reaction
+            ),
+            total_count=update.count,
+            chosen_order=update.chosen_order
         )
