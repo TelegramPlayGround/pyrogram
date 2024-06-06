@@ -25,6 +25,7 @@ from .collectible_item_info import CollectibleItemInfo
 from .invoice import Invoice
 from .labeled_price import LabeledPrice
 from .order_info import OrderInfo
+from .pre_checkout_query import PreCheckoutQuery
 from .shipping_address import ShippingAddress
 from .successful_payment import SuccessfulPayment
 
@@ -38,6 +39,7 @@ __all__ = [
     "Invoice",
     "LabeledPrice",
     "OrderInfo",
+    "PreCheckoutQuery",
     "ShippingAddress",
     "SuccessfulPayment",
 ]

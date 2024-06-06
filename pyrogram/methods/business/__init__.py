@@ -16,6 +16,7 @@
 #  You should have received a copy of the GNU Lesser General Public License
 #  along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
+from .answer_pre_checkout_query import AnswerPreCheckoutQuery
 from .get_business_connection import GetBusinessConnection
 from .get_collectible_item_info import GetCollectibleItemInfo
 from .refund_star_payment import RefundStarPayment
@@ -23,6 +24,7 @@ from .send_invoice import SendInvoice
 
 
 class TelegramBusiness(
+    AnswerPreCheckoutQuery,
     GetBusinessConnection,
     GetCollectibleItemInfo,
     RefundStarPayment,
