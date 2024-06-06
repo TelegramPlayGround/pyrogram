@@ -36,7 +36,6 @@ class LabeledPrice(Object):
 
     def __init__(
         self,
-        *,
         label: str,
         amount: str
     ):
@@ -45,7 +44,7 @@ class LabeledPrice(Object):
         self.label = label
         self.amount = amount
 
-        @staticmethod
+    @staticmethod
     def _parse(labeled_price: "raw.types.LabeledPrice") -> "LabeledPrice":
         if isinstance(labeled_price, raw.types.LabeledPrice):
             return LabeledPrice(
