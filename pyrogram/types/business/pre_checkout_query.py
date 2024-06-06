@@ -16,10 +16,10 @@
 #  You should have received a copy of the GNU Lesser General Public License
 #  along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
-from typing import Union, List, Match, Optional
+from typing import Union, Optional
 
 import pyrogram
-from pyrogram import raw, enums, types, utils
+from pyrogram import raw, types
 
 from ..object import Object
 from ..update import Update
