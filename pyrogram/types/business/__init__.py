@@ -23,6 +23,10 @@ from .business_opening_hours import BusinessOpeningHours
 from .business_opening_hours_interval import BusinessOpeningHoursInterval
 from .collectible_item_info import CollectibleItemInfo
 from .invoice import Invoice
+from .labeled_price import LabeledPrice
+from .order_info import OrderInfo
+from .shipping_address import ShippingAddress
+from .successful_payment import SuccessfulPayment
 
 __all__ = [
     "BusinessConnection",
@@ -32,4 +36,8 @@ __all__ = [
     "BusinessOpeningHoursInterval",
     "CollectibleItemInfo",
     "Invoice",
+    "LabeledPrice",
+    "OrderInfo",
+    "ShippingAddress",
+    "SuccessfulPayment",
 ]
