@@ -374,6 +374,8 @@ def pyrogram_api():
         Telegram Business & Fragment
             get_business_connection
             get_collectible_item_info
+            refund_star_payment
+            send_invoice
         """,   
     )
 
@@ -564,6 +566,10 @@ def pyrogram_api():
             BusinessOpeningHoursInterval
             CollectibleItemInfo
             Invoice
+            LabeledPrice
+            OrderInfo
+            ShippingAddress
+            SuccessfulPayment
         """,
         users_chats="""
         Users & Chats
