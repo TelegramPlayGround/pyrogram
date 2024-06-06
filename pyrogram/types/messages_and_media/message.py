@@ -3671,7 +3671,7 @@ class Message(Object, Update):
         self,
         title: str,
         description: str,
-        payload: str,
+        payload: Union[str, bytes],
         currency: str,
         prices: List["types.LabeledPrice"],
         message_thread_id: int = None,
@@ -3715,7 +3715,7 @@ class Message(Object, Update):
             description (``str``):
                 Product description, 1-255 characters
 
-            payload (``str``):
+            payload (``str`` | ``bytes``):
                 Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use for your internal processes.
 
             currency (``str``):
