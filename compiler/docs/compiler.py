@@ -713,6 +713,10 @@ def pyrogram_api():
         InlineQuery
             InlineQuery.answer
         """,
+        pre_checkout_query="""
+        PreCheckoutQuery
+            PreCheckoutQuery.answer
+        """,
         chat_join_request="""
         ChatJoinRequest
             ChatJoinRequest.approve
