@@ -72,7 +72,7 @@ class CreateVideoChat:
                 rtmp_stream=is_rtmp_stream,
                 peer=peer,
                 # TODO: temp. workaround
-                random_id=self.rnd_id() % (utils.MAX_USER_ID_OLD - 1),
+                random_id=self.rnd_id() >> 32,
                 title=title,
                 schedule_date=utils.datetime_to_timestamp(start_date),
             )
