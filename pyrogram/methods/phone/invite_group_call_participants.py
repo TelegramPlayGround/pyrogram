@@ -19,7 +19,7 @@
 from typing import Union, List
 
 import pyrogram
-from pyrogram import types, raw, utils
+from pyrogram import types, raw
 
 
 class InviteGroupCallParticipants:
