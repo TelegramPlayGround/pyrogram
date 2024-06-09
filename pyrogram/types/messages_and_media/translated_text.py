@@ -17,6 +17,9 @@
 #  along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
 from pyrogram import raw, types
+
+from ..messages_and_media.message import Str
+
 from ..object import Object
 
 from typing import List
@@ -41,12 +44,12 @@ class TranslatedText(Object):
     def _parse(
         client, translate_result: "raw.types.TextWithEntities"
     ) -> "TranslatedText":
+        entities = [
+            types.MessageEntity._parse(client, entity, None)
+            for entity in translate_result.entities
+        ]
+        entities = types.List(filter(lambda x: x is not None, entities))
+
         return TranslatedText(
-            text=translate_result.text,
-            entities=[
-                types.MessageEntity._parse(client, i, None)
-                for i in translate_result.entities
-            ]
-            if translate_result.entities
-            else None,
+            text=Str(translate_result.text).init(entities), entities=entities
         )
