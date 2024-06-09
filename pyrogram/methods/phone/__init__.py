@@ -19,16 +19,16 @@
 
 from .load_group_call_participants import LoadGroupCallParticipants
 from .invite_group_call_participants import InviteGroupCallParticipants
-from .create_group_call import CreateGroupCall
+from .create_video_chat import CreateVideoChat
 from .discard_group_call import DiscardGroupCall
-from .get_stream_rtmp_url import GetStreamRtmpUrl
+from .get_video_chat_rtmp_url import GetVideoChatRtmpUrl
 
 
 class Phone(
     InviteGroupCallParticipants,
     LoadGroupCallParticipants,
-    CreateGroupCall,
+    CreateVideoChat,
     DiscardGroupCall,
-    GetStreamRtmpUrl
+    GetVideoChatRtmpUrl,
 ):
     pass

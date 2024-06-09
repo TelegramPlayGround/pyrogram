@@ -44,7 +44,7 @@ from .video_chat_ended import VideoChatEnded
 from .video_chat_participants_invited import VideoChatParticipantsInvited
 from .video_chat_scheduled import VideoChatScheduled
 from .video_chat_started import VideoChatStarted
-from .stream_rtmp_url import StreamRtmpUrl
+from .rtmp_url import RtmpUrl
 
 __all__ = [
     "Birthdate",
@@ -75,5 +75,5 @@ __all__ = [
     "VideoChatParticipantsInvited",
     "VideoChatScheduled",
     "VideoChatStarted",
-    "StreamRtmpUrl"
+    "RtmpUrl",
 ]

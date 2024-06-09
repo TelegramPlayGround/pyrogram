@@ -22,11 +22,13 @@ import pyrogram
 from pyrogram import types, raw
 
 
-class GetStreamRtmpUrl:
-    async def get_stream_rtmp_url(
-        self: "pyrogram.Client", chat_id: Union[int, str], revoke: bool = None
-    ) -> "types.StreamRtmpUrl":
-        """Get RTMP URL and stream key for RTMP livestreams.
+class GetVideoChatRtmpUrl:
+    async def get_video_chat_rtmp_url(
+        self: "pyrogram.Client",
+        chat_id: Union[int, str],
+        replace: bool = False
+    ) -> "types.RtmpUrl":
+        """Returns RTMP URL for streaming to the chat; requires owner privileges.
 
         .. include:: /_includes/usable-by/users.rst
 
@@ -34,11 +36,11 @@ class GetStreamRtmpUrl:
             chat_id (``int`` | ``str``):
                 Unique identifier (int) or username (str) of the target chat. A chat can be either a basic group, supergroup or a channel.
 
-            revoke (``bool``, *optional*):
-                Whether to revoke the previous stream key or simply return the existing one.
+            replace (``bool``, *optional*):
+                Whether to replace the previous stream key or simply return the existing one. Defaults to False, i.e., return the existing one.
 
         Returns:
-            :obj:`~pyrogram.types.StreamRtmpUrl`: On success, the RTMP URL and stream key is returned.
+            :obj:`~pyrogram.types.RtmpUrl`: On success, the RTMP URL and stream key is returned.
 
         Example:
             .. code-block:: python
@@ -52,7 +54,10 @@ class GetStreamRtmpUrl:
             raise ValueError("Target chat should be group, supergroup or channel.")
 
         r = await self.invoke(
-            raw.functions.phone.GetGroupCallStreamRtmpUrl(peer=peer, revoke=revoke)
+            raw.functions.phone.GetGroupCallStreamRtmpUrl(
+                peer=peer,
+                revoke=replace
+            )
         )
 
-        return types.StreamRtmpUrl._parse(r)
+        return types.RtmpUrl._parse(r)

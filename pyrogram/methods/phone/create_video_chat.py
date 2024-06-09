@@ -18,35 +18,38 @@
 
 from typing import Union
 
-import pyrogram
-from pyrogram import types, raw, utils
 from datetime import datetime
 
+import pyrogram
+from pyrogram import types, raw, utils
 
-class CreateGroupCall:
-    async def create_group_call(
+
+class CreateVideoChat:
+    async def create_video_chat(
         self: "pyrogram.Client",
         chat_id: Union[int, str],
-        rtmp: bool = None,
         title: str = None,
-        schedule_date: datetime = None,
+        start_date: datetime = utils.zero_datetime(),
+        is_rtmp_stream: bool = None
     ) -> "types.Message":
-        """Create a group/channel call or livestream
+        """Creates a video chat (a group call bound to a chat).
+        
+        Available only for basic groups, supergroups and channels; requires can_manage_video_chats administrator right.
 
         .. include:: /_includes/usable-by/users.rst
 
         Parameters:
             chat_id (``int`` | ``str``):
-                Unique identifier (int) or username (str) of the target chat. A chat can be either a basic group, supergroup or a channel.
-
-            rtmp (``bool``, *optional*):
-                Whether RTMP stream support should be enabled: only the group/supergroup/channel owner can use this parameter.
+                Unique identifier (int) or username (str) of the target chat in which the video chat will be created. A chat can be either a basic group, supergroup or a channel.
 
             title (``str``, *optional*):
-                Call title.
+                Group call title; if empty, chat title will be used.
 
-            schedule_date (:py:obj:`~datetime.datetime`, *optional*):
-                For scheduled group call or livestreams, the absolute date when the group call will start.
+            start_date (:py:obj:`~datetime.datetime`, *optional*):
+                Point in time (Unix timestamp) when the group call is supposed to be started by an administrator; 0 to start the video chat immediately. The date must be at least 10 seconds and at most 8 days in the future.
+
+            is_rtmp_stream (``bool``, *optional*):
+                Pass true to create an RTMP stream instead of an ordinary video chat; requires owner privileges.
 
         Returns:
             :obj:`~pyrogram.types.Message`: On success, the sent service message is returned.
@@ -54,21 +57,23 @@ class CreateGroupCall:
         Example:
             .. code-block:: python
 
-                await app.create_group_call(chat_id)
+                await app.create_video_chat(chat_id)
 
         """
         peer = await self.resolve_peer(chat_id)
 
         if not isinstance(peer, (raw.types.InputPeerChat, raw.types.InputPeerChannel)):
-            raise ValueError("Target chat should be group, supergroup or channel.")
+            raise ValueError(
+                "Target chat should be group, supergroup or channel."
+            )
 
         r = await self.invoke(
             raw.functions.phone.CreateGroupCall(
+                rtmp_stream=is_rtmp_stream,
                 peer=peer,
                 random_id=self.rnd_id(),
-                rtmp_stream=rtmp,
                 title=title,
-                schedule_date=utils.datetime_to_timestamp(schedule_date),
+                schedule_date=utils.datetime_to_timestamp(start_date),
             )
         )
 

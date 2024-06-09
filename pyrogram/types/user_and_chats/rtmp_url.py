@@ -20,23 +20,27 @@ from pyrogram import raw
 from ..object import Object
 
 
-class StreamRtmpUrl(Object):
-    """RTMP URL and stream key to be used in streaming software
+class RtmpUrl(Object):
+    """Represents an RTMP URL and stream key to be used in streaming software.
 
     Parameters:
         url (``str``):
-            RTMP URL.
+            The URL.
 
-        key (``str``):
+        stream_key (``str``):
             Stream key.
+
     """
 
-    def __init__(self, *, url: str, key: str):
+    def __init__(self, *, url: str, stream_key: str):
         super().__init__(None)
 
         self.url = url
-        self.key = key
+        self.stream_key = stream_key
 
     @staticmethod
-    def _parse(rtmp_url: "raw.types.GroupCallStreamRtmpUrl") -> "StreamRtmpUrl":
-        return StreamRtmpUrl(url=rtmp_url.url, key=rtmp_url.key)
+    def _parse(rtmp_url: "raw.types.GroupCallStreamRtmpUrl") -> "RtmpUrl":
+        return RtmpUrl(
+            url=rtmp_url.url,
+            stream_key=rtmp_url.key
+        )

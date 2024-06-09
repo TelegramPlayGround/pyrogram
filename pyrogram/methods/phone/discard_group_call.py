@@ -24,6 +24,7 @@ from pyrogram import types, raw
 
 class DiscardGroupCall:
     async def discard_group_call(
+        # TODO
         self: "pyrogram.Client",
         chat_id: Union[int, str],
     ) -> "types.Message":
@@ -60,7 +61,11 @@ class DiscardGroupCall:
         if call is None:
             raise ValueError("No active group call at this chat.")
 
-        r = await self.invoke(raw.functions.phone.DiscardGroupCall(call=call))
+        r = await self.invoke(
+            raw.functions.phone.DiscardGroupCall(
+                call=call
+            )
+        )
 
         for i in r.updates:
             if isinstance(
