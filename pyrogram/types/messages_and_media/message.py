@@ -5123,13 +5123,13 @@ class Message(Object, Update):
         self,
         to_language_code: str
     ) -> "types.TranslatedText":
-        """Bound method *view* of :obj:`~pyrogram.types.Message`.
+        """Bound method *translate* of :obj:`~pyrogram.types.Message`.
 
         Use as a shortcut for:
 
         .. code-block:: python
 
-            await client.translate_message(
+            await client.translate_message_text(
                 chat_id=message.chat.id,
                 message_ids=message_id,
                 to_language_code="en"
