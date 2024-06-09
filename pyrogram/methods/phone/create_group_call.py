@@ -16,30 +16,37 @@
 #  You should have received a copy of the GNU Lesser General Public License
 #  along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
-from typing import Union, List
+from typing import Union
 
 import pyrogram
-from pyrogram import types, raw
+from pyrogram import types, raw, utils
+from datetime import datetime
 
 
-class InviteGroupCallParticipants:
-    async def invite_group_call_participants(
+class CreateGroupCall:
+    async def create_group_call(
         self: "pyrogram.Client",
         chat_id: Union[int, str],
-        user_ids: Union[Union[int, str], List[Union[int, str]]],
+        rtmp: bool = None,
+        title: str = None,
+        schedule_date: datetime = None,
     ) -> "types.Message":
-        """Invites users to an active group call. Sends a service message of type :obj:`~pyrogram.enums.MessageServiceType.VIDEO_CHAT_PARTICIPANTS_INVITED` for video chats.
+        """Create a group/channel call or livestream
 
         .. include:: /_includes/usable-by/users.rst
 
         Parameters:
             chat_id (``int`` | ``str``):
-                Unique identifier (int) or username (str) of the target chat. A chat can be either a basic group or a supergroup.
+                Unique identifier (int) or username (str) of the target chat. A chat can be either a basic group, supergroup or a channel.
 
-            user_ids (``int`` | ``str`` | List of ``int`` or ``str``):
-                Users identifiers to invite to group call in the chat.
-                You can pass an ID (int) or username (str).
-                At most 10 users can be invited simultaneously.
+            rtmp (``bool``, *optional*):
+                Whether RTMP stream support should be enabled: only the group/supergroup/channel owner can use this parameter.
+
+            title (``str``, *optional*):
+                Call title.
+
+            schedule_date (:py:obj:`~datetime.datetime`, *optional*):
+                For scheduled group call or livestreams, the absolute date when the group call will start.
 
         Returns:
             :obj:`~pyrogram.types.Message`: On success, the sent service message is returned.
@@ -47,34 +54,21 @@ class InviteGroupCallParticipants:
         Example:
             .. code-block:: python
 
-                await app.invite_group_call_participants(chat_id, user_id)
+                await app.create_group_call(chat_id)
 
         """
         peer = await self.resolve_peer(chat_id)
 
-        if isinstance(peer, raw.types.InputPeerChannel):
-            r = await self.invoke(raw.functions.channels.GetFullChannel(channel=peer))
-        elif isinstance(peer, raw.types.InputPeerChat):
-            r = await self.invoke(
-                raw.functions.messages.GetFullChat(chat_id=peer.chat_id)
-            )
-        else:
+        if not isinstance(peer, (raw.types.InputPeerChat, raw.types.InputPeerChannel)):
             raise ValueError("Target chat should be group, supergroup or channel.")
 
-        call = r.full_chat.call
-
-        if call is None:
-            raise ValueError("No active group call at this chat.")
-
-        user_ids = [user_ids] if not isinstance(user_ids, list) else user_ids
-
         r = await self.invoke(
-            raw.functions.phone.InviteToGroupCall(
-                call=call,
-                users=[
-                    await self.resolve_peer(i)
-                    for i in user_ids
-                ]
+            raw.functions.phone.CreateGroupCall(
+                peer=peer,
+                random_id=self.rnd_id(),
+                rtmp_stream=rtmp,
+                title=title,
+                schedule_date=utils.datetime_to_timestamp(schedule_date),
             )
         )
 
@@ -84,13 +78,13 @@ class InviteGroupCallParticipants:
                 (
                     raw.types.UpdateNewChannelMessage,
                     raw.types.UpdateNewMessage,
-                    raw.types.UpdateNewScheduledMessage
-                )
+                    raw.types.UpdateNewScheduledMessage,
+                ),
             ):
                 return await types.Message._parse(
                     self,
                     i.message,
                     {i.id: i for i in r.users},
                     {i.id: i for i in r.chats},
-                    is_scheduled=isinstance(i, raw.types.UpdateNewScheduledMessage)
+                    is_scheduled=isinstance(i, raw.types.UpdateNewScheduledMessage),
                 )

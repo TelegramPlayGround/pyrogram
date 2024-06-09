@@ -1,4 +1,3 @@
-
 #  Pyrogram - Telegram MTProto API Client Library for Python
 #  Copyright (C) 2017-present Dan <https://github.com/delivrance>
 #
@@ -17,18 +16,27 @@
 #  You should have received a copy of the GNU Lesser General Public License
 #  along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
-from .load_group_call_participants import LoadGroupCallParticipants
-from .invite_group_call_participants import InviteGroupCallParticipants
-from .create_group_call import CreateGroupCall
-from .discard_group_call import DiscardGroupCall
-from .get_stream_rtmp_url import GetStreamRtmpUrl
+from pyrogram import raw
+from ..object import Object
 
 
-class Phone(
-    InviteGroupCallParticipants,
-    LoadGroupCallParticipants,
-    CreateGroupCall,
-    DiscardGroupCall,
-    GetStreamRtmpUrl
-):
-    pass
+class StreamRtmpUrl(Object):
+    """RTMP URL and stream key to be used in streaming software
+
+    Parameters:
+        url (``str``):
+            RTMP URL.
+
+        key (``str``):
+            Stream key.
+    """
+
+    def __init__(self, *, url: str, key: str):
+        super().__init__(None)
+
+        self.url = url
+        self.key = key
+
+    @staticmethod
+    def _parse(rtmp_url: "raw.types.GroupCallStreamRtmpUrl") -> "StreamRtmpUrl":
+        return StreamRtmpUrl(url=rtmp_url.url, key=rtmp_url.key)
