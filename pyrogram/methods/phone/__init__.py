@@ -21,12 +21,14 @@ from .load_group_call_participants import LoadGroupCallParticipants
 from .invite_group_call_participants import InviteGroupCallParticipants
 from .create_group_call import CreateGroupCall
 from .discard_group_call import DiscardGroupCall
+from .get_stream_rtmp_url import GetStreamRtmpUrl
 
 
 class Phone(
     InviteGroupCallParticipants,
     LoadGroupCallParticipants,
     CreateGroupCall,
-    DiscardGroupCall
+    DiscardGroupCall,
+    GetStreamRtmpUrl
 ):
     pass
