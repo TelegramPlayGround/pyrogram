@@ -56,7 +56,7 @@ from .giveaway_winners import GiveawayWinners
 from .gift_code import GiftCode
 from .gifted_premium import GiftedPremium
 from .message_effect import MessageEffect
-from translated_text import TranslatedText
+from .translated_text import TranslatedText
 
 __all__ = [
     "Animation",

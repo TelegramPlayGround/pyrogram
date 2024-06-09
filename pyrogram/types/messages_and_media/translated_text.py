@@ -51,7 +51,7 @@ class TranslatedText(Object):
         translate_result: "raw.types.TextWithEntities"
     ) -> "TranslatedText":
         entities = [
-            types.MessageEntity._parse(client, entity, None)
+            types.MessageEntity._parse(client, entity, {})
             for entity in translate_result.entities
         ]
         entities = types.List(filter(lambda x: x is not None, entities))

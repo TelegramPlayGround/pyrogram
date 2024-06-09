@@ -336,6 +336,7 @@ def pyrogram_api():
             view_messages
             vote_poll
             get_chat_sponsored_messages
+            translate_text
             translate_message_text
         """,
         password="""
