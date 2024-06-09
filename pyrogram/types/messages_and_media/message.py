@@ -302,7 +302,7 @@ class Message(Object, Update):
             The message is a scheduled giveaway message
 
         giveaway_winners (:obj:`~pyrogram.types.GiveawayWinners`, *optional*):
-            A giveaway with public winners was completed        
+            A giveaway with public winners was completed
 
         giveaway_completed (:obj:`~pyrogram.types.GiveawayCompleted`, *optional*):
             Service message: a giveaway without public winners was completed
@@ -412,7 +412,7 @@ class Message(Object, Update):
         chat: "types.Chat" = None,
         forward_origin: "types.MessageOrigin" = None,
         is_topic_message: bool = None,
-        
+
 
         reply_to_message_id: int = None,
         reply_to_message: "Message" = None,
@@ -1317,24 +1317,24 @@ class Message(Object, Update):
 
     async def get_media_group(self) -> List["types.Message"]:
         """Bound method *get_media_group* of :obj:`~pyrogram.types.Message`.
-        
+
         Use as a shortcut for:
-        
+
         .. code-block:: python
 
             await client.get_media_group(
                 chat_id=message.chat.id,
                 message_id=message.id
             )
-            
+
         Example:
             .. code-block:: python
 
                 await message.get_media_group()
-                
+
         Returns:
             List of :obj:`~pyrogram.types.Message`: On success, a list of messages of the media group is returned.
-            
+
         Raises:
             ValueError: In case the passed message id doesn't belong to a media group.
         """
@@ -2160,7 +2160,7 @@ class Message(Object, Update):
 
             caption_entities (List of :obj:`~pyrogram.types.MessageEntity`):
                 List of special entities that appear in the caption, which can be specified instead of *parse_mode*.
-            
+
             file_name (``str``, *optional*):
                 File name of the document sent.
                 Defaults to file's path basename.
@@ -4549,7 +4549,7 @@ class Message(Object, Update):
                 Defaults to ``True``.
 
             password (``str``, *optional*):
-                When clicking certain buttons (such as BotFather's confirmation button to transfer ownership), if your account has 2FA enabled, you need to provide your account's password. 
+                When clicking certain buttons (such as BotFather's confirmation button to transfer ownership), if your account has 2FA enabled, you need to provide your account's password.
                 The 2-step verification password for the current user. Only applicable, if the :obj:`~pyrogram.types.InlineKeyboardButton` contains ``callback_data_with_password``.
 
         Returns:
@@ -4735,7 +4735,7 @@ class Message(Object, Update):
             is_big (``bool``, *optional*):
                 Pass True to set the reaction with a big animation.
                 Defaults to False.
-            
+
             add_to_recent (``bool``, *optional*):
                 Pass True if the reaction should appear in the recently used reactions.
                 This option is applicable only for users.
@@ -5004,7 +5004,7 @@ class Message(Object, Update):
             "Please use forward_origin instead"
         )
         return getattr(self.forward_origin, "sender_user", None)
-    
+
     @property
     def forward_sender_name(self) -> str:
         log.warning(
@@ -5044,7 +5044,7 @@ class Message(Object, Update):
             "Please use forward_origin instead"
         )
         return getattr(self.forward_origin, "author_signature", None)
-        
+
     @property
     def forward_date(self) -> datetime:
         log.warning(
@@ -5117,4 +5117,43 @@ class Message(Object, Update):
             chat_id=self.chat.id,
             message_ids=self.id,
             force_read=force_read
+        )
+
+    async def translate(
+        self,
+        to_language_code: str
+    ) -> "types.TranslatedText":
+        """Bound method *view* of :obj:`~pyrogram.types.Message`.
+
+        Use as a shortcut for:
+
+        .. code-block:: python
+
+            await client.translate_message(
+                chat_id=message.chat.id,
+                message_ids=message_id,
+                to_language_code="en"
+            )
+
+        Example:
+            .. code-block:: python
+
+                await message.translate("en")
+
+        Parameters:
+            to_language_code (``str``):
+                Language code of the language to which the message is translated.
+                Must be one of "af", "sq", "am", "ar", "hy", "az", "eu", "be", "bn", "bs", "bg", "ca", "ceb", "zh-CN", "zh", "zh-Hans", "zh-TW", "zh-Hant", "co", "hr", "cs", "da", "nl", "en", "eo", "et", "fi", "fr", "fy", "gl", "ka", "de", "el", "gu", "ht", "ha", "haw", "he", "iw", "hi", "hmn", "hu", "is", "ig", "id", "in", "ga", "it", "ja", "jv", "kn", "kk", "km", "rw", "ko", "ku", "ky", "lo", "la", "lv", "lt", "lb", "mk", "mg", "ms", "ml", "mt", "mi", "mr", "mn", "my", "ne", "no", "ny", "or", "ps", "fa", "pl", "pt", "pa", "ro", "ru", "sm", "gd", "sr", "st", "sn", "sd", "si", "sk", "sl", "so", "es", "su", "sw", "sv", "tl", "tg", "ta", "tt", "te", "th", "tr", "tk", "uk", "ur", "ug", "uz", "vi", "cy", "xh", "yi", "ji", "yo", "zu".
+
+        Returns:
+            :obj:`~pyrogram.types.TranslatedText`: The translated result is returned.
+
+        Raises:
+            RPCError: In case of a Telegram RPC error.
+
+        """
+        return await self._client.translate_message_text(
+            chat_id=self.chat.id,
+            message_ids=self.id,
+            to_language_code=to_language_code
         )
