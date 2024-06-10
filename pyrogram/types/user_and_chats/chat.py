@@ -92,6 +92,9 @@ class Chat(Object):
         emoji_status (:obj:`~pyrogram.types.EmojiStatus`, *optional*):
             Emoji status.
 
+        background (:obj:`~pyrogram.types.ChatBackground`, *optional*):
+            A chat background.
+
         bio (``str``, *optional*):
             Bio of the other party in a private chat.
             Returned only in :meth:`~pyrogram.Client.get_chat`.
@@ -254,6 +257,7 @@ class Chat(Object):
         accent_color: "types.ChatColor" = None,
         profile_color: "types.ChatColor" = None,
         emoji_status: "types.EmojiStatus" = None,
+        background: "types.ChatBackground" = None,
         has_visible_history: bool = None,
         has_hidden_members: bool = None,
         has_aggressive_anti_spam_enabled: bool = None,
@@ -308,6 +312,7 @@ class Chat(Object):
         self.accent_color = accent_color
         self.profile_color = profile_color
         self.emoji_status = emoji_status
+        self.background = background
         self.has_visible_history = has_visible_history
         self.has_hidden_members = has_hidden_members
         self.has_aggressive_anti_spam_enabled = has_aggressive_anti_spam_enabled
@@ -326,6 +331,7 @@ class Chat(Object):
         self.business_location = business_location
         self.business_opening_hours = business_opening_hours
         self.active_usernames = active_usernames
+        self.max_reaction_count = max_reaction_count
         self._raw = _raw
 
     @staticmethod
@@ -608,6 +614,9 @@ class Chat(Object):
 
             if isinstance(full_chat.exported_invite, raw.types.ChatInviteExported):
                 parsed_chat.invite_link = full_chat.exported_invite.link
+
+            if hasattr(full_chat, "wallpaper") and getattr(full_chat, "wallpaper"):
+                parsed_chat.background = types.ChatBackground._parse(client, full_chat.wallpaper)
 
             parsed_chat.available_reactions = types.ChatReactions._parse(
                 client,
