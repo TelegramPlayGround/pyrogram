@@ -326,6 +326,7 @@ class Chat(Object):
         self.business_location = business_location
         self.business_opening_hours = business_opening_hours
         self.active_usernames = active_usernames
+        self.max_reaction_count = max_reaction_count
         self._raw = _raw
 
     @staticmethod
