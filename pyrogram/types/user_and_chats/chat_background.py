@@ -100,7 +100,7 @@ class ChatBackground(Object):
                 volume_id=0,
                 local_id=0,
                 thumbnail_source=ThumbnailSource.THUMBNAIL,
-                thumbnail_file_type=FileType.PHOBACKGROUNDTO,
+                thumbnail_file_type=FileType.BACKGROUND,
             ).encode(),
             file_unique_id=FileUniqueId(
                 file_unique_type=FileUniqueType.DOCUMENT, media_id=wallpaper.document.id
