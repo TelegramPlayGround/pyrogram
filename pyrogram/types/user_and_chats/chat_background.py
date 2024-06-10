@@ -104,7 +104,7 @@ class ChatBackground(Object):
             ).encode(),
             file_unique_id=FileUniqueId(
                 file_unique_type=FileUniqueType.DOCUMENT, media_id=wallpaper.document.id
-            ),
+            ).encode(),
             file_size=wallpaper.document.size,
             slug=wallpaper.slug,
             date=utils.timestamp_to_datetime(wallpaper.document.date),
