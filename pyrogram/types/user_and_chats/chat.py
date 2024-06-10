@@ -549,6 +549,9 @@ class Chat(Object):
                     client,
                     full_user.business_work_hours
                 )
+                
+            if getattr(full_user, "wallpaper", None):
+                    parsed_chat.background = types.ChatBackground._parse(client, full_user.wallpaper)
 
         else:
             full_chat = chat_full.full_chat
@@ -567,6 +570,9 @@ class Chat(Object):
                 # TODO: Add StickerSet type
                 parsed_chat.can_set_sticker_set = full_chat.can_set_stickers
                 parsed_chat.sticker_set_name = getattr(full_chat.stickerset, "short_name", None)
+
+                if getattr(full_chat, "wallpaper", None):
+                    parsed_chat.background = types.ChatBackground._parse(client, full_chat.wallpaper)
 
                 linked_chat_raw = chats.get(full_chat.linked_chat_id, None)
 
@@ -614,9 +620,6 @@ class Chat(Object):
 
             if isinstance(full_chat.exported_invite, raw.types.ChatInviteExported):
                 parsed_chat.invite_link = full_chat.exported_invite.link
-
-            if hasattr(full_chat, "wallpaper") and getattr(full_chat, "wallpaper"):
-                parsed_chat.background = types.ChatBackground._parse(client, full_chat.wallpaper)
 
             parsed_chat.available_reactions = types.ChatReactions._parse(
                 client,
