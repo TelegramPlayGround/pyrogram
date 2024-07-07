@@ -14,6 +14,7 @@ If you found any issue or have any suggestions, feel free to make `an issue <htt
 | Scheme layer used: 183 |
 +------------------------+
 
+- Added :meth:`~pyrogram.Client.send_paid_media`.
 - Added :meth:`~pyrogram.Client.get_stories`.
 - Added :obj:`~pyrogram.filters.thread` and :obj:`~pyrogram.filters.self_destruct`.
 - Added the field ``can_send_paid_media`` to the class :obj:`~pyrogram.types.Chat`.

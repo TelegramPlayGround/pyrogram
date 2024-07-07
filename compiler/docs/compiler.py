@@ -321,6 +321,7 @@ def pyrogram_api():
             send_dice
             send_document
             send_location
+            send_paid_media
             send_media_group
             send_message
             send_photo
@@ -514,6 +515,12 @@ def pyrogram_api():
             InputMediaDocument
             InputPhoneContact
             LinkPreviewOptions
+        """,
+        input_paid_media="""
+        Input Paid Media
+            InputPaidMedia
+            InputPaidMediaPhoto
+            InputPaidMediaVideo
         """,
         input_message_content="""
         InputMessageContent
