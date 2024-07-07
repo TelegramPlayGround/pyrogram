@@ -94,6 +94,9 @@ class SendPaidMedia:
             schedule_date (:obj:`~datetime.datetime`, *optional*):
                 Date when the message will be automatically sent. Pass a :obj:`~datetime.datetime` object.
 
+        Returns:
+            :obj:`~pyrogram.types.Message`: On success, the sent message is returned.
+
         """
         multi_media = []
 
