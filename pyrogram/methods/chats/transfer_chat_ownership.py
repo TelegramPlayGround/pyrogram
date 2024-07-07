@@ -67,7 +67,7 @@ class TransferChatOwnership:
                 channel=peer_channel,
                 user_id=peer_user,
                 password=compute_password_check(
-                    await self.invoke(raw.functions.account.GetPassword(), password)
+                    await self.invoke(raw.functions.account.GetPassword()), password
                 ),
             )
         )
