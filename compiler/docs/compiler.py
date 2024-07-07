@@ -521,6 +521,11 @@ def pyrogram_api():
             InputPaidMedia
             InputPaidMediaPhoto
             InputPaidMediaVideo
+            PaidMediaInfo
+            PaidMedia
+            PaidMediaPreview
+            PaidMediaPhoto
+            PaidMediaVideo
         """,
         input_message_content="""
         InputMessageContent

@@ -16,22 +16,27 @@
 #  You should have received a copy of the GNU Lesser General Public License
 #  along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
-from .input_paid_media import InputPaidMedia
-from .input_paid_media_photo import InputPaidMediaPhoto
-from .input_paid_media_video import InputPaidMediaVideo
-from .paid_media_info import PaidMediaInfo
-from .paid_media import PaidMedia
-from .paid_media_preview import PaidMediaPreview
-from .paid_media_photo import PaidMediaPhoto
-from .paid_media_video import PaidMediaVideo
+import pyrogram
+from pyrogram import types
 
-__all__ = [
-    "InputPaidMedia",
-    "InputPaidMediaPhoto",
-    "InputPaidMediaVideo",
-    "PaidMediaInfo",
-    "PaidMedia",
-    "PaidMediaPreview",
-    "PaidMediaPhoto",
-    "PaidMediaVideo",
-]
+from ..object import Object
+from .paid_media import PaidMedia
+
+
+class PaidMediaVideo(PaidMedia):
+    """The paid media is a video.
+
+    Parameters:
+        video (:obj:`~pyrogram.types.Video`):
+            The video.
+
+    """
+
+    def __init__(
+        self,
+        *,
+        video: "types.Video" = None
+    ):
+        super().__init__()
+
+        self.video = video
