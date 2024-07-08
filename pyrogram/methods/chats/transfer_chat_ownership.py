@@ -51,6 +51,7 @@ class TransferChatOwnership:
             ``bool``: True on success.
 
         Raises:
+            ValueError: In case of invalid parameters.
             RPCError: In case of a Telegram RPC error.
 
         Example:
@@ -65,7 +66,7 @@ class TransferChatOwnership:
         if not isinstance(peer_channel, raw.types.InputPeerChannel):
             raise ValueError("The chat_id must belong to a channel/supergroup.")
 
-        elif not isinstance(peer_user, raw.types.InputPeerUser):
+        if not isinstance(peer_user, raw.types.InputPeerUser):
             raise ValueError("The user_id must belong to a user.")
 
         r = await self.invoke(
