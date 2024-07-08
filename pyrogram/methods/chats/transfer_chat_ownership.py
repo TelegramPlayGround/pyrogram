@@ -30,7 +30,9 @@ class TransferChatOwnership:
         user_id: Union[int, str],
         password: str,
     ) -> bool:
-        """Set new chat owner.
+        """Changes the owner of a chat.
+        
+        Requires owner privileges in the chat. Available only for supergroups and channel chats.
 
         .. include:: /_includes/usable-by/users.rst
 
@@ -39,13 +41,17 @@ class TransferChatOwnership:
                 Unique identifier (int) or username (str) of the target chat.
 
             user_id (``int`` | ``str``):
-                Unique identifier (int) or username (str) of the new owner. The ownership can't be transferred to a bot or to a deleted user.
+                Unique identifier (int) or username (str) of the new owner.
+                The ownership can't be transferred to a bot or to a deleted user.
 
             password (``str``):
                 The 2-step verification password of the current user.
 
         Returns:
             ``bool``: True on success.
+
+        Raises:
+            RPCError: In case of a Telegram RPC error.
 
         Example:
             .. code-block:: python
