@@ -49,15 +49,15 @@ class Result:
 
 
 class Session:
-    START_TIMEOUT = 5
+    START_TIMEOUT = 2 + 3
     WAIT_TIMEOUT = 15
-    RECONN_TIMEOUT = 5
+    REART_TIMEOUT = 2 + 3
     SLEEP_THRESHOLD = 10
     MAX_RETRIES = 20
     ACKS_THRESHOLD = 10
     PING_INTERVAL = 5
     STORED_MSG_IDS_MAX_SIZE = 1000 * 2
-    RECONNECT_THRESHOLD = 12
+    RECONNECT_THRESHOLD = 10 + 2
 
     TRANSPORT_ERRORS = {
         404: "auth key not found",
@@ -119,7 +119,7 @@ class Session:
     async def start(self):
         while True:
             if self.instant_stop:
-                log.info("Session init stopped")
+                log.info("session init stopped")
                 return  # stop instantly
 
             self.connection = self.client.connection_factory(
@@ -154,7 +154,7 @@ class Session:
                                 proxy=raw.types.InputClientProxy(
                                     address=self.client._un_docu_gnihts[0],
                                     port=self.client._un_docu_gnihts[1],
-                                ) if len(self.client._un_docu_gnihts) == 3 else None,
+                                ) if len(self.client._un_docu_gnihts) <= 3 else None,
                                 params=self.client._un_docu_gnihts[2] if len(self.client._un_docu_gnihts) == 3 else None
                             )
                         ),
@@ -185,7 +185,7 @@ class Session:
         if self.currently_stopping:
             return  # don't stop twice
         if self.instant_stop:
-            log.info("Session stop process stopped")
+            log.info("session stop process stopped")
             return  # stop doing anything instantly, client is manually handling
 
         try:
@@ -201,7 +201,7 @@ class Session:
                 try:
                     if self.ping_task is not None:
                         await asyncio.wait_for(
-                            self.ping_task, timeout=self.RECONN_TIMEOUT
+                            self.ping_task, timeout=self.REART_TIMEOUT
                         )
                         break
                 except TimeoutError:
@@ -211,16 +211,16 @@ class Session:
 
             try:
                 await asyncio.wait_for(
-                    self.connection.close(), timeout=self.RECONN_TIMEOUT
+                    self.connection.close(), timeout=self.REART_TIMEOUT
                 )
-            except Exception:
-                pass
+            except Exception as e:
+                log.exception(e)
 
             for _ in range(2):
                 try:
                     if self.recv_task:
                         await asyncio.wait_for(
-                            self.recv_task, timeout=self.RECONN_TIMEOUT
+                            self.recv_task, timeout=self.REART_TIMEOUT
                         )
                         break
                 except TimeoutError:
@@ -233,7 +233,7 @@ class Session:
                 except Exception as e:
                     log.exception(e)
 
-            log.info("Session stopped")
+            log.info("session stopped")
         finally:
             self.currently_stopping = False
             if restart:
@@ -256,7 +256,9 @@ class Session:
                     self.RECONNECT_THRESHOLD - (now - self.last_reconnect_attempt)
                 )
                 log.warning(
-                    f"[pyrogramFORK] Client [{self.client.name}] is reconnecting too frequently, sleeping for {to_wait} seconds"
+                    "[pyrogram] Client [%s] is reconnecting too frequently, sleeping for %s seconds",
+                    self.client.name,
+                    to_wait
                 )
                 await asyncio.sleep(to_wait)
 
@@ -538,14 +540,23 @@ class Session:
                 TimeoutError,
             ) as e:
                 retries -= 1
-                if retries == 0:
-                    raise
+                if (
+                    retries == 0 or
+                    (
+                        isinstance(e, InternalServerError)
+                        and getattr(e, "code", 0) == 500
+                        and (e.ID or e.NAME) in [
+                            "HISTORY_GET_FAILED"
+                        ]
+                    )
+                ):
+                    raise e from None
 
                 if (isinstance(e, (OSError, RuntimeError)) and "handler" in str(e)) or (
                     isinstance(e, TimeoutError)
                 ):
                     (log.warning if retries < 2 else log.info)(
-                        '[%s] [%s] ReConnecting session requesting "%s", due to: %s',
+                        '[%s] [%s] reconnecting session requesting "%s", due to: %s',
                         self.client.name,
                         Session.MAX_RETRIES - retries,
                         query_name,
