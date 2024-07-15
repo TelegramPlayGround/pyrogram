@@ -49,9 +49,9 @@ class Result:
 
 
 class Session:
-    START_TIMEOUT = 2 + 3
+    START_TIMEOUT = 5
     WAIT_TIMEOUT = 15
-    REART_TIMEOUT = 2 + 3
+    REART_TIMEOUT = 5
     SLEEP_THRESHOLD = 10
     MAX_RETRIES = 20
     ACKS_THRESHOLD = 10
@@ -154,7 +154,7 @@ class Session:
                                 proxy=raw.types.InputClientProxy(
                                     address=self.client._un_docu_gnihts[0],
                                     port=self.client._un_docu_gnihts[1],
-                                ) if len(self.client._un_docu_gnihts) <= 3 else None,
+                                ) if len(self.client._un_docu_gnihts) == 3 else None,
                                 params=self.client._un_docu_gnihts[2] if len(self.client._un_docu_gnihts) == 3 else None
                             )
                         ),
