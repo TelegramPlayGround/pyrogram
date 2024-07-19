@@ -87,6 +87,6 @@ class RequestCallbackAnswer:
                 password=password,
                 # TODO: add ``game`` parameter too
             ),
-            retries=0,
+            retries=10,
             timeout=timeout
         )
