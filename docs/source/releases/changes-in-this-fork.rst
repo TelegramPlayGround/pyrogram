@@ -276,7 +276,7 @@ If you found any issue or have any suggestions, feel free to make `an issue <htt
 +------------------------+
 
 - Changed condition in :meth:`~pyrogram.Client.join_chat` and :meth:`~pyrogram.Client.get_chat`.
-- Added ``nosound_video`` parameter to :obj:`~pyrogram.types.InputMediaVideo`.
+- Added ``disable_content_type_detection`` parameter to :obj:`~pyrogram.types.InputMediaVideo`.
 - Added ``has_spoiler`` parameter to :meth:`~pyrogram.Client.copy_message`.
 - Improved :meth:`~pyrogram.Client.get_chat_history`: add ``min_id`` and ``max_id`` params.
 - `Prevent connection to dc every time in get_file <https://github.com/TelegramPlayGround/pyrogram/commit/f2581fd7ab84ada7685645a6f80475fbea5e743a>`_
