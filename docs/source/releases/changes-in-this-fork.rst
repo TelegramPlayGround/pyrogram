@@ -31,7 +31,7 @@ If you found any issue or have any suggestions, feel free to make `an issue <htt
 - Added the method :meth:`~pyrogram.Client.send_paid_media` and the classes :obj:`~pyrogram.types.InputPaidMedia`, :obj:`~pyrogram.types.InputPaidMediaPhoto` and :obj:`~pyrogram.types.InputPaidMediaVideo`, to support sending paid media.
 - Added the field ``paid_media`` to the classes :obj:`~pyrogram.types.Message` and :obj:`~pyrogram.types.ExternalReplyInfo`.
 - Added :meth:`~pyrogram.Client.get_stories`.
-- Added :obj:`~pyrogram.filters.thread` and :obj:`~pyrogram.filters.self_destruct`.
+- Added filters :obj:`~pyrogram.filters.thread` and :obj:`~pyrogram.filters.self_destruct`.
 - Added the field ``can_send_paid_media`` to the class :obj:`~pyrogram.types.Chat`.
 - Added support for launching Web Apps via ``t.me`` link in the class :obj:`~pyrogram.types.MenuButtonWebApp`.
 - `View new and changed raw API methods <https://telegramplayground.github.io/TG-APIs/TL/diff/tdesktop.html?from=181&to=183>`__.
