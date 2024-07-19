@@ -253,7 +253,7 @@ If you found any issue or have any suggestions, feel free to make `an issue <htt
 - Bug fix for :meth:`~pyrogram.Client.send_audio` and :meth:`~pyrogram.Client.send_voice`. (Thanks to `... <https://t.me/c/1220993104/1360174>`_).
 - Add `waveform` parameter to :meth:`~pyrogram.Client.send_voice`.
 - Added `view_once` parameter to :meth:`~pyrogram.Client.send_photo`, :meth:`~pyrogram.Client.send_video`, :meth:`~pyrogram.Client.send_video_note`, :meth:`~pyrogram.Client.send_voice`.
-- Add missing parameters to :obj:`~pyrogram.types.Message.reply_photo`, :obj:`~pyrogram.types.Message.reply_video`, :obj:`~pyrogram.types.Message.reply_video_note`, :obj:`~pyrogram.types.Message.reply_voice`.
+- Add missing parameters to :meth:`~pyrogram.types.Message.reply_photo`, :meth:`~pyrogram.types.Message.reply_video`, :meth:`~pyrogram.types.Message.reply_video_note`, :meth:`~pyrogram.types.Message.reply_voice`.
 
 +------------------------+
 | Scheme layer used: 170 |
