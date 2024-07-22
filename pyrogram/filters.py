@@ -695,19 +695,47 @@ mentioned: Filter = create(mentioned_filter)
 
 
 # region via_bot_filter
-async def via_bot_filter(flt, __, m: Message) -> bool:
+async def via_bot_filter(_, __, m: Message) -> bool:
+    return bool(m.via_bot)
+
+
+via_bot: Filter = create(via_bot_filter)
+
+
+async def via_a_bot_filter(flt, client, m: Message) -> bool:
     user_ids = flt.user_ids
-    via_bot = bool(m.via_bot)
-    if user_ids:
-        return via_bot and False
-    return via_bot
+    via_bot = m.via_bot
+    _cek_lst = []
+    if via_bot and user_ids:
+        if isinstance(user_ids, list):
+            for user_id in user_ids:
+                if isinstance(user_id, str):
+                    _cek_lst.append(
+                        (await client.get_chat(user_id, False)).id
+                    )
+                elif isinstance(user_id, int):
+                    _cek_lst.append(user_id)
+                else:
+                    raise ValueError("unsupported type for user_ids")
+        elif isinstance(user_ids, str):
+            _cek_lst.append(
+                (await client.get_chat(user_ids, False)).id
+            )
+        elif isinstance(user_ids, int):
+            _cek_lst.append(user_ids)
+        else:
+            raise ValueError("unsupported type for user_id")
+        return via_bot.id in _cek_lst
+    return bool(via_bot)
 
 
-def via_bot(user_ids: Optional[Union[str, int, Iterable[int], Iterable[str]]]) -> Filter:
+def via_a_bot(
+    user_ids: Optional[Union[str, int, Iterable[int], Iterable[str]]]
+) -> Filter:
     """Filter messages sent via inline bots"""
     return create(
-        via_bot_filter,
-        name="ViaBotFilter",
+        via_a_bot_filter,
+        name="ViaABotFilter",
         user_ids=user_ids
     )
 
