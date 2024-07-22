@@ -18,7 +18,7 @@
 
 import inspect
 import re
-from typing import Any, Callable, List, Literal, Optional, Pattern, Union
+from typing import Any, Callable, Iterable, List, Literal, Optional, Pattern, Union
 
 import pyrogram
 from pyrogram import enums
@@ -695,12 +695,21 @@ mentioned: Filter = create(mentioned_filter)
 
 
 # region via_bot_filter
-async def via_bot_filter(_, __, m: Message) -> bool:
-    return bool(m.via_bot)
+async def via_bot_filter(flt, __, m: Message) -> bool:
+    user_ids = flt.user_ids
+    via_bot = bool(m.via_bot)
+    if user_ids:
+        return via_bot and False
+    return via_bot
 
 
-via_bot: Filter = create(via_bot_filter)
-"""Filter messages sent via inline bots"""
+def via_bot(user_ids: Optional[Union[str, int, Iterable[int], Iterable[str]]]) -> Filter:
+    """Filter messages sent via inline bots"""
+    return create(
+        via_bot_filter,
+        name="ViaBotFilter",
+        user_ids=user_ids
+    )
 
 
 # endregion
