@@ -695,14 +695,7 @@ mentioned: Filter = create(mentioned_filter)
 
 
 # region via_bot_filter
-async def via_bot_filter(_, __, m: Message) -> bool:
-    return bool(m.via_bot)
-
-
-via_bot: Filter = create(via_bot_filter)
-
-
-async def via_a_bot_filter(flt, client, m: Message) -> bool:
+async def via_bot_filter(flt, client, m: Message) -> bool:
     user_ids = flt.user_ids
     via_bot = m.via_bot
     _cek_lst = []
@@ -730,14 +723,29 @@ async def via_a_bot_filter(flt, client, m: Message) -> bool:
 
 
 def via_a_bot(
-    user_ids: Optional[Union[str, int, Iterable[int], Iterable[str]]]
+    user_ids: Optional[Union[str, int, Iterable[int], Iterable[str]]] = None
 ) -> Filter:
-    """Filter messages sent via inline bots"""
+    """Filter messages sent via inline bots.
+
+    Parameters:
+        user_ids (``int`` | ``str`` | Iterable of ``int`` | Iterable of ``str``):
+            Unique identifier (int) or username (str) of the target chat.
+            For your personal cloud (Saved Messages) you can simply use "me" or "self".
+            For a contact that exists in your Telegram address book you can use his phone number (str).
+            Defaults to None (all bots).
+    """
     return create(
-        via_a_bot_filter,
+        via_bot_filter,
         name="ViaABotFilter",
         user_ids=user_ids
     )
+
+via_bot: Filter = create(
+    via_bot_filter,
+    name="ViaBotFilter",
+    user_ids=None
+)
+"""Filter messages sent via inline bots"""
 
 
 # endregion
