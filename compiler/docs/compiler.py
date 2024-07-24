@@ -436,12 +436,106 @@ def pyrogram_api():
     # Types
 
     categories = dict(
-        authorization="""
-        Authorization
-            ActiveSession
-            ActiveSessions
-            SentCode
-            TermsOfService
+        users_chats="""
+        Users & Chats
+            Birthdate
+            User
+            Chat
+            Username
+            ChatShared
+            UsersShared
+            ChatAdminWithInviteLinks
+            ChatColor
+            ChatEvent
+            ChatEventFilter
+            ChatInviteLink
+            ChatJoiner
+            ChatJoinRequest
+            ChatMember
+            ChatMemberUpdated
+            ChatPermissions
+            ChatPhoto
+            ChatPrivileges
+            ChatReactions
+            VideoChatScheduled
+            VideoChatStarted
+            VideoChatEnded
+            VideoChatParticipantsInvited
+            Dialog
+            EmojiStatus
+            GroupCallParticipant
+            InviteLinkImporter
+            Restriction
+            RtmpUrl
+        """,
+        messages_media="""
+        Messages & Media
+            Message
+            MessageEntity
+            TextQuote
+            ExternalReplyInfo
+            ReplyParameters
+            MessageOrigin
+            MessageOriginUser
+            MessageOriginHiddenUser
+            MessageOriginChat
+            MessageOriginChannel
+            MessageImportInfo
+            Photo
+            Animation
+            Audio
+            Document
+            Story
+            Video
+            VideoNote
+            Voice
+            PaidMediaInfo
+            PaidMedia
+            PaidMediaPreview
+            PaidMediaPhoto
+            PaidMediaVideo
+            Contact
+            Dice
+            PollOption
+            InputPollOption
+            Poll
+            Location
+            Venue
+            WebAppData
+            MessageAutoDeleteTimerChanged
+            ChatBoostAdded
+            ChatBackground
+            Game
+            GiftCode
+            GiftedPremium
+            Giveaway
+            GiveawayCompleted
+            GiveawayWinners
+            MessageEffect
+            MessageReactionCountUpdated
+            MessageReactionUpdated
+            MessageReactions
+            Reaction
+            ReactionCount
+            ReactionType
+            ReactionTypeEmoji
+            ReactionTypeCustomEmoji
+            Thumbnail
+            TranslatedText
+            StrippedThumbnail
+            SponsoredMessage
+            Sticker
+            WebPage
+        """,
+        chat_topics="""
+        Chat Forum Topics
+            ForumTopic
+            ForumTopicCreated
+            ForumTopicClosed
+            ForumTopicEdited
+            ForumTopicReopened
+            GeneralForumTopicHidden
+            GeneralForumTopicUnhidden
         """,
         bot_commands="""
         Bot Commands
@@ -480,16 +574,6 @@ def pyrogram_api():
             SentWebAppMessage
             SwitchInlineQueryChosenChat
         """,
-        chat_topics="""
-        Chat Forum Topics
-            ForumTopic
-            ForumTopicClosed
-            ForumTopicCreated
-            ForumTopicEdited
-            ForumTopicReopened
-            GeneralForumTopicHidden
-            GeneralForumTopicUnhidden
-        """,
         inline_mode="""
         Inline Mode
             ChosenInlineResult
@@ -513,6 +597,13 @@ def pyrogram_api():
             InlineQueryResultLocation
             InlineQueryResultVenue
         """,
+        authorization="""
+        Authorization
+            ActiveSession
+            ActiveSessions
+            SentCode
+            TermsOfService
+        """,
         input_media="""
         Input Media
             InputMedia
@@ -529,73 +620,15 @@ def pyrogram_api():
             InputPaidMedia
             InputPaidMediaPhoto
             InputPaidMediaVideo
-            PaidMediaInfo
-            PaidMedia
-            PaidMediaPreview
-            PaidMediaPhoto
-            PaidMediaVideo
         """,
         input_message_content="""
         InputMessageContent
-            ExternalReplyInfo
             InputMessageContent
-            InputPollOption
             InputTextMessageContent
             InputLocationMessageContent
             InputVenueMessageContent
             InputContactMessageContent
             InputInvoiceMessageContent
-            ReplyParameters
-            TextQuote
-        """,
-        messages_media="""
-        Messages & Media
-            Animation
-            Audio
-            ChatBoostAdded
-            Contact
-            Dice
-            Document
-            Game
-            GiftCode
-            GiftedPremium
-            Giveaway
-            GiveawayCompleted
-            GiveawayWinners
-            Location
-            Message
-            MessageAutoDeleteTimerChanged
-            MessageEffect
-            MessageEntity
-            MessageImportInfo
-            MessageOrigin
-            MessageOriginChannel
-            MessageOriginChat
-            MessageOriginHiddenUser
-            MessageOriginUser
-            MessageReactionCountUpdated
-            MessageReactionUpdated
-            MessageReactions
-            Photo
-            Reaction
-            ReactionCount
-            ReactionType
-            ReactionTypeEmoji
-            ReactionTypeCustomEmoji
-            Thumbnail
-            TranslatedText
-            StrippedThumbnail
-            Poll
-            PollOption
-            SponsoredMessage
-            Sticker
-            Story
-            Venue
-            Video
-            VideoNote
-            Voice
-            WebAppData
-            WebPage
         """,
         payments="""
         Payments
@@ -614,40 +647,7 @@ def pyrogram_api():
             RefundedPayment
             ShippingQuery
             PreCheckoutQuery
-        """,
-        users_chats="""
-        Users & Chats
-            Birthdate
-            Chat
-            ChatAdminWithInviteLinks
-            ChatColor
-            ChatEvent
-            ChatEventFilter
-            ChatInviteLink
-            ChatJoiner
-            ChatJoinRequest
-            ChatMember
-            ChatMemberUpdated
-            ChatPermissions
-            ChatPhoto
-            ChatPrivileges
-            ChatReactions
-            ChatShared
-            Dialog
-            EmojiStatus
-            GroupCallParticipant
-            InviteLinkImporter
-            Restriction
-            User
-            Username
-            UsersShared
-            VideoChatEnded
-            VideoChatParticipantsInvited
-            VideoChatScheduled
-            VideoChatStarted
-            RtmpUrl
-            ChatBackground
-        """,
+        """
     )
 
     root = PYROGRAM_API_DEST + "/types"
