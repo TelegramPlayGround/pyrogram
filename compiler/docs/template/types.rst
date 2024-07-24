@@ -151,15 +151,15 @@ Chat Forum Topics
 
     {chat_topics}
 
-Telegram Business
-------------------
+Payments
+---------
 
 .. autosummary::
     :nosignatures:
 
-    {business}
+    {payments}
 
 .. toctree::
     :hidden:
 
-    {business}
+    {payments}
