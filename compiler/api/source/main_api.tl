@@ -229,7 +229,7 @@ messageActionGiveawayLaunch#332ba9ed = MessageAction;
 messageActionGiveawayResults#2a9fadc5 winners_count:int unclaimed_count:int = MessageAction;
 messageActionBoostApply#cc02aa6d boosts:int = MessageAction;
 messageActionRequestedPeerSentMe#93b31848 button_id:int peers:Vector<RequestedPeer> = MessageAction;
-messageActionPaymentRefunded#41b3e202 flags:# peer:Peer currency:string total_amount:long payload:flags.0?bytes charge:PaymentCharge = MessageAction;
+messageActionPaymentRefunded#40d6a52a flags:# peer:Peer currency:string total_amount:long payload:flags.0?bytes charge:PaymentCharge = MessageAction;
 
 dialog#d58a08c6 flags:# pinned:flags.2?true unread_mark:flags.3?true view_forum_as_messages:flags.6?true peer:Peer top_message:int read_inbox_max_id:int read_outbox_max_id:int unread_count:int unread_mentions_count:int unread_reactions_count:int notify_settings:PeerNotifySettings pts:flags.0?int draft:flags.1?DraftMessage folder_id:flags.4?int ttl_period:flags.5?int = Dialog;
 dialogFolder#71bd134c flags:# pinned:flags.2?true folder:Folder peer:Peer top_message:int unread_muted_peers_count:int unread_unmuted_peers_count:int unread_muted_messages_count:int unread_unmuted_messages_count:int = Dialog;
@@ -937,7 +937,7 @@ labeledPrice#cb296bf8 label:string amount:long = LabeledPrice;
 
 invoice#5db95a15 flags:# test:flags.0?true name_requested:flags.1?true phone_requested:flags.2?true email_requested:flags.3?true shipping_address_requested:flags.4?true flexible:flags.5?true phone_to_provider:flags.6?true email_to_provider:flags.7?true recurring:flags.9?true currency:string prices:Vector<LabeledPrice> max_tip_amount:flags.8?long suggested_tip_amounts:flags.8?Vector<long> terms_url:flags.10?string = Invoice;
 
-paymentCharge#ea02c27e id:string provider_charge_id:string = PaymentCharge;
+paymentCharge#e4175f72 id:string provider_charge_id:string = PaymentCharge;
 
 postAddress#1e8caaeb street_line1:string street_line2:string city:string state:string country_iso2:string post_code:string = PostAddress;
 
@@ -1876,6 +1876,15 @@ payments.starsRevenueAdsAccountUrl#394e7f21 url:string = payments.StarsRevenueAd
 
 inputStarsTransaction#206ae6d1 flags:# refund:flags.0?true id:string = InputStarsTransaction;
 
+stories.mediaAreaWeather#49a5e5bc coordinates:MediaAreaCoordinates emoji:string temperature_c:double color:int = MediaArea;
+bots.previewInfo#ca8f3de4 media:Vector<bots.botPreviewMedia> lang_codes:Vector<string> = bots.PreviewInfo;
+bots.popularAppBots#1985c1db flags:# next_offset:flags.0?string users:Vector<User> = bots.PopularAppBots;
+stars.giftOption#5e040e61 flags:# extended:flags.2 stars:long store_product?string currency:string amount:long = stars.GiftOption;
+inputStorePaymentStarsGift#1d7848a7 user_id:InputUser stars:long currency:string amount:long = InputStorePaymentPurpose;
+starsGiftOption#5e7b12f1 flags:int extended:flags.2?true stars:long store_product?string currency:string amount:long = StarsGiftOption;
+topPeerCategoryBotsApp#fc021c0c = TopPeerCategory;
+
+
 ---functions---
 
 invokeAfterMsg#cb9f372d {X:Type} msg_id:long query:!X = X;
@@ -2544,8 +2553,19 @@ smsjobs.finishJob#4f1ebf24 flags:# job_id:string error:flags.0?string = Bool;
 
 fragment.getCollectibleInfo#be1e85ba collectible:InputCollectible = fragment.CollectibleInfo;
 
+bots.reorderPreviewMedias#b6aefad6 bot:InputUser lang_code:string order:Vector<InputMedia> = Bool;
+bots.getPreviewMedias#ea96a72d bot:InputUser = Vector<botPreviewMedia>;
+bots.getPreviewInfo#4247eb1d bot:InputUser lang_code:string = bots.previewInfo;
+bots.getPopularAppBots#c252d23a offset:string limit:int = bots.popularAppBots;
+bots.editPreviewMedia#8503ff3f bot:InputUser lang_code:string media:InputMedia new_media:InputMedia = bots.botPreviewMedia;
+bots.deletePreviewMedia#2dcd86d3 bot:InputUser lang_code:string media:Vector<InputMedia> = Bool;
+bots.botPreviewMedia#23e15ac3 date:int media:MessageMedia = bots.botPreviewMedia;
+bots.addPreviewMedia#17aa2cfa bot:InputUser lang_code:string media:InputMedia = bots.botPreviewMedia;
+messages.requestMainWebView#f5e4cfb3 flags:# compact:flags.7?true peer:InputPeer bot:InputUser start_param:flags.1?string theme_params:flags.0?dataJSON platform:string = WebViewResult;
+
+
 test.useError = Error;
 test.useConfigSimple = help.ConfigSimple;
 test.parseInputAppEvent = InputAppEvent;
 
-// LAYER 184
+// LAYER 185
