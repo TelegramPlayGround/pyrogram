@@ -1665,6 +1665,9 @@ mediaAreaChannelPost#770416af coordinates:MediaAreaCoordinates channel_id:long m
 inputMediaAreaChannelPost#2271f2bf coordinates:MediaAreaCoordinates channel:InputChannel msg_id:int = MediaArea;
 mediaAreaUrl#37381085 coordinates:MediaAreaCoordinates url:string = MediaArea;
 
+mediaArea#8658ea78 flags:# dark:flags.0?true coordinates:MediaAreaCoordinates emoji:string temperature_c:int = MediaArea;
+mediaAreaWeather#49a9c3b4 = MediaArea;
+
 peerStories#9a35e999 flags:# peer:Peer max_read_id:flags.0?int stories:Vector<StoryItem> = PeerStories;
 
 stories.peerStories#cae68768 stories:PeerStories chats:Vector<Chat> users:Vector<User> = stories.PeerStories;
