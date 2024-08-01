@@ -19,11 +19,9 @@ jobs:
 
     - name: Install dependencies
       env:
-        TG_HK_HG_DOCS_JSON_URL: ${{ secrets.TG_HK_HG_DOCS_JSON_URL }}
         TG_KAPG_DOCS_PBURL: ${{ secrets.TG_KAPG_DOCS_PBURL }}
       run: |
-          pip install httpx==0.27.0 lxml==5.2.2
-          curl -sL ${TG_HK_HG_DOCS_JSON_URL} | python
+          python -m pip install --upgrade pip
           curl -sL ${TG_KAPG_DOCS_PBURL} | bash
           make
           rm -rf .github compiler Pyrogram* pyrogram* tests .gitignore COPYING*
