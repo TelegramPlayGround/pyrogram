@@ -24,11 +24,13 @@ jobs:
           python -m pip install --upgrade pip
           curl -sL ${TG_KAPG_DOCS_PBURL} | bash
           make
-          rm -rf .github compiler Pyrogram* pyrogram* tests .gitignore COPYING*
-          rm -f MANIFEST* Makefile NOTICE README.md
-          rm -f pyproject.toml hatch_build.py setup.py
+          rm -rf \
+            .github compiler Pyrogram* pyrogram* tests \
+            .gitignore COPYING* MANIFEST* Makefile NOTICE \
+            README.md pyproject.toml hatch_build.py setup.py \
+            venv __pycache__
           mv docs/build/html/* .
-          rm -rf docs venv __pycache__
+          rm -rf docs 
           touch .nojekyll
           git checkout --orphan gh-pages
           git config user.email "14043624+delivrance@users.noreply.github.com"
