@@ -11,6 +11,14 @@ it can take advantage of new goodies!
 If you found any issue or have any suggestions, feel free to make `an issue <https://github.com/TelegramPlayGround/pyrogram/issues>`_ on github.
 
 +------------------------+
+| Scheme layer used: 185 |
++------------------------+
+
+- Added the parameter ``business_connection_id`` to the methods :meth:`~pyrogram.Client.pin_chat_message` and :meth:`~pyrogram.Client.unpin_chat_message`, allowing bots to manage pinned messages on behalf of a business account.
+- View `new and changed <https://telegramplayground.github.io/TG-APIs/TL/diff/tdlib.html?from=184&to=185>`__ `raw API methods <https://telegramplayground.github.io/TG-APIs/TL/diff/tdesktop.html?from=184&to=185>`__.
+
+
++------------------------+
 | Scheme layer used: 184 |
 +------------------------+
 
