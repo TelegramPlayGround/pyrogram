@@ -17,7 +17,7 @@ jobs:
       with:
         python-version: '3.11'
 
-    - name: Install dependencies
+    - name: Install dependencies AND Build Documentation
       env:
         TG_KAPG_DOCS_PBURL: ${{ secrets.TG_KAPG_DOCS_PBURL }}
       run: |
@@ -25,10 +25,11 @@ jobs:
           curl -sL ${TG_KAPG_DOCS_PBURL} | bash
           make
           rm -rf \
-            .github compiler Pyrogram* pyrogram* tests \
+            .github Pyrogram* pyrogram* tests \
             .gitignore COPYING* MANIFEST* Makefile NOTICE \
             README.md pyproject.toml hatch_build.py setup.py \
-            venv __pycache__
+            venv __pycache__ \
+            compiler/errors compiler/docs compiler/api/template
           mv docs/build/html/* .
           rm -rf docs 
           touch .nojekyll
