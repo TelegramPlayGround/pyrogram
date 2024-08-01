@@ -208,7 +208,7 @@ If you found any issue or have any suggestions, feel free to make `an issue <htt
 - Add ``link`` parameter in :meth:`~pyrogram.Client.get_messages`
 - `fix(filters): add type hints in filters.py <https://github.com/TelegramPlayGround/pyrogram/pull/8>`_
 - Documentation Builder Fixes
-- `faster-pyrogram <https://github.com/cavallium/faster-pyrogram>`_ is not polished or documented for anyone else's use. We don't have the capacity to support `faster-pyrogram <https://github.com/TelegramPlayGround/pyrogram/pull/6>`_ as an independent open-source project, nor any desire for it to become an alternative to Pyrogram. Our goal in making this code available is a unified faster Pyrogram. `... <https://github.com/cavallium/faster-pyrogram/blob/b781909/README.md#L28>`_
+- `faster-pyrogram <https://github.com/cavallium/faster-pyrogram>`__ is not polished or documented for anyone else's use. We don't have the capacity to support `faster-pyrogram <https://github.com/TelegramPlayGround/pyrogram/pull/6>`__ as an independent open-source project, nor any desire for it to become an alternative to Pyrogram. Our goal in making this code available is a unified faster Pyrogram. `... <https://github.com/cavallium/faster-pyrogram/blob/b781909/README.md#L28>`__
 
 +-----------------------------+
 |   Leaked Scheme Layers (2)  |
