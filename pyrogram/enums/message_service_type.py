@@ -131,3 +131,6 @@ class MessageServiceType(AutoName):
 
     CONTACT_REGISTERED = auto()
     "A contact has registered with Telegram"
+
+    UNKNOWN_EMPTY = auto()
+    "the service message is unknown by Pyrogram #1147"

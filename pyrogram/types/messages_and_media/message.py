@@ -709,7 +709,7 @@ class Message(Object, Update):
 
             contact_registered = None
 
-            service_type = None
+            service_type = enums.MessageServiceType.UNKNOWN_EMPTY
 
             if isinstance(action, raw.types.MessageActionChatAddUser):
                 new_chat_members = [types.User._parse(client, users[i]) for i in action.users]
