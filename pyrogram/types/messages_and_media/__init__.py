@@ -19,6 +19,7 @@
 from .animation import Animation
 from .audio import Audio
 from .contact import Contact
+from .contact_registered import ContactRegistered
 from .dice import Dice
 from .document import Document
 from .game import Game
@@ -65,6 +66,7 @@ __all__ = [
     "Audio",
     "ChatBoostAdded",
     "Contact",
+    "ContactRegistered",
     "Dice",
     "Document",
     "Game",

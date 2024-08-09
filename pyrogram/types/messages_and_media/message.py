@@ -393,6 +393,9 @@ class Message(Object, Update):
         gifted_stars (:obj:`~pyrogram.types.GiftedStars`, *optional*):
             Info about gifted Telegram Stars
 
+        contact_registered (:obj:`~pyrogram.types.ContactRegistered`, *optional*):
+            A service message that a contact has registered with Telegram.
+
         link (``str``, *property*):
             Generate a link to this message, only for groups and channels.
 
@@ -514,6 +517,7 @@ class Message(Object, Update):
         command: List[str] = None,
         reactions: List["types.Reaction"] = None,
         custom_action: str = None,
+        contact_registered: "types.ContactRegistered" = None,
 
         _raw = None
     ):
@@ -618,6 +622,7 @@ class Message(Object, Update):
         self.successful_payment = successful_payment
         self.paid_media = paid_media
         self.refunded_payment = refunded_payment
+        self.contact_registered = contact_registered
         self._raw = _raw
 
     @staticmethod
@@ -701,6 +706,8 @@ class Message(Object, Update):
             general_forum_topic_unhidden = None
             successful_payment = None
             refunded_payment = None
+
+            contact_registered = None
 
             service_type = None
 
@@ -887,6 +894,9 @@ class Message(Object, Update):
             elif isinstance(action, raw.types.MessageActionCustomAction):
                 service_type = enums.MessageServiceType.CUSTOM_ACTION
                 custom_action = action.message
+            elif isinstance(action, raw.types.MessageActionContactSignUp):
+                service_type = enums.MessageServiceType.CONTACT_REGISTERED
+                contact_registered = types.ContactRegistered()
 
             elif isinstance(action, raw.types.MessageActionTopicCreate):
                 title = action.title
@@ -968,6 +978,7 @@ class Message(Object, Update):
                 general_forum_topic_hidden=general_forum_topic_hidden,
                 general_forum_topic_unhidden=general_forum_topic_unhidden,
                 custom_action=custom_action,
+                contact_registered=contact_registered,
                 client=client
             )
 

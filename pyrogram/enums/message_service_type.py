@@ -128,3 +128,6 @@ class MessageServiceType(AutoName):
 
     REFUNDED_PAYMENT = auto()
     "Refunded payment"
+
+    CONTACT_REGISTERED = auto()
+    "A contact has registered with Telegram"
