@@ -58,6 +58,7 @@ from .gift_code import GiftCode
 from .gifted_premium import GiftedPremium
 from .gifted_stars import GiftedStars
 from .message_effect import MessageEffect
+from .screenshot_taken import ScreenshotTaken
 from .translated_text import TranslatedText
 from .message_auto_delete_timer_changed import MessageAutoDeleteTimerChanged
 
@@ -103,5 +104,6 @@ __all__ = [
     "Voice",
     "WebAppData",
     "WebPage",
-    "TranslatedText"
+    "ScreenshotTaken",
+    "TranslatedText",
 ]

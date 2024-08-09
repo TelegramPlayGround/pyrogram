@@ -400,6 +400,9 @@ class Message(Object, Update):
             The message is a service message of the type :obj:`~pyrogram.enums.MessageServiceType.NEW_CHAT_MEMBERS`.
             This field will contain the enumeration type of how the user had joined the chat.
 
+        screenshot_taken (:obj:`~pyrogram.types.ScreenshotTaken`, *optional*):
+            A service message that a screenshot of a message in the chat has been taken.
+
         link (``str``, *property*):
             Generate a link to this message, only for groups and channels.
 
@@ -522,7 +525,8 @@ class Message(Object, Update):
         reactions: List["types.Reaction"] = None,
         custom_action: str = None,
         contact_registered: "types.ContactRegistered" = None,
-        chat_join_type: "enums.ChatJoinType" =  = None,
+        chat_join_type: "enums.ChatJoinType" = None,
+        screenshot_taken: "types.ScreenshotTaken" = None,
         _raw = None
     ):
         super().__init__(client)
@@ -628,6 +632,7 @@ class Message(Object, Update):
         self.refunded_payment = refunded_payment
         self.contact_registered = contact_registered
         self.chat_join_type = chat_join_type
+        self.screenshot_taken = screenshot_taken
         self._raw = _raw
 
     @staticmethod
@@ -714,6 +719,7 @@ class Message(Object, Update):
 
             contact_registered = None
             chat_join_type = None
+            screenshot_taken = None
 
             service_type = enums.MessageServiceType.UNKNOWN_EMPTY
 
@@ -906,6 +912,9 @@ class Message(Object, Update):
             elif isinstance(action, raw.types.MessageActionContactSignUp):
                 service_type = enums.MessageServiceType.CONTACT_REGISTERED
                 contact_registered = types.ContactRegistered()
+            elif isinstance(action, raw.types.MessageActionScreenshotTaken):
+                service_type = enums.MessageServiceType.SCREENSHOT_TAKEN
+                screenshot_taken = types.ScreenshotTaken()
 
             elif isinstance(action, raw.types.MessageActionTopicCreate):
                 title = action.title
@@ -989,6 +998,7 @@ class Message(Object, Update):
                 custom_action=custom_action,
                 contact_registered=contact_registered,
                 chat_join_type=chat_join_type,
+                screenshot_taken=screenshot_taken,
                 client=client
             )
 

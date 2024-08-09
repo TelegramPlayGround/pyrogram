@@ -132,5 +132,8 @@ class MessageServiceType(AutoName):
     CONTACT_REGISTERED = auto()
     "A contact has registered with Telegram"
 
+    SCREENSHOT_TAKEN = auto()
+    "A screenshot of a message in the chat has been taken"
+
     UNKNOWN_EMPTY = auto()
     "the service message is unknown by Pyrogram #1147"
