@@ -136,4 +136,4 @@ class MessageServiceType(AutoName):
     "A screenshot of a message in the chat has been taken"
 
     UNKNOWN_EMPTY = auto()
-    "the service message is unknown by Pyrogram #1147"
+    "This service message is unsupported by the current version of Pyrogram `#1147 <https://GitHub.com/pyrogram/pyrogram/issues/1147>`__"
