@@ -396,6 +396,10 @@ class Message(Object, Update):
         contact_registered (:obj:`~pyrogram.types.ContactRegistered`, *optional*):
             A service message that a contact has registered with Telegram.
 
+        chat_join_type (:obj:`~pyrogram.enums.ChatJoinType`, *optional*):
+            The message is a service message of the type :obj:`~pyrogram.enums.MessageServiceType.NEW_CHAT_MEMBERS`.
+            This field will contain the enumeration type of how the user had joined the chat.
+
         link (``str``, *property*):
             Generate a link to this message, only for groups and channels.
 
@@ -518,7 +522,7 @@ class Message(Object, Update):
         reactions: List["types.Reaction"] = None,
         custom_action: str = None,
         contact_registered: "types.ContactRegistered" = None,
-
+        chat_join_type: "enums.ChatJoinType" =  = None,
         _raw = None
     ):
         super().__init__(client)
@@ -623,6 +627,7 @@ class Message(Object, Update):
         self.paid_media = paid_media
         self.refunded_payment = refunded_payment
         self.contact_registered = contact_registered
+        self.chat_join_type = chat_join_type
         self._raw = _raw
 
     @staticmethod
@@ -708,18 +713,22 @@ class Message(Object, Update):
             refunded_payment = None
 
             contact_registered = None
+            chat_join_type = None
 
             service_type = enums.MessageServiceType.UNKNOWN_EMPTY
 
             if isinstance(action, raw.types.MessageActionChatAddUser):
                 new_chat_members = [types.User._parse(client, users[i]) for i in action.users]
                 service_type = enums.MessageServiceType.NEW_CHAT_MEMBERS
+                chat_join_type = enums.ChatJoinType.BY_ADD
             elif isinstance(action, raw.types.MessageActionChatJoinedByLink):
                 new_chat_members = [types.User._parse(client, users[utils.get_raw_peer_id(message.from_id)])]
                 service_type = enums.MessageServiceType.NEW_CHAT_MEMBERS
+                chat_join_type = enums.ChatJoinType.BY_LINK
             elif isinstance(action, raw.types.MessageActionChatJoinedByRequest):
                 new_chat_members = [types.User._parse(client, users[utils.get_raw_peer_id(message.from_id)])]
                 service_type = enums.MessageServiceType.NEW_CHAT_MEMBERS
+                chat_join_type = enums.ChatJoinType.BY_REQUEST
             elif isinstance(action, raw.types.MessageActionChatDeleteUser):
                 left_chat_member = types.User._parse(client, users[action.user_id])
                 service_type = enums.MessageServiceType.LEFT_CHAT_MEMBERS
@@ -979,6 +988,7 @@ class Message(Object, Update):
                 general_forum_topic_unhidden=general_forum_topic_unhidden,
                 custom_action=custom_action,
                 contact_registered=contact_registered,
+                chat_join_type=chat_join_type,
                 client=client
             )
 
