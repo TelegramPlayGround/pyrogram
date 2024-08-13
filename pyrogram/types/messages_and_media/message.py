@@ -721,7 +721,7 @@ class Message(Object, Update):
             chat_join_type = None
             screenshot_taken = None
 
-            service_type = enums.MessageServiceType.UNKNOWN_EMPTY
+            service_type = enums.MessageServiceType.UNKNOWN
 
             if isinstance(action, raw.types.MessageActionChatAddUser):
                 new_chat_members = [types.User._parse(client, users[i]) for i in action.users]
