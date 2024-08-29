@@ -61,6 +61,7 @@ class SendVideo:
         ttl_seconds: int = None,
         view_once: bool = None,
         file_name: str = None,
+        mime_type: str = None,
         schedule_date: datetime = None,
         reply_to_message_id: int = None,
         progress: Callable = None,
@@ -152,6 +153,9 @@ class SendVideo:
             file_name (``str``, *optional*):
                 File name of the video sent.
                 Defaults to file's path basename.
+            
+            mime_type (``str``, *optional*):
+                MIME type of the file that can be FOoL defined by the sender.
 
             schedule_date (:py:obj:`~datetime.datetime`, *optional*):
                 Date when the message will be automatically sent.
@@ -226,7 +230,7 @@ class SendVideo:
                     thumb = await self.save_file(thumb)
                     file = await self.save_file(video, progress=progress, progress_args=progress_args)
                     media = raw.types.InputMediaUploadedDocument(
-                        mime_type=self.guess_mime_type(video) or "video/mp4",
+                        mime_type=self.guess_mime_type(video) or "video/mp4" if mime_type is None else mime_type,
                         file=file,
                         ttl_seconds=ttl_seconds,
                         nosound_video=True,
@@ -259,7 +263,7 @@ class SendVideo:
                 thumb = await self.save_file(thumb)
                 file = await self.save_file(video, progress=progress, progress_args=progress_args)
                 media = raw.types.InputMediaUploadedDocument(
-                    mime_type=self.guess_mime_type(file_name or video.name) or "video/mp4",
+                    mime_type=self.guess_mime_type(file_name or video.name) or "video/mp4" if mime_type is None else mime_type,
                     file=file,
                     ttl_seconds=ttl_seconds,
                     spoiler=has_spoiler,
