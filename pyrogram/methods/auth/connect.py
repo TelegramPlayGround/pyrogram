@@ -48,4 +48,9 @@ class Connect:
 
         self.is_connected = True
 
-        return bool(await self.storage.user_id())
+        r = bool(await self.storage.user_id())
+
+        if r:
+            self.me = await self.get_me()
+
+        return r
