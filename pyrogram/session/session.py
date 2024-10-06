@@ -394,7 +394,7 @@ class Session:
                 RPCError.raise_it(result, type(data))
 
             if isinstance(result, raw.types.BadMsgNotification):
-                log.warning("%s: %s", BadMsgNotification.__name__, BadMsgNotification(result.error_code))
+                raise Unauthorized(f"{BadMsgNotification.__name__}: {BadMsgNotification(result.error_code)}")
 
             if isinstance(result, raw.types.BadServerSalt):
                 self.salt = result.new_server_salt
