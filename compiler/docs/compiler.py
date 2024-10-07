@@ -396,6 +396,7 @@ def pyrogram_api():
             get_collectible_item_info
             get_payment_form
             send_payment_form
+            get_star_gifts
         """,
         advanced="""
         Advanced
@@ -509,6 +510,7 @@ def pyrogram_api():
             Poll
             Location
             Venue
+            StarGift
             WebAppData
             MessageAutoDeleteTimerChanged
             ChatBoostAdded
