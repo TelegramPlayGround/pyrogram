@@ -173,6 +173,9 @@ class Message(Object, Update):
         video (:obj:`~pyrogram.types.Video`, *optional*):
             Message is a video, information about the video.
 
+        alternative_videos (List of :obj:`~pyrogram.types.AlternativeVideo`, *optional*):
+            Alternative qualities of the video, if the message is a video.
+
         video_note (:obj:`~pyrogram.types.VideoNote`, *optional*):
             Message is a video note, information about the video message.
 
@@ -279,6 +282,12 @@ class Message(Object, Update):
         chat_shared (:obj:`~pyrogram.types.ChatShared`, *optional*):
             Service message: a chat was shared with the bot
 
+        connected_website (``str``, *optional*):
+            The domain name of the website on which the user has logged in. `More about Telegram Login <https://core.telegram.org/widgets/login>`__
+
+        write_access_allowed (:obj:`~pyrogram.types.WriteAccessAllowed`, *optional*):
+            Service message: the user allowed the bot to write messages after adding it to the attachment or side menu, launching a Web App from a link, or accepting an explicit request from a Web App sent by the method `requestWriteAccess <https://core.telegram.org/bots/webapps#initializing-mini-apps>`__
+
         boost_added (:obj:`~pyrogram.types.ChatBoostAdded`, *optional*):
             Service message: user boosted the chat
 
@@ -300,10 +309,8 @@ class Message(Object, Update):
         general_forum_topic_unhidden (:obj:`~pyrogram.types.GeneralForumTopicUnhidden`, *optional*):
             Service message: the 'General' forum topic unhidden
 
-        giveaway_created (``bool``, *optional*):
-            Service message: a scheduled giveaway was created.
-            This object represents a service message about the creation of a scheduled giveaway.
-            Currently holds no information.
+        giveaway_created (:obj:`~pyrogram.types.GiveawayCreated`, *optional*):
+            Service message: a scheduled giveaway was created
 
         giveaway (:obj:`~pyrogram.types.Giveaway`, *optional*):
             The message is a scheduled giveaway message
@@ -408,7 +415,7 @@ class Message(Object, Update):
 
     """
 
-    # TODO: Add game missing field. Also connected_website
+    # TODO: Add game missing field.
 
     def __init__(
         self,
@@ -449,6 +456,7 @@ class Message(Object, Update):
         sticker: "types.Sticker" = None,
         story: "types.Story" = None,
         video: "types.Video" = None,
+        alternative_videos: List["types.AlternativeVideo"] = None,
         video_note: "types.VideoNote" = None,
         voice: "types.Voice" = None,
         caption: Str = None,
@@ -478,9 +486,8 @@ class Message(Object, Update):
         refunded_payment: "types.RefundedPayment" = None,
         users_shared: "types.UsersShared" = None,
         chat_shared: "types.ChatShared" = None,
-
-
-
+        connected_website: str = None,
+        write_access_allowed: "types.WriteAccessAllowed" = None,
 
 
         boost_added: "types.ChatBoostAdded" = None,
@@ -490,7 +497,7 @@ class Message(Object, Update):
         forum_topic_reopened: "types.ForumTopicReopened" = None,
         general_forum_topic_hidden: "types.GeneralForumTopicHidden" = None,
         general_forum_topic_unhidden: "types.GeneralForumTopicUnhidden" = None,
-        giveaway_created: bool = None,
+        giveaway_created: "types.GiveawayCreated" = None,
         giveaway: "types.Giveaway" = None,
         giveaway_winners: "types.GiveawayWinners" = None,
         giveaway_completed: "types.GiveawayCompleted" = None,
@@ -563,6 +570,7 @@ class Message(Object, Update):
         self.animation = animation
         self.game = game
         self.video = video
+        self.alternative_videos = alternative_videos
         self.voice = voice
         self.video_note = video_note
         self.caption = caption
@@ -613,6 +621,8 @@ class Message(Object, Update):
         self.giveaway_created = giveaway_created
         self.users_shared = users_shared
         self.chat_shared = chat_shared
+        self.connected_website = connected_website
+        self.write_access_allowed = write_access_allowed
         self.giveaway_completed = giveaway_completed
         self.giveaway_winners = giveaway_winners
         self.gift_code = gift_code
@@ -646,17 +656,29 @@ class Message(Object, Update):
         business_connection_id: str = None,
         raw_reply_to_message: raw.base.Message = None
     ):
+        peer_id = utils.get_raw_peer_id(message.peer_id)
+
         if isinstance(message, raw.types.MessageEmpty):
+            sender_chat = None
+            if isinstance(message.peer_id, raw.types.PeerUser):
+                sender_chat = types.Chat._parse_user_chat(client, users[peer_id])
+
+            elif isinstance(message.peer_id, raw.types.PeerChat):
+                sender_chat = types.Chat._parse_chat_chat(client, chats[peer_id])
+
+            else:
+                sender_chat = types.Chat._parse_channel_chat(client, chats[peer_id])
+
             return Message(
                 id=message.id,
                 empty=True,
+                chat=sender_chat,
                 business_connection_id=business_connection_id if business_connection_id else None,
                 client=client,
                 _raw=message
             )
 
         from_id = utils.get_raw_peer_id(message.from_id)
-        peer_id = utils.get_raw_peer_id(message.peer_id)
         user_id = from_id or peer_id
 
         if isinstance(message.from_id, raw.types.PeerUser) and isinstance(message.peer_id, raw.types.PeerUser):
@@ -703,6 +725,8 @@ class Message(Object, Update):
             giveaway_created = None
             users_shared = None
             chat_shared = None
+            connected_website = None
+            write_access_allowed = None
             message_auto_delete_timer_changed = None
             boost_added = None
             giveaway_completed = None
@@ -780,7 +804,9 @@ class Message(Object, Update):
                 web_app_data = types.WebAppData._parse(action)
                 service_type = enums.MessageServiceType.WEB_APP_DATA
             elif isinstance(action, raw.types.MessageActionGiveawayLaunch):
-                giveaway_created = True
+                giveaway_created = types.GiveawayCreated._parse(
+                    client, action
+                )
                 service_type = enums.MessageServiceType.GIVEAWAY_CREATED
             elif isinstance(action, raw.types.MessageActionGiftCode):
                 gift_code = types.GiftCode._parse(client, action, chats)
@@ -957,6 +983,14 @@ class Message(Object, Update):
                         service_type = enums.MessageServiceType.FORUM_TOPIC_REOPENED
                         forum_topic_reopened = types.ForumTopicReopened()
 
+            elif isinstance(action, raw.types.MessageActionBotAllowed):
+                connected_website = getattr(action, "domain", None)
+                if connected_website:
+                    service_type = enums.MessageServiceType.CONNECTED_WEBSITE
+                else:
+                    write_access_allowed = types.WriteAccessAllowed._parse(action)
+                    service_type = enums.MessageServiceType.WRITE_ACCESS_ALLOWED
+
             parsed_message = Message(
                 id=message.id,
                 date=utils.timestamp_to_datetime(message.date),
@@ -986,6 +1020,8 @@ class Message(Object, Update):
                 gifted_stars=gifted_stars,
                 users_shared=users_shared,
                 chat_shared=chat_shared,
+                connected_website=connected_website,
+                write_access_allowed=write_access_allowed,
                 successful_payment=successful_payment,
                 message_auto_delete_timer_changed=message_auto_delete_timer_changed,
                 boost_added=boost_added,
@@ -1052,6 +1088,7 @@ class Message(Object, Update):
             voice = None
             animation = None
             video = None
+            alternative_videos = []
             video_note = None
             sticker = None
             story = None
@@ -1118,6 +1155,22 @@ class Message(Object, Update):
                                 video = types.Video._parse(client, doc, video_attributes, file_name, media.ttl_seconds)
                                 media_type = enums.MessageMediaType.VIDEO
                                 has_media_spoiler = media.spoiler
+
+                                altdocs = media.alt_documents or []
+                                for altdoc in altdocs:
+                                    if isinstance(altdoc, raw.types.Document):
+                                        altdoc_attributes = {type(i): i for i in altdoc.attributes}
+
+                                        altdoc_file_name = getattr(
+                                            altdoc_attributes.get(
+                                                raw.types.DocumentAttributeFilename, None
+                                            ), "file_name", None
+                                        )
+                                        altdoc_video_attribute = altdoc_attributes.get(raw.types.DocumentAttributeVideo, None)
+                                        if altdoc_video_attribute:
+                                            alternative_videos.append(
+                                                types.AlternativeVideo._parse(client, altdoc, altdoc_video_attribute, altdoc_file_name)
+                                            )
                         elif raw.types.DocumentAttributeAudio in attributes:
                             audio_attributes = attributes[raw.types.DocumentAttributeAudio]
 
@@ -1262,6 +1315,7 @@ class Message(Object, Update):
                 animation=animation,
                 game=game,
                 video=video,
+                alternative_videos=types.List(alternative_videos) if alternative_videos else None,
                 video_note=video_note,
                 sticker=sticker,
                 story=story,
@@ -1372,6 +1426,7 @@ class Message(Object, Update):
     @property
     def link(self) -> str:
         if (
+            self.chat and
             self.chat.type in {
                 enums.ChatType.SUPERGROUP,
                 enums.ChatType.CHANNEL
@@ -1640,9 +1695,8 @@ class Message(Object, Update):
                 Pass True if the content of the message must be protected from forwarding and saving; for bots only.
 
             ttl_seconds (``int``, *optional*):
-                Self-Destruct Timer.
-                If you set a timer, the animation will self-destruct in *ttl_seconds*
-                seconds after it was viewed.
+                The message will be self-destructed in the specified time after its content was opened.
+                The message's self-destruct time, in seconds; must be between 0 and 60 in private chats.
 
             reply_markup (:obj:`~pyrogram.types.InlineKeyboardMarkup` | :obj:`~pyrogram.types.ReplyKeyboardMarkup` | :obj:`~pyrogram.types.ReplyKeyboardRemove` | :obj:`~pyrogram.types.ForceReply`, *optional*):
                 Additional interface options. An object for an inline keyboard, custom reply keyboard,
@@ -2726,9 +2780,8 @@ class Message(Object, Update):
                 Pass True if the photo needs to be covered with a spoiler animation.
 
             ttl_seconds (``int``, *optional*):
-                Self-Destruct Timer.
-                If you set a timer, the photo will self-destruct in *ttl_seconds*
-                seconds after it was viewed.
+                The message will be self-destructed in the specified time after its content was opened.
+                The message's self-destruct time, in seconds; must be between 0 and 60 in private chats.
 
             disable_notification (``bool``, *optional*):
                 Sends the message silently.
@@ -2747,7 +2800,7 @@ class Message(Object, Update):
                 Pass True if the content of the message must be protected from forwarding and saving; for bots only.
 
             view_once (``bool``, *optional*):
-                Pass True if the photo should be viewable only once.
+                Pass True if the message should be opened only once and should be self-destructed once closed; private chats only.
 
             reply_markup (:obj:`~pyrogram.types.InlineKeyboardMarkup` | :obj:`~pyrogram.types.ReplyKeyboardMarkup` | :obj:`~pyrogram.types.ReplyKeyboardRemove` | :obj:`~pyrogram.types.ForceReply`, *optional*):
                 Additional interface options. An object for an inline keyboard, custom reply keyboard,
@@ -2853,15 +2906,27 @@ class Message(Object, Update):
             await client.send_poll(
                 chat_id=message.chat.id,
                 question="This is a poll",
-                options=["A", "B", "C]
+                options=[
+                    InputPollOption(text="A"),
+                    InputPollOption(text="B"),
+                    InputPollOption(text= "C"),
+                ]
             )
 
         Example:
             .. code-block:: python
 
-                await message.reply_poll("This is a poll", ["A", "B", "C"])
+                await message.reply_poll(
+                    question="This is a poll",
+                    options=[
+                        InputPollOption(text="A"),
+                        InputPollOption(text="B"),
+                        InputPollOption(text= "C"),
+                    ]
+                )
 
         Parameters:
+
             question (``str``):
                 Poll question, 1-255 characters.
 
@@ -2958,6 +3023,8 @@ class Message(Object, Update):
             chat_id=self.chat.id,
             question=question,
             options=options,
+            question_parse_mode=question_parse_mode,
+            question_entities=question_entities,
             is_anonymous=is_anonymous,
             type=type,
             allows_multiple_answers=allows_multiple_answers,
@@ -2983,6 +3050,10 @@ class Message(Object, Update):
         self,
         sticker: Union[str, BinaryIO],
         quote: bool = None,
+        caption: str = "",
+        parse_mode: Optional["enums.ParseMode"] = None,
+        caption_entities: List["types.MessageEntity"] = None,
+        emoji: str = None,
         disable_notification: bool = None,
         protect_content: bool = None,
         message_effect_id: int = None,
@@ -3025,6 +3096,19 @@ class Message(Object, Update):
                 If ``True``, the message will be sent as a reply to this message.
                 If *reply_to_message_id* is passed, this parameter will be ignored.
                 Defaults to ``True`` in group chats and ``False`` in private chats.
+
+            caption (``str``, *optional*):
+                Photo caption, 0-1024 characters.
+
+            parse_mode (:obj:`~pyrogram.enums.ParseMode`, *optional*):
+                By default, texts are parsed using both Markdown and HTML styles.
+                You can combine both syntaxes together.
+
+            caption_entities (List of :obj:`~pyrogram.types.MessageEntity`):
+                List of special entities that appear in the caption, which can be specified instead of *parse_mode*.
+
+            emoji (``str``, *optional*):
+                Emoji associated with the sticker; only for just uploaded stickers
 
             disable_notification (``bool``, *optional*):
                 Sends the message silently.
@@ -3087,6 +3171,10 @@ class Message(Object, Update):
         return await self._client.send_sticker(
             chat_id=self.chat.id,
             sticker=sticker,
+            caption=caption,
+            parse_mode=parse_mode,
+            caption_entities=caption_entities,
+            emoji=emoji,
             disable_notification=disable_notification,
             protect_content=protect_content,
             message_thread_id=self.message_thread_id,
@@ -3333,12 +3421,11 @@ class Message(Object, Update):
                 instructions to remove reply keyboard or to force a reply from the user.
 
             ttl_seconds (``int``, *optional*):
-                Self-Destruct Timer.
-                If you set a timer, the video will self-destruct in *ttl_seconds*
-                seconds after it was viewed.
+                The message will be self-destructed in the specified time after its content was opened.
+                The message's self-destruct time, in seconds; must be between 0 and 60 in private chats.
 
             view_once (``bool``, *optional*):
-                Pass True if the photo should be viewable only once.
+                Pass True if the message should be opened only once and should be self-destructed once closed; private chats only.
 
             file_name (``str``, *optional*):
                 File name of the video sent.
@@ -3512,12 +3599,11 @@ class Message(Object, Update):
                 Date when the message will be automatically sent.
 
             ttl_seconds (``int``, *optional*):
-                Self-Destruct Timer.
-                If you set a timer, the video note will self-destruct in *ttl_seconds*
-                seconds after it was viewed.
+                The message will be self-destructed in the specified time after its content was opened.
+                The message's self-destruct time, in seconds; must be between 0 and 60 in private chats.
 
             view_once (``bool``, *optional*):
-                Pass True if the photo should be viewable only once.
+                Pass True if the message should be opened only once and should be self-destructed once closed; private chats only.
 
             progress (``Callable``, *optional*):
                 Pass a callback function to view the file transmission progress.
@@ -3669,12 +3755,11 @@ class Message(Object, Update):
                 Date when the message will be automatically sent.
 
             ttl_seconds (``int``, *optional*):
-                Self-Destruct Timer.
-                If you set a timer, the voice message will self-destruct in *ttl_seconds*
-                seconds after it was viewed.
+                The message will be self-destructed in the specified time after its content was opened.
+                The message's self-destruct time, in seconds; must be between 0 and 60 in private chats.
 
             view_once (``bool``, *optional*):
-                Pass True if the photo should be viewable only once.
+                Pass True if the message should be opened only once and should be self-destructed once closed; private chats only.
 
             waveform (``bytes``, *optional*):
                 no docs!
@@ -5232,4 +5317,82 @@ class Message(Object, Update):
             chat_id=self.chat.id,
             message_ids=self.id,
             to_language_code=to_language_code
+        )
+
+
+    async def pay(self) -> Union[
+        bool,
+        List["types.PaidMediaPhoto"],
+        List["types.PaidMediaVideo"]
+    ]:
+        """Bound method *pay* of :obj:`~pyrogram.types.Message`.
+
+        Use as a shortcut for:
+
+        .. code-block:: python
+
+            await client.send_payment_form(
+                chat_id=message.chat.id,
+                message_id=message_id
+            )
+
+        Example:
+            .. code-block:: python
+
+                await message.pay()
+
+        Returns:
+            ``bool`` | List of :obj:`~pyrogram.types.PaidMediaPhoto` | List of :obj:`~pyrogram.types.PaidMediaVideo`: On success, the list of bought photos and videos is returned.
+
+        """
+        return await self._client.send_payment_form(
+            chat_id=self.chat.id,
+            message_id=self.id
+        )
+
+    async def star(
+        self,
+        star_count: int = None,
+        is_anonymous: bool = False
+    ) -> "types.MessageReactions":
+        """Bound method *star* of :obj:`~pyrogram.types.Message`.
+
+        Use as a shortcut for:
+
+        .. code-block:: python
+
+            await client.add_paid_message_reaction(
+                chat_id=chat_id,
+                message_id=message.id,
+                star_count=1
+            )
+
+        Example:
+            .. code-block:: python
+
+                # Add a paid reaction to a message
+                await message.star(1)
+
+                # Add an anonymous paid reaction to a message
+                await message.star(1, True)
+
+        Parameters:
+            star_count (``int``, *optional*):
+                Number of Telegram Stars to be used for the reaction; 1-2500.
+
+            is_anonymous (``bool``, *optional*):
+                Pass True to make paid reaction of the user on the message anonymous; pass False to make the user's profile visible among top reactors.
+                Defaults to False.
+
+        Returns:
+            On success, :obj:`~pyrogram.types.MessageReactions`: is returned.
+
+        Raises:
+            RPCError: In case of a Telegram RPC error.
+        """
+        return await self._client.add_paid_message_reaction(
+            chat_id=self.chat.id,
+            message_id=self.id,
+            star_count=star_count,
+            is_anonymous=is_anonymous
         )

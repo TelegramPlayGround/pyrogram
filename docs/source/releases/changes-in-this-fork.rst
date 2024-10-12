@@ -11,9 +11,34 @@ it can take advantage of new goodies!
 If you found any issue or have any suggestions, feel free to make `an issue <https://github.com/TelegramPlayGround/pyrogram/issues>`_ on github.
 
 +------------------------+
+| Scheme layer used: 189 |
++------------------------+
+
+- Added :meth:`~pyrogram.types.Message.star` bound method to the :obj:`~pyrogram.types.Message`.
+- Added the field ``alternative_videos`` to the :obj:`~pyrogram.types.Message`.
+- Added the fields ``connected_website`` and ``write_access_allowed`` to the :obj:`~pyrogram.types.Message`.
+- Add ``copy_text`` to :obj:`~pyrogram.types.InlineKeyboardButton`.
+- Fix ``chat`` being None in some cases in the :obj:`~pyrogram.types.Message`.
+- Fix deleting messages does not return the count in some cases.
+- View `new and changed <https://telegramplayground.github.io/TG-APIs/TL/diff/tdlib.html?from=187&to=189>`__ `raw API methods <https://telegramplayground.github.io/TG-APIs/TL/diff/tdesktop.html?from=187&to=189>`__.
+
++------------------------+
+| Scheme layer used: 187 |
++------------------------+
+
+- Added the parameter ``emoji`` in :meth:`~pyrogram.Client.send_sticker` and :meth:`~pyrogram.types.Message.reply_sticker`. `#86 <https://github.com/KurimuzonAkuma/pyrogram/pull/86>`__.
+- `Return list of photos and videos instead of bool in send_payment_form <https://github.com/KurimuzonAkuma/pyrogram/commit/6684eaf4273b0f2084a8709e2e852486f17cb67c>`__.
+- Added the field ``prize_star_count`` to the classes :obj:`~pyrogram.types.GiveawayCreated`, :obj:`~pyrogram.types.Giveaway`, :obj:`~pyrogram.types.GiveawayWinners`.
+- Added the field ``is_star_giveaway`` to the class :obj:`~pyrogram.types.GiveawayCompleted`.
+- Added the ability to specify a payload in :meth:`~pyrogram.Client.send_paid_media` that is unused currently.
+- View `new and changed <https://telegramplayground.github.io/TG-APIs/TL/diff/tdlib.html?from=186&to=187>`__ `raw API methods <https://telegramplayground.github.io/TG-APIs/TL/diff/tdesktop.html?from=186&to=187>`__.
+
++------------------------+
 | Scheme layer used: 186 |
 +------------------------+
 
+- Try to return the service message (when applicable) in the methods :meth:`~pyrogram.Client.set_chat_photo`, :meth:`~pyrogram.types.Chat.set_photo`.
+- Added the methods :meth:`~pyrogram.Client.get_payment_form` and :meth:`~pyrogram.Client.send_payment_form` `#89 <https://github.com/TelegramPlayGround/pyrogram/pull/89>`__.
 - Added the fields ``expired_member_count``, ``subscription_period`` and ``subscription_price`` to the class :obj:`~pyrogram.types.ChatInviteLink`.
 - Added the field ``can_enable_paid_reaction`` to the class :obj:`~pyrogram.types.Chat`.
 - Added ``link`` property to :obj:`~pyrogram.types.Story` and fixed the ``link`` property in :obj:`~pyrogram.types.Message`.

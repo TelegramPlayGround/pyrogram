@@ -32,7 +32,7 @@ from importlib import import_module
 from io import StringIO, BytesIO
 from mimetypes import MimeTypes
 from pathlib import Path
-from typing import Union, List, Optional, Callable, AsyncGenerator, Type
+from typing import Union, List, Optional, Callable, AsyncGenerator, Type, Tuple
 
 import pyrogram
 from pyrogram import __version__, __license__
@@ -44,7 +44,9 @@ from pyrogram.errors import CDNFileHashMismatch
 from pyrogram.errors import (
     SessionPasswordNeeded,
     VolumeLocNotFound, ChannelPrivate,
-    BadRequest, AuthBytesInvalid
+    BadRequest, AuthBytesInvalid,
+    FloodWait, FloodPremiumWait,
+    ChannelInvalid, PersistentTimestampInvalid, PersistentTimestampOutdated
 )
 from pyrogram.handlers.handler import Handler
 from pyrogram.methods import Methods
@@ -53,7 +55,7 @@ from pyrogram.storage import Storage, FileStorage, MemoryStorage
 from pyrogram.types import User, TermsOfService
 from pyrogram.utils import ainput
 from .connection import Connection
-from .connection.transport import TCP, TCPAbridged
+from .connection.transport import TCP, TCPAbridged, TCPFull
 from .dispatcher import Dispatcher
 from .file_id import FileId, FileType, ThumbnailSource
 from .mime_types import mime_types
@@ -235,6 +237,7 @@ class Client(Methods):
 
     INVITE_LINK_RE = re.compile(r"^(?:https?://)?(?:www\.)?(?:t(?:elegram)?\.(?:org|me|dog)/(?:joinchat/|\+))([\w-]+)$")
     TME_PUBLIC_LINK_RE = re.compile(r"^(?:https?://)?(?:www|([\w-]+)\.)?(?:t(?:elegram)?\.(?:org|me|dog))/?([\w-]+)?$")
+    INVOICE_LINK_RE = re.compile(r"^(?:https?://)?(?:www\.)?(?:t(?:elegram)?\.(?:org|me|dog)/\$)([\w-]+)$")
     WORKERS = min(32, (os.cpu_count() or 0) + 4)  # os.cpu_count() can be None
     WORKDIR = PARENT_DIR
 
@@ -336,7 +339,7 @@ class Client(Methods):
             self.storage = FileStorage(self.name, self.WORKDIR)
 
         self.connection_factory = Connection
-        self.protocol_factory = TCPAbridged
+        self.protocol_factory = TCPFull
 
         self.dispatcher = Dispatcher(self)
 
@@ -663,10 +666,11 @@ class Client(Methods):
                                         )]
                                     ),
                                     pts=pts - pts_count,
-                                    limit=pts
+                                    limit=pts,
+                                    force=False
                                 )
                             )
-                        except ChannelPrivate:
+                        except (ChannelPrivate, PersistentTimestampOutdated, PersistentTimestampInvalid):
                             pass
                         else:
                             if not isinstance(diff, raw.types.updates.ChannelDifferenceEmpty):
@@ -711,6 +715,95 @@ class Client(Methods):
             self.dispatcher.updates_queue.put_nowait((updates.update, {}, {}))
         elif isinstance(updates, raw.types.UpdatesTooLong):
             log.info(updates)
+
+    async def recover_gaps(self) -> Tuple[int, int]:
+        states = await self.storage.update_state()
+
+        message_updates_counter = 0
+        other_updates_counter = 0
+
+        if not states:
+            log.info("No states found, skipping recovery.")
+            return (message_updates_counter, other_updates_counter)
+
+        for state in states:
+            id, local_pts, _, local_date, _ = state
+
+            prev_pts = 0
+
+            while True:
+                try:
+                    diff = await self.invoke(
+                        raw.functions.updates.GetChannelDifference(
+                            channel=await self.resolve_peer(id),
+                            filter=raw.types.ChannelMessagesFilterEmpty(),
+                            pts=local_pts,
+                            limit=10000,
+                            force=False
+                        ) if id < 0 else
+                        raw.functions.updates.GetDifference(
+                            pts=local_pts,
+                            date=local_date,
+                            qts=0
+                        )
+                    )
+                except (ChannelPrivate, ChannelInvalid, PersistentTimestampOutdated, PersistentTimestampInvalid):
+                    break
+
+                if isinstance(diff, raw.types.updates.DifferenceEmpty):
+                    break
+                elif isinstance(diff, raw.types.updates.DifferenceTooLong):
+                    break
+                elif isinstance(diff, raw.types.updates.Difference):
+                    local_pts = diff.state.pts
+                elif isinstance(diff, raw.types.updates.DifferenceSlice):
+                    local_pts = diff.intermediate_state.pts
+                    local_date = diff.intermediate_state.date
+
+                    if prev_pts == local_pts:
+                        break
+
+                    prev_pts = local_pts
+                elif isinstance(diff, raw.types.updates.ChannelDifferenceEmpty):
+                    break
+                elif isinstance(diff, raw.types.updates.ChannelDifferenceTooLong):
+                    break
+                elif isinstance(diff, raw.types.updates.ChannelDifference):
+                    local_pts = diff.pts
+
+                if not diff:
+                    break
+
+                users = {i.id: i for i in diff.users}
+                chats = {i.id: i for i in diff.chats}
+
+                for message in diff.new_messages:
+                    message_updates_counter += 1
+                    self.dispatcher.updates_queue.put_nowait(
+                        (
+                            raw.types.UpdateNewMessage(
+                                message=message,
+                                pts=local_pts,
+                                pts_count=-1
+                            ),
+                            users,
+                            chats
+                        )
+                    )
+
+                for update in diff.other_updates:
+                    other_updates_counter += 1
+                    self.dispatcher.updates_queue.put_nowait(
+                        (update, users, chats)
+                    )
+
+                if isinstance(diff, (raw.types.updates.Difference, raw.types.updates.ChannelDifference)):
+                    break
+
+            await self.storage.update_state(id)
+
+        log.info("Recovered %s messages and %s updates.", message_updates_counter, other_updates_counter)
+        return (message_updates_counter, other_updates_counter)
 
     async def load_session(self):
         await self.storage.open()
@@ -1002,7 +1095,8 @@ class Client(Methods):
                         location=location,
                         offset=offset_bytes,
                         limit=chunk_size
-                    )
+                    ),
+                    sleep_threshold=self.sleep_threshold
                 )
 
                 if isinstance(r, raw.types.upload.File):

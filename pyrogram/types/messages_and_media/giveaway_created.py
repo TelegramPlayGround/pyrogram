@@ -17,27 +17,42 @@
 #  along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
 from datetime import datetime
+from typing import List
 
-from pyrogram import raw, utils
+import pyrogram
+
+from pyrogram import raw, types
 from ..object import Object
 
 
-class VideoChatScheduled(Object):
-    """A service message about a voice chat scheduled in the chat.
+
+class GiveawayCreated(Object):
+    """This object represents a service message about the creation of a scheduled giveaway.
 
     Parameters:
-        start_date (:py:obj:`~datetime.datetime`):
-            Point in time when the voice chat is expected to be started by a chat administrator.
+        prize_star_count (``int``, *optional*):
+            The number of Telegram Stars to be split between giveaway winners; for Telegram Star giveaways only
+
     """
 
     def __init__(
-        self, *,
-        start_date: datetime
+        self,
+        *,
+        client: "pyrogram.Client" = None,
+        prize_star_count: int = None
     ):
-        super().__init__()
+        super().__init__(client)
 
-        self.start_date = start_date
+        self.prize_star_count = prize_star_count
+
 
     @staticmethod
-    def _parse(action: "raw.types.MessageActionGroupCallScheduled") -> "VideoChatScheduled":
-        return VideoChatScheduled(start_date=utils.timestamp_to_datetime(action.schedule_date))
+    def _parse(
+        client,
+        giveaway_launch: "raw.types.MessageActionGiveawayLaunch"
+    ) -> "GiveawayCreated":
+        if isinstance(giveaway_launch, raw.types.MessageActionGiveawayLaunch):
+            return GiveawayCreated(
+                client=client,
+                prize_star_count=getattr(giveaway_launch, "stars", None)
+            )

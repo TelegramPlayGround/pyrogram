@@ -393,6 +393,8 @@ def pyrogram_api():
             refund_star_payment
             get_business_connection
             get_collectible_item_info
+            get_payment_form
+            send_payment_form
         """,
         advanced="""
         Advanced
@@ -446,6 +448,7 @@ def pyrogram_api():
             Chat
             Username
             ChatShared
+            WriteAccessAllowed
             UsersShared
             ChatAdminWithInviteLinks
             ChatColor
@@ -485,6 +488,7 @@ def pyrogram_api():
             MessageOriginChannel
             MessageImportInfo
             Photo
+            AlternativeVideo
             Animation
             Audio
             Document
@@ -513,6 +517,7 @@ def pyrogram_api():
             GiftedPremium
             GiftedStars
             Giveaway
+            GiveawayCreated
             GiveawayCompleted
             GiveawayWinners
             MessageEffect
@@ -651,6 +656,7 @@ def pyrogram_api():
             ShippingAddress
             OrderInfo
             ShippingOption
+            PaymentForm
             SuccessfulPayment
             RefundedPayment
             ShippingQuery
@@ -726,6 +732,8 @@ def pyrogram_api():
             Message.read
             Message.view
             Message.translate
+            Message.pay
+            Message.star
         """,
         chat="""
         Chat

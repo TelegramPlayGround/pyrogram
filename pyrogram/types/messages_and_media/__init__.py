@@ -16,6 +16,7 @@
 #  You should have received a copy of the GNU Lesser General Public License
 #  along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
+from .alternative_video import AlternativeVideo
 from .animation import Animation
 from .audio import Audio
 from .contact import Contact
@@ -52,7 +53,9 @@ from .message_reaction_updated import MessageReactionUpdated
 from .message_reaction_count_updated import MessageReactionCountUpdated
 from .chat_boost_added import ChatBoostAdded
 from .story import Story
+from .payment_from import PaymentForm
 from .giveaway import Giveaway
+from .giveaway_created import GiveawayCreated
 from .giveaway_completed import GiveawayCompleted
 from .giveaway_winners import GiveawayWinners
 from .gift_code import GiftCode
@@ -62,8 +65,10 @@ from .message_effect import MessageEffect
 from .screenshot_taken import ScreenshotTaken
 from .translated_text import TranslatedText
 from .message_auto_delete_timer_changed import MessageAutoDeleteTimerChanged
+from .write_access_allowed import WriteAccessAllowed
 
 __all__ = [
+    "AlternativeVideo",
     "Animation",
     "Audio",
     "ChatBoostAdded",
@@ -72,10 +77,12 @@ __all__ = [
     "Dice",
     "Document",
     "Game",
+    "PaymentForm",
     "GiftCode",
     "GiftedPremium",
     "GiftedStars",
     "Giveaway",
+    "GiveawayCreated",
     "GiveawayCompleted",
     "GiveawayWinners",
     "Location",
@@ -106,6 +113,7 @@ __all__ = [
     "Voice",
     "WebAppData",
     "WebPage",
+    "WriteAccessAllowed",
     "ScreenshotTaken",
     "TranslatedText",
 ]
