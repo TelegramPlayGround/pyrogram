@@ -226,8 +226,8 @@ class SendVideo:
         try:
             if isinstance(video, str):
                 if os.path.isfile(video):
-                    thumb = await self.save_file(thumb)
                     file = await self.save_file(video, progress=progress, progress_args=progress_args)
+                    thumb = await self.save_file(thumb)
                     media = raw.types.InputMediaUploadedDocument(
                         mime_type=self.guess_mime_type(video) or "video/mp4" if mime_type is None else mime_type,
                         file=file,
@@ -259,8 +259,8 @@ class SendVideo:
                         has_spoiler=has_spoiler
                     )
             else:
-                thumb = await self.save_file(thumb)
                 file = await self.save_file(video, progress=progress, progress_args=progress_args)
+                thumb = await self.save_file(thumb)
                 media = raw.types.InputMediaUploadedDocument(
                     mime_type=self.guess_mime_type(file_name or video.name) or "video/mp4" if mime_type is None else mime_type,
                     file=file,
