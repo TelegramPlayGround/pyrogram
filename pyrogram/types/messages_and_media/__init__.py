@@ -39,6 +39,7 @@ from .reaction import (
     ReactionCount
 )
 from .sponsored_message import SponsoredMessage
+from .star_gift import StarGift
 from .sticker import Sticker
 from .stripped_thumbnail import StrippedThumbnail
 from .thumbnail import Thumbnail
@@ -105,6 +106,7 @@ __all__ = [
     "Poll",
     "PollOption",
     "SponsoredMessage",
+    "StarGift",
     "Sticker",
     "Story",
     "Venue",
