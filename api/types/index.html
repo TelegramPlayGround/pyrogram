@@ -1,0 +1,1657 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark">
+
+    <!-- site_verification property must be present, but @content could be empty (no IVBot-side verification for now?) -->
+    <meta property="tg:site_verification" content="g7j8/rPFXfhyrq5q0QQV7EsYWv4=">
+    <!-- published_time property must be present, but you could leave @content empty if $published_date isn't needed -->
+    <meta property="article:published_time" content="">
+    <meta property="article:modified_time" content="">
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="https://t.me/PyroTGFork/2" />
+    <meta property="article:author" content="@PyroTGFork" />
+    <meta property="telegram:channel" content="@PyroTGFork" /><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Message" href="Message.html" /><link rel="prev" title="save_file()" href="../methods/save_file.html" />
+
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/><!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
+        <title>Available Types - Fork Pyrogram Documentation 2.1.33.11-TL-190</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/all.min.css?v=b84cc7f6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=e85a6dcb" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<!--
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+-->
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Fork Pyrogram Documentation 2.1.33.11-TL-190</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../_static/pyrogram.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Fork Pyrogram Documentation 2.1.33.11-TL-190</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/install.html">Install Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../start/setup.html">Project Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../start/auth.html">Authorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../start/invoking.html">Invoking Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../start/updates.html">Handling Updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../start/errors.html">Error Handling</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../start/examples/index.html">Examples</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../start/examples/hello_world.html">hello_world</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../start/examples/echo_bot.html">echo_bot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../start/examples/tg_business_echo_bot.html">business_echo_bot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../start/examples/welcome_bot.html">welcome_bot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../start/examples/get_chat_history.html">get_history</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../start/examples/get_chat_members.html">get_chat_members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../start/examples/get_dialogs.html">get_dialogs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../start/examples/callback_queries.html">callback_queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../start/examples/inline_queries.html">inline_queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../start/examples/use_inline_bots.html">use_inline_bots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../start/examples/bot_keyboards.html">bot_keyboards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../start/examples/send_voice.html">send_voice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../start/examples/raw_updates.html">raw_updates</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../client.html">Pyrogram Client</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../methods/index.html">Available Methods</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Available Methods</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../methods/run.html">run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/start.html">start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/stop.html">stop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/restart.html">restart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/export_session_string.html">export_session_string</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/add_handler.html">add_handler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/remove_handler.html">remove_handler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/stop_transmission.html">stop_transmission</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_parse_mode.html">set_parse_mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/idle.html">idle()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/compose.html">compose()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/initialize.html">initialize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/sign_up.html">sign_up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/accept_terms_of_service.html">accept_terms_of_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/sign_in.html">sign_in</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/sign_in_bot.html">sign_in_bot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/connect.html">connect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_code.html">send_code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/resend_code.html">resend_code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/recover_password.html">recover_password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_recovery_code.html">send_recovery_code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_password_hint.html">get_password_hint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/check_password.html">check_password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/log_out.html">log_out</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/disconnect.html">disconnect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/terminate.html">terminate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_me.html">get_me</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_active_sessions.html">get_active_sessions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/terminate_session.html">terminate_session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/terminate_all_other_sessions.html">terminate_all_other_sessions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_message.html">send_message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/forward_messages.html">forward_messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/copy_message.html">copy_message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_photo.html">send_photo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_audio.html">send_audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_document.html">send_document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_video.html">send_video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_animation.html">send_animation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_voice.html">send_voice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_video_note.html">send_video_note</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_cached_media.html">send_cached_media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_paid_media.html">send_paid_media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_media_group.html">send_media_group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_media_group.html">get_media_group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/copy_media_group.html">copy_media_group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_location.html">send_location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_venue.html">send_venue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_contact.html">send_contact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_poll.html">send_poll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_dice.html">send_dice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_chat_action.html">send_chat_action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/add_paid_message_reaction.html">add_paid_message_reaction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_reaction.html">set_reaction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/download_media.html">download_media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/stream_media.html">stream_media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/edit_message_text.html">edit_message_text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/edit_inline_text.html">edit_inline_text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/edit_message_caption.html">edit_message_caption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/edit_inline_caption.html">edit_inline_caption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/edit_message_media.html">edit_message_media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/edit_inline_media.html">edit_inline_media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/edit_message_reply_markup.html">edit_message_reply_markup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/edit_inline_reply_markup.html">edit_inline_reply_markup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/edit_cached_media.html">edit_cached_media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/stop_poll.html">stop_poll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/delete_messages.html">delete_messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_sponsored_messages.html">get_chat_sponsored_messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_history.html">get_chat_history</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_history_count.html">get_chat_history_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/read_chat_history.html">read_chat_history</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_messages.html">get_messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/view_messages.html">view_messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_discussion_message.html">get_discussion_message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_discussion_replies.html">get_discussion_replies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_discussion_replies_count.html">get_discussion_replies_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/search_global.html">search_global</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/search_global_count.html">search_global_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/search_messages.html">search_messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/search_messages_count.html">search_messages_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/search_public_messages_by_tag.html">search_public_messages_by_tag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/count_public_messages_by_tag.html">count_public_messages_by_tag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/vote_poll.html">vote_poll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/retract_vote.html">retract_vote</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/translate_text.html">translate_text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/translate_message_text.html">translate_message_text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/ban_chat_member.html">ban_chat_member</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/unban_chat_member.html">unban_chat_member</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/restrict_chat_member.html">restrict_chat_member</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/promote_chat_member.html">promote_chat_member</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_administrator_title.html">set_administrator_title</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_chat_permissions.html">set_chat_permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_chat_photo.html">set_chat_photo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/delete_chat_photo.html">delete_chat_photo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_chat_title.html">set_chat_title</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_chat_description.html">set_chat_description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/pin_chat_message.html">pin_chat_message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/unpin_chat_message.html">unpin_chat_message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/unpin_all_chat_messages.html">unpin_all_chat_messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/search_chats.html">search_chats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/join_chat.html">join_chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/leave_chat.html">leave_chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat.html">get_chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_members.html">get_chat_members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_members_count.html">get_chat_members_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_member.html">get_chat_member</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_dialogs.html">get_dialogs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_dialogs_count.html">get_dialogs_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_chat_username.html">set_chat_username</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_nearby_chats.html">get_nearby_chats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/archive_chats.html">archive_chats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/unarchive_chats.html">unarchive_chats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/add_chat_members.html">add_chat_members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/create_channel.html">create_channel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/create_group.html">create_group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/create_supergroup.html">create_supergroup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/delete_channel.html">delete_channel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/delete_supergroup.html">delete_supergroup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/delete_user_history.html">delete_user_history</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_slow_mode.html">set_slow_mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_chat_message_auto_delete_time.html">set_chat_message_auto_delete_time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/mark_chat_unread.html">mark_chat_unread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_event_log.html">get_chat_event_log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_online_count.html">get_chat_online_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_send_as_chats.html">get_send_as_chats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_send_as_chat.html">set_send_as_chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_chat_protected_content.html">set_chat_protected_content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_created_chats.html">get_created_chats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/transfer_chat_ownership.html">transfer_chat_ownership</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/export_chat_invite_link.html">export_chat_invite_link</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/create_chat_invite_link.html">create_chat_invite_link</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/edit_chat_invite_link.html">edit_chat_invite_link</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/revoke_chat_invite_link.html">revoke_chat_invite_link</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_admin_invite_links.html">get_chat_admin_invite_links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_admin_invite_links_count.html">get_chat_admin_invite_links_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_admins_with_invite_links.html">get_chat_admins_with_invite_links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_invite_link.html">get_chat_invite_link</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_invite_link_joiners.html">get_chat_invite_link_joiners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_invite_link_joiners_count.html">get_chat_invite_link_joiners_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/delete_chat_invite_link.html">delete_chat_invite_link</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/delete_chat_admin_invite_links.html">delete_chat_admin_invite_links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_join_requests.html">get_chat_join_requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/approve_chat_join_request.html">approve_chat_join_request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/approve_all_chat_join_requests.html">approve_all_chat_join_requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/decline_chat_join_request.html">decline_chat_join_request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/decline_all_chat_join_requests.html">decline_all_chat_join_requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_forum_topic_icon_stickers.html">get_forum_topic_icon_stickers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/create_forum_topic.html">create_forum_topic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/edit_forum_topic.html">edit_forum_topic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/close_forum_topic.html">close_forum_topic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/reopen_forum_topic.html">reopen_forum_topic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/delete_forum_topic.html">delete_forum_topic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/hide_forum_topic.html">hide_forum_topic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/unhide_forum_topic.html">unhide_forum_topic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_forum_topics.html">get_forum_topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_forum_topic.html">get_forum_topic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/toggle_forum_topic_is_pinned.html">toggle_forum_topic_is_pinned</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_photos.html">get_chat_photos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_photos_count.html">get_chat_photos_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_users.html">get_users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_profile_photo.html">set_profile_photo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/delete_profile_photos.html">delete_profile_photos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_username.html">set_username</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/update_profile.html">update_profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/block_user.html">block_user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/unblock_user.html">unblock_user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_common_chats.html">get_common_chats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_default_emoji_statuses.html">get_default_emoji_statuses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_emoji_status.html">set_emoji_status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_birthdate.html">set_birthdate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_personal_chat.html">set_personal_chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/delete_account.html">delete_account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/update_status.html">update_status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/add_contact.html">add_contact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/delete_contacts.html">delete_contacts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/import_contacts.html">import_contacts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_contacts.html">get_contacts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_contacts_count.html">get_contacts_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/enable_cloud_password.html">enable_cloud_password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/change_cloud_password.html">change_cloud_password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/remove_cloud_password.html">remove_cloud_password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/answer_callback_query.html">answer_callback_query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/request_callback_answer.html">request_callback_answer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_bot_commands.html">set_bot_commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/delete_bot_commands.html">delete_bot_commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_bot_commands.html">get_bot_commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_bot_name.html">set_bot_name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_bot_name.html">get_bot_name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_bot_info_description.html">set_bot_info_description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_bot_info_description.html">get_bot_info_description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_bot_info_short_description.html">set_bot_info_short_description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_bot_info_short_description.html">get_bot_info_short_description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_chat_menu_button.html">set_chat_menu_button</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_menu_button.html">get_chat_menu_button</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_bot_default_privileges.html">set_bot_default_privileges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_bot_default_privileges.html">get_bot_default_privileges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_game.html">send_game</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_game_score.html">set_game_score</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_game_high_scores.html">get_game_high_scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/answer_inline_query.html">answer_inline_query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_inline_bot_results.html">get_inline_bot_results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_inline_bot_result.html">send_inline_bot_result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/answer_web_app_query.html">answer_web_app_query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_web_app_custom_request.html">send_web_app_custom_request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_sticker.html">send_sticker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_custom_emoji_stickers.html">get_custom_emoji_stickers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_message_effects.html">get_message_effects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_stickers.html">get_stickers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_stories.html">get_stories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_invoice.html">send_invoice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/create_invoice_link.html">create_invoice_link</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/answer_shipping_query.html">answer_shipping_query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/answer_pre_checkout_query.html">answer_pre_checkout_query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/refund_star_payment.html">refund_star_payment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_business_connection.html">get_business_connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_collectible_item_info.html">get_collectible_item_info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_payment_form.html">get_payment_form</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_payment_form.html">send_payment_form</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/create_video_chat.html">create_video_chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/discard_group_call.html">discard_group_call</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_video_chat_rtmp_url.html">get_video_chat_rtmp_url</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/invite_group_call_participants.html">invite_group_call_participants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/load_group_call_participants.html">load_group_call_participants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/invoke.html">invoke</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/resolve_peer.html">resolve_peer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_file.html">get_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/save_file.html">save_file</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Available Types</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Available Types</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="Message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MessageEntity.html">MessageEntity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TextQuote.html">TextQuote</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ExternalReplyInfo.html">ExternalReplyInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ReplyParameters.html">ReplyParameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MessageOrigin.html">MessageOrigin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MessageOriginUser.html">MessageOriginUser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MessageOriginHiddenUser.html">MessageOriginHiddenUser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MessageOriginChat.html">MessageOriginChat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MessageOriginChannel.html">MessageOriginChannel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MessageImportInfo.html">MessageImportInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Photo.html">Photo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AlternativeVideo.html">AlternativeVideo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Animation.html">Animation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Document.html">Document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Story.html">Story</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Video.html">Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VideoNote.html">VideoNote</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Voice.html">Voice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PaidMediaInfo.html">PaidMediaInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PaidMedia.html">PaidMedia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PaidMediaPreview.html">PaidMediaPreview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PaidMediaPhoto.html">PaidMediaPhoto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PaidMediaVideo.html">PaidMediaVideo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Contact.html">Contact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dice.html">Dice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PollOption.html">PollOption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InputPollOption.html">InputPollOption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Poll.html">Poll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Location.html">Location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Venue.html">Venue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="WebAppData.html">WebAppData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MessageAutoDeleteTimerChanged.html">MessageAutoDeleteTimerChanged</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ChatBoostAdded.html">ChatBoostAdded</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ChatBackground.html">ChatBackground</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Game.html">Game</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GiftCode.html">GiftCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GiftedPremium.html">GiftedPremium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GiftedStars.html">GiftedStars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Giveaway.html">Giveaway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GiveawayCreated.html">GiveawayCreated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GiveawayCompleted.html">GiveawayCompleted</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GiveawayWinners.html">GiveawayWinners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MessageEffect.html">MessageEffect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MessageReactionCountUpdated.html">MessageReactionCountUpdated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MessageReactionUpdated.html">MessageReactionUpdated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MessageReactions.html">MessageReactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reaction.html">Reaction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ReactionCount.html">ReactionCount</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ReactionType.html">ReactionType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ReactionTypeEmoji.html">ReactionTypeEmoji</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ReactionTypeCustomEmoji.html">ReactionTypeCustomEmoji</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ReactionTypePaid.html">ReactionTypePaid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Thumbnail.html">Thumbnail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TranslatedText.html">TranslatedText</a></li>
+<li class="toctree-l2"><a class="reference internal" href="StrippedThumbnail.html">StrippedThumbnail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SponsoredMessage.html">SponsoredMessage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sticker.html">Sticker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="WebPage.html">WebPage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ContactRegistered.html">ContactRegistered</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ScreenshotTaken.html">ScreenshotTaken</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DraftMessage.html">DraftMessage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Birthdate.html">Birthdate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="User.html">User</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Chat.html">Chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Username.html">Username</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ChatShared.html">ChatShared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="WriteAccessAllowed.html">WriteAccessAllowed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UsersShared.html">UsersShared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ChatAdminWithInviteLinks.html">ChatAdminWithInviteLinks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ChatColor.html">ChatColor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ChatEvent.html">ChatEvent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ChatEventFilter.html">ChatEventFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ChatInviteLink.html">ChatInviteLink</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ChatJoiner.html">ChatJoiner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ChatJoinRequest.html">ChatJoinRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ChatMember.html">ChatMember</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ChatMemberUpdated.html">ChatMemberUpdated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ChatPermissions.html">ChatPermissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ChatPhoto.html">ChatPhoto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ChatPrivileges.html">ChatPrivileges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ChatReactions.html">ChatReactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VideoChatScheduled.html">VideoChatScheduled</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VideoChatStarted.html">VideoChatStarted</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VideoChatEnded.html">VideoChatEnded</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VideoChatParticipantsInvited.html">VideoChatParticipantsInvited</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dialog.html">Dialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EmojiStatus.html">EmojiStatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GroupCallParticipant.html">GroupCallParticipant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InviteLinkImporter.html">InviteLinkImporter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Restriction.html">Restriction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RtmpUrl.html">RtmpUrl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CallbackGame.html">CallbackGame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CallbackQuery.html">CallbackQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ForceReply.html">ForceReply</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GameHighScore.html">GameHighScore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InlineKeyboardButton.html">InlineKeyboardButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InlineKeyboardMarkup.html">InlineKeyboardMarkup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="KeyboardButton.html">KeyboardButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="KeyboardButtonPollType.html">KeyboardButtonPollType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="KeyboardButtonPollTypeRegular.html">KeyboardButtonPollTypeRegular</a></li>
+<li class="toctree-l2"><a class="reference internal" href="KeyboardButtonPollTypeQuiz.html">KeyboardButtonPollTypeQuiz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="KeyboardButtonRequestChat.html">KeyboardButtonRequestChat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="KeyboardButtonRequestUsers.html">KeyboardButtonRequestUsers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ReplyKeyboardMarkup.html">ReplyKeyboardMarkup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ReplyKeyboardRemove.html">ReplyKeyboardRemove</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LoginUrl.html">LoginUrl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="WebAppInfo.html">WebAppInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MenuButton.html">MenuButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MenuButtonCommands.html">MenuButtonCommands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MenuButtonWebApp.html">MenuButtonWebApp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MenuButtonDefault.html">MenuButtonDefault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SentWebAppMessage.html">SentWebAppMessage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SwitchInlineQueryChosenChat.html">SwitchInlineQueryChosenChat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BotCommand.html">BotCommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BotCommandScope.html">BotCommandScope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BotCommandScopeAllChatAdministrators.html">BotCommandScopeAllChatAdministrators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BotCommandScopeAllGroupChats.html">BotCommandScopeAllGroupChats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BotCommandScopeAllPrivateChats.html">BotCommandScopeAllPrivateChats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BotCommandScopeChat.html">BotCommandScopeChat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BotCommandScopeChatAdministrators.html">BotCommandScopeChatAdministrators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BotCommandScopeChatMember.html">BotCommandScopeChatMember</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BotCommandScopeDefault.html">BotCommandScopeDefault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ForumTopic.html">ForumTopic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ForumTopicCreated.html">ForumTopicCreated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ForumTopicClosed.html">ForumTopicClosed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ForumTopicEdited.html">ForumTopicEdited</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ForumTopicReopened.html">ForumTopicReopened</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GeneralForumTopicHidden.html">GeneralForumTopicHidden</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GeneralForumTopicUnhidden.html">GeneralForumTopicUnhidden</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InputMedia.html">InputMedia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InputMediaPhoto.html">InputMediaPhoto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InputMediaVideo.html">InputMediaVideo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InputMediaAudio.html">InputMediaAudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InputMediaAnimation.html">InputMediaAnimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InputMediaDocument.html">InputMediaDocument</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InputPhoneContact.html">InputPhoneContact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LinkPreviewOptions.html">LinkPreviewOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InputPaidMedia.html">InputPaidMedia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InputPaidMediaPhoto.html">InputPaidMediaPhoto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InputPaidMediaVideo.html">InputPaidMediaVideo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ChosenInlineResult.html">ChosenInlineResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InlineQuery.html">InlineQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InlineQueryResult.html">InlineQueryResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InlineQueryResultCachedAnimation.html">InlineQueryResultCachedAnimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InlineQueryResultCachedAudio.html">InlineQueryResultCachedAudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InlineQueryResultCachedDocument.html">InlineQueryResultCachedDocument</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InlineQueryResultCachedPhoto.html">InlineQueryResultCachedPhoto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InlineQueryResultCachedSticker.html">InlineQueryResultCachedSticker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InlineQueryResultCachedVideo.html">InlineQueryResultCachedVideo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InlineQueryResultCachedVoice.html">InlineQueryResultCachedVoice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InlineQueryResultAnimation.html">InlineQueryResultAnimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InlineQueryResultAudio.html">InlineQueryResultAudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InlineQueryResultDocument.html">InlineQueryResultDocument</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InlineQueryResultPhoto.html">InlineQueryResultPhoto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InlineQueryResultVideo.html">InlineQueryResultVideo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InlineQueryResultVoice.html">InlineQueryResultVoice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InlineQueryResultArticle.html">InlineQueryResultArticle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InlineQueryResultContact.html">InlineQueryResultContact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InlineQueryResultLocation.html">InlineQueryResultLocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InlineQueryResultVenue.html">InlineQueryResultVenue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InputMessageContent.html">InputMessageContent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InputTextMessageContent.html">InputTextMessageContent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InputLocationMessageContent.html">InputLocationMessageContent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InputVenueMessageContent.html">InputVenueMessageContent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InputContactMessageContent.html">InputContactMessageContent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InputInvoiceMessageContent.html">InputInvoiceMessageContent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ActiveSession.html">ActiveSession</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ActiveSessions.html">ActiveSessions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SentCode.html">SentCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TermsOfService.html">TermsOfService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BusinessConnection.html">BusinessConnection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BusinessIntro.html">BusinessIntro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BusinessLocation.html">BusinessLocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BusinessOpeningHours.html">BusinessOpeningHours</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BusinessOpeningHoursInterval.html">BusinessOpeningHoursInterval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CollectibleItemInfo.html">CollectibleItemInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LabeledPrice.html">LabeledPrice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Invoice.html">Invoice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ShippingAddress.html">ShippingAddress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OrderInfo.html">OrderInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ShippingOption.html">ShippingOption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PaymentForm.html">PaymentForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SuccessfulPayment.html">SuccessfulPayment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RefundedPayment.html">RefundedPayment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ShippingQuery.html">ShippingQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PreCheckoutQuery.html">PreCheckoutQuery</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../bound-methods/index.html">Bound Methods</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Bound Methods</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.click.html">click</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.delete.html">delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.download.html">download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.forward.html">forward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.copy.html">copy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.pin.html">pin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.unpin.html">unpin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.edit.html">edit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.edit_text.html">edit_text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.edit_cached_media.html">edit_cached_media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.edit_caption.html">edit_caption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.edit_media.html">edit_media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.edit_reply_markup.html">edit_reply_markup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply.html">reply</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_text.html">reply_text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_animation.html">reply_animation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_audio.html">reply_audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_cached_media.html">reply_cached_media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_chat_action.html">reply_chat_action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_contact.html">reply_contact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_document.html">reply_document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_game.html">reply_game</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_inline_bot_result.html">reply_inline_bot_result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_location.html">reply_location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_media_group.html">reply_media_group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_photo.html">reply_photo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_poll.html">reply_poll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_sticker.html">reply_sticker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_venue.html">reply_venue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_video.html">reply_video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_video_note.html">reply_video_note</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_voice.html">reply_voice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.get_media_group.html">get_media_group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.react.html">react</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.read.html">read</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.view.html">view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.translate.html">translate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.pay.html">pay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.star.html">star</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.archive.html">archive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.unarchive.html">unarchive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.set_title.html">set_title</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.set_description.html">set_description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.set_photo.html">set_photo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.ban_member.html">ban_member</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.unban_member.html">unban_member</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.restrict_member.html">restrict_member</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.promote_member.html">promote_member</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.get_member.html">get_member</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.get_members.html">get_members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.add_members.html">add_members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.join.html">join</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.leave.html">leave</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.mark_unread.html">mark_unread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.set_protected_content.html">set_protected_content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.unpin_all_messages.html">unpin_all_messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.set_message_auto_delete_time.html">set_message_auto_delete_time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/User.archive.html">archive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/User.unarchive.html">unarchive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/User.block.html">block</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/User.unblock.html">unblock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/CallbackQuery.answer.html">answer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/CallbackQuery.edit_message_text.html">edit_message_text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/CallbackQuery.edit_message_caption.html">edit_message_caption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/CallbackQuery.edit_message_media.html">edit_message_media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/CallbackQuery.edit_message_reply_markup.html">edit_message_reply_markup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/InlineQuery.answer.html">answer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/PreCheckoutQuery.answer.html">answer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/ShippingQuery.answer.html">answer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/ChatJoinRequest.approve.html">approve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/ChatJoinRequest.decline.html">decline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Story.react.html">react</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Story.download.html">download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/ActiveSession.terminate.html">terminate</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../enums/index.html">Enumerations</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Enumerations</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../enums/ChatAction.html">ChatAction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/ChatEventAction.html">ChatEventAction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/ChatMemberStatus.html">ChatMemberStatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/ChatMembersFilter.html">ChatMembersFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/ChatType.html">ChatType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/ChatJoinType.html">ChatJoinType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/ClientPlatform.html">ClientPlatform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/MessageEntityType.html">MessageEntityType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/MessageMediaType.html">MessageMediaType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/MessageServiceType.html">MessageServiceType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/MessagesFilter.html">MessagesFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/ParseMode.html">ParseMode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/PollType.html">PollType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/ProfileColor.html">ProfileColor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/AccentColor.html">AccentColor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/SentCodeType.html">SentCodeType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/NextCodeType.html">NextCodeType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/UserStatus.html">UserStatus</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../handlers.html">Update Handlers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../decorators.html">Decorators</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../errors/index.html">RPC Errors</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of RPC Errors</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../errors/see-other.html">303 - SeeOther</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../errors/bad-request.html">400 - BadRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../errors/unauthorized.html">401 - Unauthorized</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../errors/forbidden.html">403 - Forbidden</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../errors/not-acceptable.html">406 - NotAcceptable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../errors/flood.html">420 - Flood</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../errors/internal-server-error.html">500 - InternalServerError</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../filters.html">Update Filters</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Topic Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/use-filters.html">Using Filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/create-filters.html">Creating Filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/more-on-updates.html">More on Updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/client-settings.html">Client Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/speedups.html">Speedups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/text-formatting.html">Text Formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/storage-engines.html">Storage Engines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/synchronous.html">Synchronous Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/smart-plugins.html">Smart Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/serializing.html">Object Serialization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/proxy.html">Proxy Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/scheduling.html">Scheduling Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/mtproto-vs-botapi.html">MTProto vs. Bot API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/test-servers.html">Test Servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/message-identifiers.html">Message identifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/advanced-usage.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/voice-calls.html">Voice Calls</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../faq/index.html">Frequently Asked Questions</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Frequently Asked Questions</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/why-is-the-api-key-needed-for-bots.html">Why is the API key needed for bots?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/how-to-use-webhooks.html">How to use webhooks?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/using-the-same-file-id-across-different-accounts.html">Using the same file_id across different accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/using-multiple-clients-at-once-on-the-same-account.html">Using multiple clients at once on the same account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/client-started-but-nothing-happens.html">Client started, but nothing happens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/what-are-the-ip-addresses-of-telegram-data-centers.html">What are the IP addresses of Telegram Data Centers?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/migrating-the-account-to-another-data-center.html">Migrating the account to another data center</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/why-is-the-client-reacting-slowly-in-supergroups-channels.html">Why is the client reacting slowly in supergroups/channels?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/peer-id-invalid-error.html">PEER_ID_INVALID error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/code-hangs-when-calling-stop-restart-add-remove-handler.html">Code hangs when calling stop, restart, add/remove_handler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/unicodeencodeerror-codec-cant-encode.html">UnicodeEncodeError: ‘…’ codec can’t encode …</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/uploading-with-urls-gives-error-webpage-curl-failed.html">Uploading with URLs gives error WEBPAGE_CURL_FAILED</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/sqlite3-operationalerror-database-is-locked.html">sqlite3.OperationalError: database is locked</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/sqlite3-interfaceerror-error-binding-parameter.html">sqlite3.InterfaceError: Error binding parameter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/socket-send-oserror-timeouterror-connection-lost-reset.html">socket.send(), OSError(), TimeoutError(), Connection lost/reset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/how-to-avoid-flood-waits.html">How to avoid Flood Waits?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/the-account-has-been-limited-deactivated.html">The account has been limited/deactivated</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../support.html">Support Pyrogram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../releases/index.html">Release Notes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Telegram Raw API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://telegramplayground.github.io/schema.tl/">TL Schema Explorer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://telegramplayground.github.io/TG-APIs/TL/diff/tdesktop.html">TL Diff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../telegram/functions/index.html">Raw Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../telegram/types/index.html">Raw Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../telegram/base/index.html">Raw Base</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <div class="article">
+            <article role="main" id="furo-main-content" class="article__content">
+            <section id="available-types">
+<h1>Available Types<a class="headerlink" href="#available-types" title="Link to this heading">#</a></h1>
+<p>This page is about Pyrogram Types. All types listed here are available through the <code class="docutils literal notranslate"><span class="pre">pyrogram.types</span></code> package.
+Unless required as argument to a client method, most of the types don’t need to be manually instantiated because they
+are only returned by other methods. You also don’t need to import them, unless you want to type-hint your variables.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyrogram.types</span> <span class="kn">import</span> <span class="n">User</span><span class="p">,</span> <span class="n">Message</span><span class="p">,</span> <span class="o">...</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Optional fields always exist inside the object, but they could be empty and contain the value of <code class="docutils literal notranslate"><span class="pre">None</span></code>.
+Empty fields aren’t shown when, for example, using <code class="docutils literal notranslate"><span class="pre">print(message)</span></code> and this means that
+<code class="docutils literal notranslate"><span class="pre">hasattr(message,</span> <span class="pre">&quot;photo&quot;)</span></code> always returns <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<p>To tell whether a field is set or not, do a simple boolean check: <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">message.photo:</span> <span class="pre">...</span></code>.</p>
+</div>
+<hr class="docutils" />
+<section id="messages-media">
+<h2>Messages &amp; Media<a class="headerlink" href="#messages-media" title="Link to this heading">#</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="Message.html#pyrogram.types.Message" title="pyrogram.types.Message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Message</span></code></a></p></td>
+<td><p>A message.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="MessageEntity.html#pyrogram.types.MessageEntity" title="pyrogram.types.MessageEntity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MessageEntity</span></code></a></p></td>
+<td><p>One special entity in a text message.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="TextQuote.html#pyrogram.types.TextQuote" title="pyrogram.types.TextQuote"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TextQuote</span></code></a></p></td>
+<td><p>This object contains information about the quoted part of a message that is replied to by the given message.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ExternalReplyInfo.html#pyrogram.types.ExternalReplyInfo" title="pyrogram.types.ExternalReplyInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExternalReplyInfo</span></code></a></p></td>
+<td><p>This object contains information about a message that is being replied to, which may come from another chat or forum topic.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ReplyParameters.html#pyrogram.types.ReplyParameters" title="pyrogram.types.ReplyParameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReplyParameters</span></code></a></p></td>
+<td><p>Describes reply parameters for the message that is being sent.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="MessageOrigin.html#pyrogram.types.MessageOrigin" title="pyrogram.types.MessageOrigin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MessageOrigin</span></code></a></p></td>
+<td><p>This object describes the origin of a message.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="MessageOriginUser.html#pyrogram.types.MessageOriginUser" title="pyrogram.types.MessageOriginUser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MessageOriginUser</span></code></a></p></td>
+<td><p>The message was originally sent by a known user.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="MessageOriginHiddenUser.html#pyrogram.types.MessageOriginHiddenUser" title="pyrogram.types.MessageOriginHiddenUser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MessageOriginHiddenUser</span></code></a></p></td>
+<td><p>The message was originally sent by an unknown user.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="MessageOriginChat.html#pyrogram.types.MessageOriginChat" title="pyrogram.types.MessageOriginChat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MessageOriginChat</span></code></a></p></td>
+<td><p>The message was originally sent on behalf of a chat to a group chat.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="MessageOriginChannel.html#pyrogram.types.MessageOriginChannel" title="pyrogram.types.MessageOriginChannel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MessageOriginChannel</span></code></a></p></td>
+<td><p>The message was originally sent to a channel chat.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="MessageImportInfo.html#pyrogram.types.MessageImportInfo" title="pyrogram.types.MessageImportInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MessageImportInfo</span></code></a></p></td>
+<td><p>Contains information about a message created with <a class="reference external" href="https://t.me/telegram/142">importMessages</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="Photo.html#pyrogram.types.Photo" title="pyrogram.types.Photo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Photo</span></code></a></p></td>
+<td><p>A Photo.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="AlternativeVideo.html#pyrogram.types.AlternativeVideo" title="pyrogram.types.AlternativeVideo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AlternativeVideo</span></code></a></p></td>
+<td><p>Describes an alternative reencoded quality of a video file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="Animation.html#pyrogram.types.Animation" title="pyrogram.types.Animation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Animation</span></code></a></p></td>
+<td><p>An animation file (GIF or H.264/MPEG-4 AVC video without sound).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="Audio.html#pyrogram.types.Audio" title="pyrogram.types.Audio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Audio</span></code></a></p></td>
+<td><p>An audio file to be treated as music by the Telegram clients.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="Document.html#pyrogram.types.Document" title="pyrogram.types.Document"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Document</span></code></a></p></td>
+<td><p>A generic file (as opposed to photos, voice messages, audio files, ...).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="Story.html#pyrogram.types.Story" title="pyrogram.types.Story"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Story</span></code></a></p></td>
+<td><p>This object represents a story.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="Video.html#pyrogram.types.Video" title="pyrogram.types.Video"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Video</span></code></a></p></td>
+<td><p>A video file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="VideoNote.html#pyrogram.types.VideoNote" title="pyrogram.types.VideoNote"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VideoNote</span></code></a></p></td>
+<td><p>A video note.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="Voice.html#pyrogram.types.Voice" title="pyrogram.types.Voice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Voice</span></code></a></p></td>
+<td><p>A voice note.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="PaidMediaInfo.html#pyrogram.types.PaidMediaInfo" title="pyrogram.types.PaidMediaInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PaidMediaInfo</span></code></a></p></td>
+<td><p>Describes the paid media added to a message.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="PaidMedia.html#pyrogram.types.PaidMedia" title="pyrogram.types.PaidMedia"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PaidMedia</span></code></a></p></td>
+<td><p>This object describes paid media.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="PaidMediaPreview.html#pyrogram.types.PaidMediaPreview" title="pyrogram.types.PaidMediaPreview"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PaidMediaPreview</span></code></a></p></td>
+<td><p>The paid media isn't available before the payment.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="PaidMediaPhoto.html#pyrogram.types.PaidMediaPhoto" title="pyrogram.types.PaidMediaPhoto"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PaidMediaPhoto</span></code></a></p></td>
+<td><p>The paid media is a photo.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="PaidMediaVideo.html#pyrogram.types.PaidMediaVideo" title="pyrogram.types.PaidMediaVideo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PaidMediaVideo</span></code></a></p></td>
+<td><p>The paid media is a video.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="Contact.html#pyrogram.types.Contact" title="pyrogram.types.Contact"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Contact</span></code></a></p></td>
+<td><p>A phone contact.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="Dice.html#pyrogram.types.Dice" title="pyrogram.types.Dice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dice</span></code></a></p></td>
+<td><p>A dice with a random value from 1 to 6 for currently supported base emoji.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="PollOption.html#pyrogram.types.PollOption" title="pyrogram.types.PollOption"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PollOption</span></code></a></p></td>
+<td><p>Contains information about one answer option in a poll.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="InputPollOption.html#pyrogram.types.InputPollOption" title="pyrogram.types.InputPollOption"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InputPollOption</span></code></a></p></td>
+<td><p>This object contains information about one answer option in a poll to send.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="Poll.html#pyrogram.types.Poll" title="pyrogram.types.Poll"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Poll</span></code></a></p></td>
+<td><p>A Poll.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="Location.html#pyrogram.types.Location" title="pyrogram.types.Location"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Location</span></code></a></p></td>
+<td><p>A point on the map.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="Venue.html#pyrogram.types.Venue" title="pyrogram.types.Venue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Venue</span></code></a></p></td>
+<td><p>A venue.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="WebAppData.html#pyrogram.types.WebAppData" title="pyrogram.types.WebAppData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WebAppData</span></code></a></p></td>
+<td><p>Contains data sent from a <a class="reference external" href="https://core.telegram.org/bots/webapps">Web App</a> to the bot.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="MessageAutoDeleteTimerChanged.html#pyrogram.types.MessageAutoDeleteTimerChanged" title="pyrogram.types.MessageAutoDeleteTimerChanged"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MessageAutoDeleteTimerChanged</span></code></a></p></td>
+<td><p>This object represents a service message about a change in auto-delete timer settings.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ChatBoostAdded.html#pyrogram.types.ChatBoostAdded" title="pyrogram.types.ChatBoostAdded"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChatBoostAdded</span></code></a></p></td>
+<td><p>This object represents a service message about a user boosting a chat.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ChatBackground.html#pyrogram.types.ChatBackground" title="pyrogram.types.ChatBackground"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChatBackground</span></code></a></p></td>
+<td><p>Describes a background set for a specific chat.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="Game.html#pyrogram.types.Game" title="pyrogram.types.Game"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Game</span></code></a></p></td>
+<td><p>A game.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="GiftCode.html#pyrogram.types.GiftCode" title="pyrogram.types.GiftCode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GiftCode</span></code></a></p></td>
+<td><p>Contains gift code data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="GiftedPremium.html#pyrogram.types.GiftedPremium" title="pyrogram.types.GiftedPremium"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GiftedPremium</span></code></a></p></td>
+<td><p>Telegram Premium was gifted to the user</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="GiftedStars.html#pyrogram.types.GiftedStars" title="pyrogram.types.GiftedStars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GiftedStars</span></code></a></p></td>
+<td><p>Telegram Stars were gifted to a user</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="Giveaway.html#pyrogram.types.Giveaway" title="pyrogram.types.Giveaway"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Giveaway</span></code></a></p></td>
+<td><p>This object represents a message about a scheduled giveaway.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="GiveawayCreated.html#pyrogram.types.GiveawayCreated" title="pyrogram.types.GiveawayCreated"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GiveawayCreated</span></code></a></p></td>
+<td><p>This object represents a service message about the creation of a scheduled giveaway.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="GiveawayCompleted.html#pyrogram.types.GiveawayCompleted" title="pyrogram.types.GiveawayCompleted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GiveawayCompleted</span></code></a></p></td>
+<td><p>This object represents a service message about the completion of a giveaway without public winners.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="GiveawayWinners.html#pyrogram.types.GiveawayWinners" title="pyrogram.types.GiveawayWinners"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GiveawayWinners</span></code></a></p></td>
+<td><p>This object represents a message about the completion of a giveaway with public winners.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="MessageEffect.html#pyrogram.types.MessageEffect" title="pyrogram.types.MessageEffect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MessageEffect</span></code></a></p></td>
+<td><p>Contains information about an effect added to a message.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="MessageReactionCountUpdated.html#pyrogram.types.MessageReactionCountUpdated" title="pyrogram.types.MessageReactionCountUpdated"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MessageReactionCountUpdated</span></code></a></p></td>
+<td><p>Reactions to a message with anonymous reactions were changed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="MessageReactionUpdated.html#pyrogram.types.MessageReactionUpdated" title="pyrogram.types.MessageReactionUpdated"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MessageReactionUpdated</span></code></a></p></td>
+<td><p>This object represents a change of a reaction on a message performed by a user.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="MessageReactions.html#pyrogram.types.MessageReactions" title="pyrogram.types.MessageReactions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MessageReactions</span></code></a></p></td>
+<td><p>Contains information about a message reactions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="Reaction.html#pyrogram.types.Reaction" title="pyrogram.types.Reaction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Reaction</span></code></a></p></td>
+<td><p>Contains information about a reaction.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ReactionCount.html#pyrogram.types.ReactionCount" title="pyrogram.types.ReactionCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReactionCount</span></code></a></p></td>
+<td><p>Represents a reaction added to a message along with the number of times it was added.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ReactionType.html#pyrogram.types.ReactionType" title="pyrogram.types.ReactionType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReactionType</span></code></a></p></td>
+<td><p>This object describes the type of a reaction.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ReactionTypeEmoji.html#pyrogram.types.ReactionTypeEmoji" title="pyrogram.types.ReactionTypeEmoji"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReactionTypeEmoji</span></code></a></p></td>
+<td><p>The reaction is based on an emoji.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ReactionTypeCustomEmoji.html#pyrogram.types.ReactionTypeCustomEmoji" title="pyrogram.types.ReactionTypeCustomEmoji"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReactionTypeCustomEmoji</span></code></a></p></td>
+<td><p>The reaction is based on a custom emoji.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ReactionTypePaid.html#pyrogram.types.ReactionTypePaid" title="pyrogram.types.ReactionTypePaid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReactionTypePaid</span></code></a></p></td>
+<td><p>The paid reaction in a channel chat.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="Thumbnail.html#pyrogram.types.Thumbnail" title="pyrogram.types.Thumbnail"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Thumbnail</span></code></a></p></td>
+<td><p>One size of a photo or a file/sticker thumbnail.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="TranslatedText.html#pyrogram.types.TranslatedText" title="pyrogram.types.TranslatedText"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TranslatedText</span></code></a></p></td>
+<td><p>A translated text with entities.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="StrippedThumbnail.html#pyrogram.types.StrippedThumbnail" title="pyrogram.types.StrippedThumbnail"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StrippedThumbnail</span></code></a></p></td>
+<td><p>A stripped thumbnail</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="SponsoredMessage.html#pyrogram.types.SponsoredMessage" title="pyrogram.types.SponsoredMessage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SponsoredMessage</span></code></a></p></td>
+<td><p>Describes a sponsored message.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="Sticker.html#pyrogram.types.Sticker" title="pyrogram.types.Sticker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sticker</span></code></a></p></td>
+<td><p>A sticker.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="WebPage.html#pyrogram.types.WebPage" title="pyrogram.types.WebPage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WebPage</span></code></a></p></td>
+<td><p>A webpage preview</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ContactRegistered.html#pyrogram.types.ContactRegistered" title="pyrogram.types.ContactRegistered"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ContactRegistered</span></code></a></p></td>
+<td><p>A service message that a contact has registered with Telegram.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ScreenshotTaken.html#pyrogram.types.ScreenshotTaken" title="pyrogram.types.ScreenshotTaken"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScreenshotTaken</span></code></a></p></td>
+<td><p>A service message that a screenshot of a message in the chat has been taken.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="DraftMessage.html#pyrogram.types.DraftMessage" title="pyrogram.types.DraftMessage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DraftMessage</span></code></a></p></td>
+<td><p>Contains information about a message draft.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="users-chats">
+<h2>Users &amp; Chats<a class="headerlink" href="#users-chats" title="Link to this heading">#</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="Birthdate.html#pyrogram.types.Birthdate" title="pyrogram.types.Birthdate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Birthdate</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>day</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) -- Day of the user's birth; 1-31</p></li>
+</ul>
+</dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="User.html#pyrogram.types.User" title="pyrogram.types.User"><code class="xref py py-obj docutils literal notranslate"><span class="pre">User</span></code></a></p></td>
+<td><p>A Telegram user or bot.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="Chat.html#pyrogram.types.Chat" title="pyrogram.types.Chat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Chat</span></code></a></p></td>
+<td><p>A chat.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="Username.html#pyrogram.types.Username" title="pyrogram.types.Username"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Username</span></code></a></p></td>
+<td><p>Describes usernames assigned to a user, a supergroup, or a channel.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ChatShared.html#pyrogram.types.ChatShared" title="pyrogram.types.ChatShared"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChatShared</span></code></a></p></td>
+<td><p>This object contains information about a chat that was shared with the bot using a <a class="reference internal" href="KeyboardButtonRequestChat.html#pyrogram.types.KeyboardButtonRequestChat" title="pyrogram.types.KeyboardButtonRequestChat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">KeyboardButtonRequestChat</span></code></a> button.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="WriteAccessAllowed.html#pyrogram.types.WriteAccessAllowed" title="pyrogram.types.WriteAccessAllowed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WriteAccessAllowed</span></code></a></p></td>
+<td><p>This object represents a service message about a user allowing a bot to write messages after adding it to the attachment menu, launching a Web App from a link, or accepting an explicit request from a Web App sent by the method <a class="reference external" href="https://core.telegram.org/bots/webapps#initializing-mini-apps">requestWriteAccess</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="UsersShared.html#pyrogram.types.UsersShared" title="pyrogram.types.UsersShared"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UsersShared</span></code></a></p></td>
+<td><p>This object contains information about the users whose identifiers were shared with the bot using a <a class="reference internal" href="KeyboardButtonRequestUsers.html#pyrogram.types.KeyboardButtonRequestUsers" title="pyrogram.types.KeyboardButtonRequestUsers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">KeyboardButtonRequestUsers</span></code></a> button.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ChatAdminWithInviteLinks.html#pyrogram.types.ChatAdminWithInviteLinks" title="pyrogram.types.ChatAdminWithInviteLinks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChatAdminWithInviteLinks</span></code></a></p></td>
+<td><p>Represents a chat administrator that has created invite links in a chat.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ChatColor.html#pyrogram.types.ChatColor" title="pyrogram.types.ChatColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChatColor</span></code></a></p></td>
+<td><p>Accent or profile color status.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ChatEvent.html#pyrogram.types.ChatEvent" title="pyrogram.types.ChatEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChatEvent</span></code></a></p></td>
+<td><p>A chat event from the recent actions log (also known as admin log).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ChatEventFilter.html#pyrogram.types.ChatEventFilter" title="pyrogram.types.ChatEventFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChatEventFilter</span></code></a></p></td>
+<td><p>Set of filters used to obtain a chat event log.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ChatInviteLink.html#pyrogram.types.ChatInviteLink" title="pyrogram.types.ChatInviteLink"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChatInviteLink</span></code></a></p></td>
+<td><p>An invite link for a chat.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ChatJoiner.html#pyrogram.types.ChatJoiner" title="pyrogram.types.ChatJoiner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChatJoiner</span></code></a></p></td>
+<td><p>Contains information about a joiner member of a chat.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ChatJoinRequest.html#pyrogram.types.ChatJoinRequest" title="pyrogram.types.ChatJoinRequest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChatJoinRequest</span></code></a></p></td>
+<td><p>Represents a join request sent to a chat.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ChatMember.html#pyrogram.types.ChatMember" title="pyrogram.types.ChatMember"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChatMember</span></code></a></p></td>
+<td><p>Contains information about one member of a chat.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ChatMemberUpdated.html#pyrogram.types.ChatMemberUpdated" title="pyrogram.types.ChatMemberUpdated"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChatMemberUpdated</span></code></a></p></td>
+<td><p>Represents changes in the status of a chat member.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ChatPermissions.html#pyrogram.types.ChatPermissions" title="pyrogram.types.ChatPermissions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChatPermissions</span></code></a></p></td>
+<td><p>Describes actions that a non-administrator user is allowed to take in a chat.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ChatPhoto.html#pyrogram.types.ChatPhoto" title="pyrogram.types.ChatPhoto"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChatPhoto</span></code></a></p></td>
+<td><p>A chat photo.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ChatPrivileges.html#pyrogram.types.ChatPrivileges" title="pyrogram.types.ChatPrivileges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChatPrivileges</span></code></a></p></td>
+<td><p>Describes privileged actions an administrator is able to take in a chat.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ChatReactions.html#pyrogram.types.ChatReactions" title="pyrogram.types.ChatReactions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChatReactions</span></code></a></p></td>
+<td><p>A chat reactions</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="VideoChatScheduled.html#pyrogram.types.VideoChatScheduled" title="pyrogram.types.VideoChatScheduled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VideoChatScheduled</span></code></a></p></td>
+<td><p>A service message about a voice chat scheduled in the chat.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="VideoChatStarted.html#pyrogram.types.VideoChatStarted" title="pyrogram.types.VideoChatStarted"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VideoChatStarted</span></code></a></p></td>
+<td><p>A service message about a voice chat started in the chat.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="VideoChatEnded.html#pyrogram.types.VideoChatEnded" title="pyrogram.types.VideoChatEnded"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VideoChatEnded</span></code></a></p></td>
+<td><p>A service message about a voice chat ended in the chat.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="VideoChatParticipantsInvited.html#pyrogram.types.VideoChatParticipantsInvited" title="pyrogram.types.VideoChatParticipantsInvited"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VideoChatParticipantsInvited</span></code></a></p></td>
+<td><p>A service message about new members invited to a voice chat.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="Dialog.html#pyrogram.types.Dialog" title="pyrogram.types.Dialog"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dialog</span></code></a></p></td>
+<td><p>A user's dialog.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="EmojiStatus.html#pyrogram.types.EmojiStatus" title="pyrogram.types.EmojiStatus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EmojiStatus</span></code></a></p></td>
+<td><p>A user emoji status.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="GroupCallParticipant.html#pyrogram.types.GroupCallParticipant" title="pyrogram.types.GroupCallParticipant"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GroupCallParticipant</span></code></a></p></td>
+<td><p>Represents a group call participant</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="InviteLinkImporter.html#pyrogram.types.InviteLinkImporter" title="pyrogram.types.InviteLinkImporter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InviteLinkImporter</span></code></a></p></td>
+<td><p>The date and user of when someone has joined with an invite link.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="Restriction.html#pyrogram.types.Restriction" title="pyrogram.types.Restriction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Restriction</span></code></a></p></td>
+<td><p>A restriction applied to bots or chats.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="RtmpUrl.html#pyrogram.types.RtmpUrl" title="pyrogram.types.RtmpUrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RtmpUrl</span></code></a></p></td>
+<td><p>Represents an RTMP URL and stream key to be used in streaming software.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="bot-keyboards">
+<h2>Bot keyboards<a class="headerlink" href="#bot-keyboards" title="Link to this heading">#</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="CallbackGame.html#pyrogram.types.CallbackGame" title="pyrogram.types.CallbackGame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CallbackGame</span></code></a></p></td>
+<td><p>Placeholder, currently holds no information.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="CallbackQuery.html#pyrogram.types.CallbackQuery" title="pyrogram.types.CallbackQuery"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CallbackQuery</span></code></a></p></td>
+<td><p>An incoming callback query from a callback button in an inline keyboard.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ForceReply.html#pyrogram.types.ForceReply" title="pyrogram.types.ForceReply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ForceReply</span></code></a></p></td>
+<td><p>Object used to force clients to show a reply interface.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="GameHighScore.html#pyrogram.types.GameHighScore" title="pyrogram.types.GameHighScore"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GameHighScore</span></code></a></p></td>
+<td><p>One row of the high scores table for a game.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="InlineKeyboardButton.html#pyrogram.types.InlineKeyboardButton" title="pyrogram.types.InlineKeyboardButton"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InlineKeyboardButton</span></code></a></p></td>
+<td><p>One button of an inline keyboard.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="InlineKeyboardMarkup.html#pyrogram.types.InlineKeyboardMarkup" title="pyrogram.types.InlineKeyboardMarkup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InlineKeyboardMarkup</span></code></a></p></td>
+<td><p>An inline keyboard that appears right next to the message it belongs to.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="KeyboardButton.html#pyrogram.types.KeyboardButton" title="pyrogram.types.KeyboardButton"><code class="xref py py-obj docutils literal notranslate"><span class="pre">KeyboardButton</span></code></a></p></td>
+<td><p>One button of the reply keyboard.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="KeyboardButtonPollType.html#pyrogram.types.KeyboardButtonPollType" title="pyrogram.types.KeyboardButtonPollType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">KeyboardButtonPollType</span></code></a></p></td>
+<td><p>This object represents type of a poll, which is allowed to be created and sent when the corresponding button is pressed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="KeyboardButtonPollTypeRegular.html#pyrogram.types.KeyboardButtonPollTypeRegular" title="pyrogram.types.KeyboardButtonPollTypeRegular"><code class="xref py py-obj docutils literal notranslate"><span class="pre">KeyboardButtonPollTypeRegular</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="KeyboardButtonPollTypeQuiz.html#pyrogram.types.KeyboardButtonPollTypeQuiz" title="pyrogram.types.KeyboardButtonPollTypeQuiz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">KeyboardButtonPollTypeQuiz</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="KeyboardButtonRequestChat.html#pyrogram.types.KeyboardButtonRequestChat" title="pyrogram.types.KeyboardButtonRequestChat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">KeyboardButtonRequestChat</span></code></a></p></td>
+<td><p>This object defines the criteria used to request a suitable chat.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="KeyboardButtonRequestUsers.html#pyrogram.types.KeyboardButtonRequestUsers" title="pyrogram.types.KeyboardButtonRequestUsers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">KeyboardButtonRequestUsers</span></code></a></p></td>
+<td><p>This object defines the criteria used to request suitable users.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ReplyKeyboardMarkup.html#pyrogram.types.ReplyKeyboardMarkup" title="pyrogram.types.ReplyKeyboardMarkup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReplyKeyboardMarkup</span></code></a></p></td>
+<td><p>A custom keyboard with reply options.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ReplyKeyboardRemove.html#pyrogram.types.ReplyKeyboardRemove" title="pyrogram.types.ReplyKeyboardRemove"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReplyKeyboardRemove</span></code></a></p></td>
+<td><p>Object used to tell clients to remove a bot keyboard.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="LoginUrl.html#pyrogram.types.LoginUrl" title="pyrogram.types.LoginUrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LoginUrl</span></code></a></p></td>
+<td><p>Represents a parameter of the inline keyboard button used to automatically authorize a user.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="WebAppInfo.html#pyrogram.types.WebAppInfo" title="pyrogram.types.WebAppInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WebAppInfo</span></code></a></p></td>
+<td><p><p>Contains information about a <a class="reference external" href="https://core.telegram.org/bots/webapps">Web App</a>.</p>
+</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="MenuButton.html#pyrogram.types.MenuButton" title="pyrogram.types.MenuButton"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MenuButton</span></code></a></p></td>
+<td><p>Describes the bot's menu button in a private chat.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="MenuButtonCommands.html#pyrogram.types.MenuButtonCommands" title="pyrogram.types.MenuButtonCommands"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MenuButtonCommands</span></code></a></p></td>
+<td><p>A menu button, which opens the bot's list of commands.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="MenuButtonWebApp.html#pyrogram.types.MenuButtonWebApp" title="pyrogram.types.MenuButtonWebApp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MenuButtonWebApp</span></code></a></p></td>
+<td><p><p>A menu button, which launches a <a class="reference external" href="https://core.telegram.org/bots/webapps">Web App</a>.</p>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="MenuButtonDefault.html#pyrogram.types.MenuButtonDefault" title="pyrogram.types.MenuButtonDefault"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MenuButtonDefault</span></code></a></p></td>
+<td><p>Describes that no specific value for the menu button was set.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="SentWebAppMessage.html#pyrogram.types.SentWebAppMessage" title="pyrogram.types.SentWebAppMessage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SentWebAppMessage</span></code></a></p></td>
+<td><p><p>Contains information about an inline message sent by a <a class="reference external" href="https://core.telegram.org/bots/webapps">Web App</a> on behalf of a user.</p>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="SwitchInlineQueryChosenChat.html#pyrogram.types.SwitchInlineQueryChosenChat" title="pyrogram.types.SwitchInlineQueryChosenChat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SwitchInlineQueryChosenChat</span></code></a></p></td>
+<td><p>This object represents an inline button that switches the current user to inline mode in a chosen chat, with an optional default inline query.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="bot-commands">
+<h2>Bot commands<a class="headerlink" href="#bot-commands" title="Link to this heading">#</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="BotCommand.html#pyrogram.types.BotCommand" title="pyrogram.types.BotCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BotCommand</span></code></a></p></td>
+<td><p>A bot command with the standard slash &quot;/&quot; prefix.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="BotCommandScope.html#pyrogram.types.BotCommandScope" title="pyrogram.types.BotCommandScope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BotCommandScope</span></code></a></p></td>
+<td><p>Represents the scope to which bot commands are applied.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="BotCommandScopeAllChatAdministrators.html#pyrogram.types.BotCommandScopeAllChatAdministrators" title="pyrogram.types.BotCommandScopeAllChatAdministrators"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BotCommandScopeAllChatAdministrators</span></code></a></p></td>
+<td><p>Represents the scope of bot commands, covering all group and supergroup chat administrators.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="BotCommandScopeAllGroupChats.html#pyrogram.types.BotCommandScopeAllGroupChats" title="pyrogram.types.BotCommandScopeAllGroupChats"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BotCommandScopeAllGroupChats</span></code></a></p></td>
+<td><p>Represents the scope of bot commands, covering all group and supergroup chats.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="BotCommandScopeAllPrivateChats.html#pyrogram.types.BotCommandScopeAllPrivateChats" title="pyrogram.types.BotCommandScopeAllPrivateChats"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BotCommandScopeAllPrivateChats</span></code></a></p></td>
+<td><p>Represents the scope of bot commands, covering all private chats.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="BotCommandScopeChat.html#pyrogram.types.BotCommandScopeChat" title="pyrogram.types.BotCommandScopeChat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BotCommandScopeChat</span></code></a></p></td>
+<td><p>Represents the scope of bot commands, covering a specific chat.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="BotCommandScopeChatAdministrators.html#pyrogram.types.BotCommandScopeChatAdministrators" title="pyrogram.types.BotCommandScopeChatAdministrators"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BotCommandScopeChatAdministrators</span></code></a></p></td>
+<td><p>Represents the scope of bot commands, covering all administrators of a specific group or supergroup chat.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="BotCommandScopeChatMember.html#pyrogram.types.BotCommandScopeChatMember" title="pyrogram.types.BotCommandScopeChatMember"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BotCommandScopeChatMember</span></code></a></p></td>
+<td><p>Represents the scope of bot commands, covering a specific member of a group or supergroup chat.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="BotCommandScopeDefault.html#pyrogram.types.BotCommandScopeDefault" title="pyrogram.types.BotCommandScopeDefault"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BotCommandScopeDefault</span></code></a></p></td>
+<td><p>Represents the default scope of bot commands.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="chat-forum-topics">
+<h2>Chat Forum Topics<a class="headerlink" href="#chat-forum-topics" title="Link to this heading">#</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="ForumTopic.html#pyrogram.types.ForumTopic" title="pyrogram.types.ForumTopic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ForumTopic</span></code></a></p></td>
+<td><p>This object represents a forum topic.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ForumTopicCreated.html#pyrogram.types.ForumTopicCreated" title="pyrogram.types.ForumTopicCreated"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ForumTopicCreated</span></code></a></p></td>
+<td><p>This object represents a service message about a new forum topic created in the chat.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ForumTopicClosed.html#pyrogram.types.ForumTopicClosed" title="pyrogram.types.ForumTopicClosed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ForumTopicClosed</span></code></a></p></td>
+<td><p>This object represents a service message about a forum topic closed in the chat.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ForumTopicEdited.html#pyrogram.types.ForumTopicEdited" title="pyrogram.types.ForumTopicEdited"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ForumTopicEdited</span></code></a></p></td>
+<td><p>This object represents a service message about an edited forum topic.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ForumTopicReopened.html#pyrogram.types.ForumTopicReopened" title="pyrogram.types.ForumTopicReopened"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ForumTopicReopened</span></code></a></p></td>
+<td><p>This object represents a service message about a forum topic reopened in the chat.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="GeneralForumTopicHidden.html#pyrogram.types.GeneralForumTopicHidden" title="pyrogram.types.GeneralForumTopicHidden"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeneralForumTopicHidden</span></code></a></p></td>
+<td><p>This object represents a service message about General forum topic hidden in the chat.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="GeneralForumTopicUnhidden.html#pyrogram.types.GeneralForumTopicUnhidden" title="pyrogram.types.GeneralForumTopicUnhidden"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeneralForumTopicUnhidden</span></code></a></p></td>
+<td><p>This object represents a service message about General forum topic unhidden in the chat.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="input-media">
+<h2>Input Media<a class="headerlink" href="#input-media" title="Link to this heading">#</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="InputMedia.html#pyrogram.types.InputMedia" title="pyrogram.types.InputMedia"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InputMedia</span></code></a></p></td>
+<td><p>Content of a media message to be sent.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="InputMediaPhoto.html#pyrogram.types.InputMediaPhoto" title="pyrogram.types.InputMediaPhoto"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InputMediaPhoto</span></code></a></p></td>
+<td><p>A photo to be sent inside an album.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="InputMediaVideo.html#pyrogram.types.InputMediaVideo" title="pyrogram.types.InputMediaVideo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InputMediaVideo</span></code></a></p></td>
+<td><p>A video to be sent inside an album.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="InputMediaAudio.html#pyrogram.types.InputMediaAudio" title="pyrogram.types.InputMediaAudio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InputMediaAudio</span></code></a></p></td>
+<td><p>An audio to be sent inside an album.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="InputMediaAnimation.html#pyrogram.types.InputMediaAnimation" title="pyrogram.types.InputMediaAnimation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InputMediaAnimation</span></code></a></p></td>
+<td><p>An animation file (GIF or H.264/MPEG-4 AVC video without sound) to be sent inside an album.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="InputMediaDocument.html#pyrogram.types.InputMediaDocument" title="pyrogram.types.InputMediaDocument"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InputMediaDocument</span></code></a></p></td>
+<td><p>A generic file to be sent inside an album.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="InputPhoneContact.html#pyrogram.types.InputPhoneContact" title="pyrogram.types.InputPhoneContact"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InputPhoneContact</span></code></a></p></td>
+<td><p>A Phone Contact to be added in your Telegram address book.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="LinkPreviewOptions.html#pyrogram.types.LinkPreviewOptions" title="pyrogram.types.LinkPreviewOptions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinkPreviewOptions</span></code></a></p></td>
+<td><p>Describes the options used for link preview generation.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="input-paid-media">
+<h2>Input Paid Media<a class="headerlink" href="#input-paid-media" title="Link to this heading">#</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="InputPaidMedia.html#pyrogram.types.InputPaidMedia" title="pyrogram.types.InputPaidMedia"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InputPaidMedia</span></code></a></p></td>
+<td><p>This object describes the paid media to be sent.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="InputPaidMediaPhoto.html#pyrogram.types.InputPaidMediaPhoto" title="pyrogram.types.InputPaidMediaPhoto"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InputPaidMediaPhoto</span></code></a></p></td>
+<td><p>The paid media to send is a photo.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="InputPaidMediaVideo.html#pyrogram.types.InputPaidMediaVideo" title="pyrogram.types.InputPaidMediaVideo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InputPaidMediaVideo</span></code></a></p></td>
+<td><p>The paid media to send is a video.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="inline-mode">
+<h2>Inline Mode<a class="headerlink" href="#inline-mode" title="Link to this heading">#</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="ChosenInlineResult.html#pyrogram.types.ChosenInlineResult" title="pyrogram.types.ChosenInlineResult"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChosenInlineResult</span></code></a></p></td>
+<td><p>A <a class="reference internal" href="InlineQueryResult.html"><span class="doc">result</span></a> of an inline query chosen by the user and sent to their chat partner.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="InlineQuery.html#pyrogram.types.InlineQuery" title="pyrogram.types.InlineQuery"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InlineQuery</span></code></a></p></td>
+<td><p>An incoming inline query.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="InlineQueryResult.html#pyrogram.types.InlineQueryResult" title="pyrogram.types.InlineQueryResult"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InlineQueryResult</span></code></a></p></td>
+<td><p>One result of an inline query.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="InlineQueryResultCachedAnimation.html#pyrogram.types.InlineQueryResultCachedAnimation" title="pyrogram.types.InlineQueryResultCachedAnimation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InlineQueryResultCachedAnimation</span></code></a></p></td>
+<td><p>A link to an animation file stored on the Telegram servers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="InlineQueryResultCachedAudio.html#pyrogram.types.InlineQueryResultCachedAudio" title="pyrogram.types.InlineQueryResultCachedAudio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InlineQueryResultCachedAudio</span></code></a></p></td>
+<td><p>A link to an MP3 audio file stored on the Telegram servers</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="InlineQueryResultCachedDocument.html#pyrogram.types.InlineQueryResultCachedDocument" title="pyrogram.types.InlineQueryResultCachedDocument"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InlineQueryResultCachedDocument</span></code></a></p></td>
+<td><p>A link to a file stored on the Telegram servers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="InlineQueryResultCachedPhoto.html#pyrogram.types.InlineQueryResultCachedPhoto" title="pyrogram.types.InlineQueryResultCachedPhoto"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InlineQueryResultCachedPhoto</span></code></a></p></td>
+<td><p>A link to a photo stored on the Telegram servers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="InlineQueryResultCachedSticker.html#pyrogram.types.InlineQueryResultCachedSticker" title="pyrogram.types.InlineQueryResultCachedSticker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InlineQueryResultCachedSticker</span></code></a></p></td>
+<td><p>A link to a sticker stored on the Telegram servers</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="InlineQueryResultCachedVideo.html#pyrogram.types.InlineQueryResultCachedVideo" title="pyrogram.types.InlineQueryResultCachedVideo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InlineQueryResultCachedVideo</span></code></a></p></td>
+<td><p>A link to a video file stored on the Telegram servers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="InlineQueryResultCachedVoice.html#pyrogram.types.InlineQueryResultCachedVoice" title="pyrogram.types.InlineQueryResultCachedVoice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InlineQueryResultCachedVoice</span></code></a></p></td>
+<td><p>A link to a voice message stored on the Telegram servers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="InlineQueryResultAnimation.html#pyrogram.types.InlineQueryResultAnimation" title="pyrogram.types.InlineQueryResultAnimation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InlineQueryResultAnimation</span></code></a></p></td>
+<td><p>Link to an animated GIF file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="InlineQueryResultAudio.html#pyrogram.types.InlineQueryResultAudio" title="pyrogram.types.InlineQueryResultAudio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InlineQueryResultAudio</span></code></a></p></td>
+<td><p>Link to an audio file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="InlineQueryResultDocument.html#pyrogram.types.InlineQueryResultDocument" title="pyrogram.types.InlineQueryResultDocument"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InlineQueryResultDocument</span></code></a></p></td>
+<td><p>Link to a file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="InlineQueryResultPhoto.html#pyrogram.types.InlineQueryResultPhoto" title="pyrogram.types.InlineQueryResultPhoto"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InlineQueryResultPhoto</span></code></a></p></td>
+<td><p>Link to a photo.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="InlineQueryResultVideo.html#pyrogram.types.InlineQueryResultVideo" title="pyrogram.types.InlineQueryResultVideo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InlineQueryResultVideo</span></code></a></p></td>
+<td><p>Link to a page containing an embedded video player or a video file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="InlineQueryResultVoice.html#pyrogram.types.InlineQueryResultVoice" title="pyrogram.types.InlineQueryResultVoice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InlineQueryResultVoice</span></code></a></p></td>
+<td><p>Link to a voice recording in an .OGG container encoded with OPUS.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="InlineQueryResultArticle.html#pyrogram.types.InlineQueryResultArticle" title="pyrogram.types.InlineQueryResultArticle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InlineQueryResultArticle</span></code></a></p></td>
+<td><p>Link to an article or web page.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="InlineQueryResultContact.html#pyrogram.types.InlineQueryResultContact" title="pyrogram.types.InlineQueryResultContact"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InlineQueryResultContact</span></code></a></p></td>
+<td><p>Contact with a phone number</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="InlineQueryResultLocation.html#pyrogram.types.InlineQueryResultLocation" title="pyrogram.types.InlineQueryResultLocation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InlineQueryResultLocation</span></code></a></p></td>
+<td><p>A location on a map.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="InlineQueryResultVenue.html#pyrogram.types.InlineQueryResultVenue" title="pyrogram.types.InlineQueryResultVenue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InlineQueryResultVenue</span></code></a></p></td>
+<td><p>A venue.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="inputmessagecontent">
+<h2>InputMessageContent<a class="headerlink" href="#inputmessagecontent" title="Link to this heading">#</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="InputMessageContent.html#pyrogram.types.InputMessageContent" title="pyrogram.types.InputMessageContent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InputMessageContent</span></code></a></p></td>
+<td><p>Content of a message to be sent as a result of an inline query.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="InputTextMessageContent.html#pyrogram.types.InputTextMessageContent" title="pyrogram.types.InputTextMessageContent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InputTextMessageContent</span></code></a></p></td>
+<td><p>Content of a text message to be sent as the result of an inline query.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="InputLocationMessageContent.html#pyrogram.types.InputLocationMessageContent" title="pyrogram.types.InputLocationMessageContent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InputLocationMessageContent</span></code></a></p></td>
+<td><p>Content of a location message to be sent as the result of an inline query.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="InputVenueMessageContent.html#pyrogram.types.InputVenueMessageContent" title="pyrogram.types.InputVenueMessageContent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InputVenueMessageContent</span></code></a></p></td>
+<td><p>Content of a venue message to be sent as the result of an inline query.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="InputContactMessageContent.html#pyrogram.types.InputContactMessageContent" title="pyrogram.types.InputContactMessageContent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InputContactMessageContent</span></code></a></p></td>
+<td><p>Content of a contact message to be sent as the result of an inline query.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="InputInvoiceMessageContent.html#pyrogram.types.InputInvoiceMessageContent" title="pyrogram.types.InputInvoiceMessageContent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InputInvoiceMessageContent</span></code></a></p></td>
+<td><p>Content of an invoice message to be sent as the result of an inline query.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="authorization">
+<h2>Authorization<a class="headerlink" href="#authorization" title="Link to this heading">#</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="ActiveSession.html#pyrogram.types.ActiveSession" title="pyrogram.types.ActiveSession"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ActiveSession</span></code></a></p></td>
+<td><p>Contains information about one session in a Telegram application used by the current user.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ActiveSessions.html#pyrogram.types.ActiveSessions" title="pyrogram.types.ActiveSessions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ActiveSessions</span></code></a></p></td>
+<td><p>Contains a list of sessions</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="SentCode.html#pyrogram.types.SentCode" title="pyrogram.types.SentCode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SentCode</span></code></a></p></td>
+<td><p>Contains info on a sent confirmation code.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="TermsOfService.html#pyrogram.types.TermsOfService" title="pyrogram.types.TermsOfService"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TermsOfService</span></code></a></p></td>
+<td><p>Telegram's Terms of Service returned by <a class="reference internal" href="../methods/sign_in.html#pyrogram.Client.sign_in" title="pyrogram.Client.sign_in"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sign_in()</span></code></a>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="payments">
+<h2>Payments<a class="headerlink" href="#payments" title="Link to this heading">#</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="BusinessConnection.html#pyrogram.types.BusinessConnection" title="pyrogram.types.BusinessConnection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BusinessConnection</span></code></a></p></td>
+<td><p>Describes the connection of the bot with a business account.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="BusinessIntro.html#pyrogram.types.BusinessIntro" title="pyrogram.types.BusinessIntro"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BusinessIntro</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>, <em>optional</em>) -- Title text of the business intro</p></li>
+</ul>
+</dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="BusinessLocation.html#pyrogram.types.BusinessLocation" title="pyrogram.types.BusinessLocation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BusinessLocation</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) -- Address of the business</p></li>
+</ul>
+</dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="BusinessOpeningHours.html#pyrogram.types.BusinessOpeningHours" title="pyrogram.types.BusinessOpeningHours"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BusinessOpeningHours</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time_zone_name</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) -- Unique name of the time zone for which the opening hours are defined</p></li>
+</ul>
+</dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="BusinessOpeningHoursInterval.html#pyrogram.types.BusinessOpeningHoursInterval" title="pyrogram.types.BusinessOpeningHoursInterval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BusinessOpeningHoursInterval</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>opening_minute</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) -- The minute's sequence number in a week, starting on Monday, marking the start of the time interval during which the business is open; 0 - 7 * 24 * 60</p></li>
+</ul>
+</dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="CollectibleItemInfo.html#pyrogram.types.CollectibleItemInfo" title="pyrogram.types.CollectibleItemInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CollectibleItemInfo</span></code></a></p></td>
+<td><p>Contains information about a collectible item and its last purchase.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="LabeledPrice.html#pyrogram.types.LabeledPrice" title="pyrogram.types.LabeledPrice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LabeledPrice</span></code></a></p></td>
+<td><p>This object represents a portion of the price for goods or services.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="Invoice.html#pyrogram.types.Invoice" title="pyrogram.types.Invoice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Invoice</span></code></a></p></td>
+<td><p>This object contains basic information about an invoice.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ShippingAddress.html#pyrogram.types.ShippingAddress" title="pyrogram.types.ShippingAddress"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShippingAddress</span></code></a></p></td>
+<td><p>This object represents a shipping address.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="OrderInfo.html#pyrogram.types.OrderInfo" title="pyrogram.types.OrderInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OrderInfo</span></code></a></p></td>
+<td><p>This object represents information about an order.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ShippingOption.html#pyrogram.types.ShippingOption" title="pyrogram.types.ShippingOption"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShippingOption</span></code></a></p></td>
+<td><p>This object represents one shipping option.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="PaymentForm.html#pyrogram.types.PaymentForm" title="pyrogram.types.PaymentForm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PaymentForm</span></code></a></p></td>
+<td><p>This object contains basic information about an payment form.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="SuccessfulPayment.html#pyrogram.types.SuccessfulPayment" title="pyrogram.types.SuccessfulPayment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SuccessfulPayment</span></code></a></p></td>
+<td><p>This object contains basic information about a successful payment.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="RefundedPayment.html#pyrogram.types.RefundedPayment" title="pyrogram.types.RefundedPayment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RefundedPayment</span></code></a></p></td>
+<td><p>This object contains basic information about a refunded payment.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ShippingQuery.html#pyrogram.types.ShippingQuery" title="pyrogram.types.ShippingQuery"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShippingQuery</span></code></a></p></td>
+<td><p>This object contains information about an incoming shipping query.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="PreCheckoutQuery.html#pyrogram.types.PreCheckoutQuery" title="pyrogram.types.PreCheckoutQuery"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PreCheckoutQuery</span></code></a></p></td>
+<td><p>This object contains information about an incoming pre-checkout query.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+
+            </article>
+        </div>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="Message.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Message</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../methods/save_file.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">save_file()</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://Pyrogram.t.me" aria-label="Telegram Channel"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z"></path></svg></a>
+              <a class="muted-link " href="https://github.com/TelegramPlayGround/pyrogram/tree/36a9a44" aria-label="GitHub"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Available Types</a><ul>
+<li><a class="reference internal" href="#messages-media">Messages &amp; Media</a></li>
+<li><a class="reference internal" href="#users-chats">Users &amp; Chats</a></li>
+<li><a class="reference internal" href="#bot-keyboards">Bot keyboards</a></li>
+<li><a class="reference internal" href="#bot-commands">Bot commands</a></li>
+<li><a class="reference internal" href="#chat-forum-topics">Chat Forum Topics</a></li>
+<li><a class="reference internal" href="#input-media">Input Media</a></li>
+<li><a class="reference internal" href="#input-paid-media">Input Paid Media</a></li>
+<li><a class="reference internal" href="#inline-mode">Inline Mode</a></li>
+<li><a class="reference internal" href="#inputmessagecontent">InputMessageContent</a></li>
+<li><a class="reference internal" href="#authorization">Authorization</a></li>
+<li><a class="reference internal" href="#payments">Payments</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=3b5cce75"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=a56c686a"></script>
+    </body>
+</html>

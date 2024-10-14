@@ -1,0 +1,2603 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark">
+
+    <!-- site_verification property must be present, but @content could be empty (no IVBot-side verification for now?) -->
+    <meta property="tg:site_verification" content="g7j8/rPFXfhyrq5q0QQV7EsYWv4=">
+    <!-- published_time property must be present, but you could leave @content empty if $published_date isn't needed -->
+    <meta property="article:published_time" content="">
+    <meta property="article:modified_time" content="">
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="https://t.me/PyroTGFork/2" />
+    <meta property="article:author" content="@PyroTGFork" />
+    <meta property="telegram:channel" content="@PyroTGFork" /><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="401 - Unauthorized" href="unauthorized.html" /><link rel="prev" title="303 - SeeOther" href="see-other.html" />
+
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/><!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
+        <title>400 - BadRequest - Fork Pyrogram Documentation 2.1.33.11-TL-190</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/all.min.css?v=b84cc7f6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=e85a6dcb" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<!--
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+-->
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Fork Pyrogram Documentation 2.1.33.11-TL-190</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../_static/pyrogram.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Fork Pyrogram Documentation 2.1.33.11-TL-190</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/install.html">Install Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../start/setup.html">Project Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../start/auth.html">Authorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../start/invoking.html">Invoking Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../start/updates.html">Handling Updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../start/errors.html">Error Handling</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../start/examples/index.html">Examples</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../start/examples/hello_world.html">hello_world</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../start/examples/echo_bot.html">echo_bot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../start/examples/tg_business_echo_bot.html">business_echo_bot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../start/examples/welcome_bot.html">welcome_bot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../start/examples/get_chat_history.html">get_history</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../start/examples/get_chat_members.html">get_chat_members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../start/examples/get_dialogs.html">get_dialogs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../start/examples/callback_queries.html">callback_queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../start/examples/inline_queries.html">inline_queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../start/examples/use_inline_bots.html">use_inline_bots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../start/examples/bot_keyboards.html">bot_keyboards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../start/examples/send_voice.html">send_voice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../start/examples/raw_updates.html">raw_updates</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../client.html">Pyrogram Client</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../methods/index.html">Available Methods</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Available Methods</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../methods/run.html">run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/start.html">start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/stop.html">stop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/restart.html">restart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/export_session_string.html">export_session_string</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/add_handler.html">add_handler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/remove_handler.html">remove_handler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/stop_transmission.html">stop_transmission</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_parse_mode.html">set_parse_mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/idle.html">idle()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/compose.html">compose()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/initialize.html">initialize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/sign_up.html">sign_up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/accept_terms_of_service.html">accept_terms_of_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/sign_in.html">sign_in</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/sign_in_bot.html">sign_in_bot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/connect.html">connect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_code.html">send_code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/resend_code.html">resend_code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/recover_password.html">recover_password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_recovery_code.html">send_recovery_code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_password_hint.html">get_password_hint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/check_password.html">check_password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/log_out.html">log_out</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/disconnect.html">disconnect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/terminate.html">terminate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_me.html">get_me</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_active_sessions.html">get_active_sessions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/terminate_session.html">terminate_session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/terminate_all_other_sessions.html">terminate_all_other_sessions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_message.html">send_message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/forward_messages.html">forward_messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/copy_message.html">copy_message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_photo.html">send_photo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_audio.html">send_audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_document.html">send_document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_video.html">send_video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_animation.html">send_animation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_voice.html">send_voice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_video_note.html">send_video_note</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_cached_media.html">send_cached_media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_paid_media.html">send_paid_media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_media_group.html">send_media_group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_media_group.html">get_media_group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/copy_media_group.html">copy_media_group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_location.html">send_location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_venue.html">send_venue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_contact.html">send_contact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_poll.html">send_poll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_dice.html">send_dice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_chat_action.html">send_chat_action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/add_paid_message_reaction.html">add_paid_message_reaction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_reaction.html">set_reaction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/download_media.html">download_media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/stream_media.html">stream_media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/edit_message_text.html">edit_message_text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/edit_inline_text.html">edit_inline_text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/edit_message_caption.html">edit_message_caption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/edit_inline_caption.html">edit_inline_caption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/edit_message_media.html">edit_message_media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/edit_inline_media.html">edit_inline_media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/edit_message_reply_markup.html">edit_message_reply_markup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/edit_inline_reply_markup.html">edit_inline_reply_markup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/edit_cached_media.html">edit_cached_media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/stop_poll.html">stop_poll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/delete_messages.html">delete_messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_sponsored_messages.html">get_chat_sponsored_messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_history.html">get_chat_history</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_history_count.html">get_chat_history_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/read_chat_history.html">read_chat_history</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_messages.html">get_messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/view_messages.html">view_messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_discussion_message.html">get_discussion_message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_discussion_replies.html">get_discussion_replies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_discussion_replies_count.html">get_discussion_replies_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/search_global.html">search_global</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/search_global_count.html">search_global_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/search_messages.html">search_messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/search_messages_count.html">search_messages_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/search_public_messages_by_tag.html">search_public_messages_by_tag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/count_public_messages_by_tag.html">count_public_messages_by_tag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/vote_poll.html">vote_poll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/retract_vote.html">retract_vote</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/translate_text.html">translate_text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/translate_message_text.html">translate_message_text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/ban_chat_member.html">ban_chat_member</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/unban_chat_member.html">unban_chat_member</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/restrict_chat_member.html">restrict_chat_member</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/promote_chat_member.html">promote_chat_member</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_administrator_title.html">set_administrator_title</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_chat_permissions.html">set_chat_permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_chat_photo.html">set_chat_photo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/delete_chat_photo.html">delete_chat_photo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_chat_title.html">set_chat_title</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_chat_description.html">set_chat_description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/pin_chat_message.html">pin_chat_message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/unpin_chat_message.html">unpin_chat_message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/unpin_all_chat_messages.html">unpin_all_chat_messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/search_chats.html">search_chats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/join_chat.html">join_chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/leave_chat.html">leave_chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat.html">get_chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_members.html">get_chat_members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_members_count.html">get_chat_members_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_member.html">get_chat_member</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_dialogs.html">get_dialogs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_dialogs_count.html">get_dialogs_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_chat_username.html">set_chat_username</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_nearby_chats.html">get_nearby_chats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/archive_chats.html">archive_chats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/unarchive_chats.html">unarchive_chats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/add_chat_members.html">add_chat_members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/create_channel.html">create_channel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/create_group.html">create_group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/create_supergroup.html">create_supergroup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/delete_channel.html">delete_channel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/delete_supergroup.html">delete_supergroup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/delete_user_history.html">delete_user_history</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_slow_mode.html">set_slow_mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_chat_message_auto_delete_time.html">set_chat_message_auto_delete_time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/mark_chat_unread.html">mark_chat_unread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_event_log.html">get_chat_event_log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_online_count.html">get_chat_online_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_send_as_chats.html">get_send_as_chats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_send_as_chat.html">set_send_as_chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_chat_protected_content.html">set_chat_protected_content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_created_chats.html">get_created_chats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/transfer_chat_ownership.html">transfer_chat_ownership</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/export_chat_invite_link.html">export_chat_invite_link</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/create_chat_invite_link.html">create_chat_invite_link</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/edit_chat_invite_link.html">edit_chat_invite_link</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/revoke_chat_invite_link.html">revoke_chat_invite_link</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_admin_invite_links.html">get_chat_admin_invite_links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_admin_invite_links_count.html">get_chat_admin_invite_links_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_admins_with_invite_links.html">get_chat_admins_with_invite_links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_invite_link.html">get_chat_invite_link</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_invite_link_joiners.html">get_chat_invite_link_joiners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_invite_link_joiners_count.html">get_chat_invite_link_joiners_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/delete_chat_invite_link.html">delete_chat_invite_link</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/delete_chat_admin_invite_links.html">delete_chat_admin_invite_links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_join_requests.html">get_chat_join_requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/approve_chat_join_request.html">approve_chat_join_request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/approve_all_chat_join_requests.html">approve_all_chat_join_requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/decline_chat_join_request.html">decline_chat_join_request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/decline_all_chat_join_requests.html">decline_all_chat_join_requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_forum_topic_icon_stickers.html">get_forum_topic_icon_stickers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/create_forum_topic.html">create_forum_topic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/edit_forum_topic.html">edit_forum_topic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/close_forum_topic.html">close_forum_topic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/reopen_forum_topic.html">reopen_forum_topic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/delete_forum_topic.html">delete_forum_topic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/hide_forum_topic.html">hide_forum_topic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/unhide_forum_topic.html">unhide_forum_topic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_forum_topics.html">get_forum_topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_forum_topic.html">get_forum_topic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/toggle_forum_topic_is_pinned.html">toggle_forum_topic_is_pinned</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_photos.html">get_chat_photos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_photos_count.html">get_chat_photos_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_users.html">get_users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_profile_photo.html">set_profile_photo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/delete_profile_photos.html">delete_profile_photos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_username.html">set_username</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/update_profile.html">update_profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/block_user.html">block_user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/unblock_user.html">unblock_user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_common_chats.html">get_common_chats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_default_emoji_statuses.html">get_default_emoji_statuses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_emoji_status.html">set_emoji_status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_birthdate.html">set_birthdate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_personal_chat.html">set_personal_chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/delete_account.html">delete_account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/update_status.html">update_status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/add_contact.html">add_contact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/delete_contacts.html">delete_contacts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/import_contacts.html">import_contacts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_contacts.html">get_contacts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_contacts_count.html">get_contacts_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/enable_cloud_password.html">enable_cloud_password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/change_cloud_password.html">change_cloud_password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/remove_cloud_password.html">remove_cloud_password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/answer_callback_query.html">answer_callback_query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/request_callback_answer.html">request_callback_answer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_bot_commands.html">set_bot_commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/delete_bot_commands.html">delete_bot_commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_bot_commands.html">get_bot_commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_bot_name.html">set_bot_name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_bot_name.html">get_bot_name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_bot_info_description.html">set_bot_info_description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_bot_info_description.html">get_bot_info_description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_bot_info_short_description.html">set_bot_info_short_description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_bot_info_short_description.html">get_bot_info_short_description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_chat_menu_button.html">set_chat_menu_button</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_chat_menu_button.html">get_chat_menu_button</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_bot_default_privileges.html">set_bot_default_privileges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_bot_default_privileges.html">get_bot_default_privileges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_game.html">send_game</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/set_game_score.html">set_game_score</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_game_high_scores.html">get_game_high_scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/answer_inline_query.html">answer_inline_query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_inline_bot_results.html">get_inline_bot_results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_inline_bot_result.html">send_inline_bot_result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/answer_web_app_query.html">answer_web_app_query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_web_app_custom_request.html">send_web_app_custom_request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_sticker.html">send_sticker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_custom_emoji_stickers.html">get_custom_emoji_stickers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_message_effects.html">get_message_effects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_stickers.html">get_stickers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_stories.html">get_stories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_invoice.html">send_invoice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/create_invoice_link.html">create_invoice_link</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/answer_shipping_query.html">answer_shipping_query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/answer_pre_checkout_query.html">answer_pre_checkout_query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/refund_star_payment.html">refund_star_payment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_business_connection.html">get_business_connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_collectible_item_info.html">get_collectible_item_info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_payment_form.html">get_payment_form</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/send_payment_form.html">send_payment_form</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/create_video_chat.html">create_video_chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/discard_group_call.html">discard_group_call</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_video_chat_rtmp_url.html">get_video_chat_rtmp_url</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/invite_group_call_participants.html">invite_group_call_participants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/load_group_call_participants.html">load_group_call_participants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/invoke.html">invoke</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/resolve_peer.html">resolve_peer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/get_file.html">get_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../methods/save_file.html">save_file</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../types/index.html">Available Types</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Available Types</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../types/Message.html">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/MessageEntity.html">MessageEntity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/TextQuote.html">TextQuote</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ExternalReplyInfo.html">ExternalReplyInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ReplyParameters.html">ReplyParameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/MessageOrigin.html">MessageOrigin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/MessageOriginUser.html">MessageOriginUser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/MessageOriginHiddenUser.html">MessageOriginHiddenUser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/MessageOriginChat.html">MessageOriginChat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/MessageOriginChannel.html">MessageOriginChannel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/MessageImportInfo.html">MessageImportInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/Photo.html">Photo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/AlternativeVideo.html">AlternativeVideo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/Animation.html">Animation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/Audio.html">Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/Document.html">Document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/Story.html">Story</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/Video.html">Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/VideoNote.html">VideoNote</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/Voice.html">Voice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/PaidMediaInfo.html">PaidMediaInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/PaidMedia.html">PaidMedia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/PaidMediaPreview.html">PaidMediaPreview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/PaidMediaPhoto.html">PaidMediaPhoto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/PaidMediaVideo.html">PaidMediaVideo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/Contact.html">Contact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/Dice.html">Dice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/PollOption.html">PollOption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InputPollOption.html">InputPollOption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/Poll.html">Poll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/Location.html">Location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/Venue.html">Venue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/WebAppData.html">WebAppData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/MessageAutoDeleteTimerChanged.html">MessageAutoDeleteTimerChanged</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ChatBoostAdded.html">ChatBoostAdded</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ChatBackground.html">ChatBackground</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/Game.html">Game</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/GiftCode.html">GiftCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/GiftedPremium.html">GiftedPremium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/GiftedStars.html">GiftedStars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/Giveaway.html">Giveaway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/GiveawayCreated.html">GiveawayCreated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/GiveawayCompleted.html">GiveawayCompleted</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/GiveawayWinners.html">GiveawayWinners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/MessageEffect.html">MessageEffect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/MessageReactionCountUpdated.html">MessageReactionCountUpdated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/MessageReactionUpdated.html">MessageReactionUpdated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/MessageReactions.html">MessageReactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/Reaction.html">Reaction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ReactionCount.html">ReactionCount</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ReactionType.html">ReactionType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ReactionTypeEmoji.html">ReactionTypeEmoji</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ReactionTypeCustomEmoji.html">ReactionTypeCustomEmoji</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ReactionTypePaid.html">ReactionTypePaid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/Thumbnail.html">Thumbnail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/TranslatedText.html">TranslatedText</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/StrippedThumbnail.html">StrippedThumbnail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/SponsoredMessage.html">SponsoredMessage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/Sticker.html">Sticker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/WebPage.html">WebPage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ContactRegistered.html">ContactRegistered</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ScreenshotTaken.html">ScreenshotTaken</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/DraftMessage.html">DraftMessage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/Birthdate.html">Birthdate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/User.html">User</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/Chat.html">Chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/Username.html">Username</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ChatShared.html">ChatShared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/WriteAccessAllowed.html">WriteAccessAllowed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/UsersShared.html">UsersShared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ChatAdminWithInviteLinks.html">ChatAdminWithInviteLinks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ChatColor.html">ChatColor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ChatEvent.html">ChatEvent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ChatEventFilter.html">ChatEventFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ChatInviteLink.html">ChatInviteLink</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ChatJoiner.html">ChatJoiner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ChatJoinRequest.html">ChatJoinRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ChatMember.html">ChatMember</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ChatMemberUpdated.html">ChatMemberUpdated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ChatPermissions.html">ChatPermissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ChatPhoto.html">ChatPhoto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ChatPrivileges.html">ChatPrivileges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ChatReactions.html">ChatReactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/VideoChatScheduled.html">VideoChatScheduled</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/VideoChatStarted.html">VideoChatStarted</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/VideoChatEnded.html">VideoChatEnded</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/VideoChatParticipantsInvited.html">VideoChatParticipantsInvited</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/Dialog.html">Dialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/EmojiStatus.html">EmojiStatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/GroupCallParticipant.html">GroupCallParticipant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InviteLinkImporter.html">InviteLinkImporter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/Restriction.html">Restriction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/RtmpUrl.html">RtmpUrl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/CallbackGame.html">CallbackGame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/CallbackQuery.html">CallbackQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ForceReply.html">ForceReply</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/GameHighScore.html">GameHighScore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InlineKeyboardButton.html">InlineKeyboardButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InlineKeyboardMarkup.html">InlineKeyboardMarkup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/KeyboardButton.html">KeyboardButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/KeyboardButtonPollType.html">KeyboardButtonPollType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/KeyboardButtonPollTypeRegular.html">KeyboardButtonPollTypeRegular</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/KeyboardButtonPollTypeQuiz.html">KeyboardButtonPollTypeQuiz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/KeyboardButtonRequestChat.html">KeyboardButtonRequestChat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/KeyboardButtonRequestUsers.html">KeyboardButtonRequestUsers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ReplyKeyboardMarkup.html">ReplyKeyboardMarkup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ReplyKeyboardRemove.html">ReplyKeyboardRemove</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/LoginUrl.html">LoginUrl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/WebAppInfo.html">WebAppInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/MenuButton.html">MenuButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/MenuButtonCommands.html">MenuButtonCommands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/MenuButtonWebApp.html">MenuButtonWebApp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/MenuButtonDefault.html">MenuButtonDefault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/SentWebAppMessage.html">SentWebAppMessage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/SwitchInlineQueryChosenChat.html">SwitchInlineQueryChosenChat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/BotCommand.html">BotCommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/BotCommandScope.html">BotCommandScope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/BotCommandScopeAllChatAdministrators.html">BotCommandScopeAllChatAdministrators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/BotCommandScopeAllGroupChats.html">BotCommandScopeAllGroupChats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/BotCommandScopeAllPrivateChats.html">BotCommandScopeAllPrivateChats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/BotCommandScopeChat.html">BotCommandScopeChat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/BotCommandScopeChatAdministrators.html">BotCommandScopeChatAdministrators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/BotCommandScopeChatMember.html">BotCommandScopeChatMember</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/BotCommandScopeDefault.html">BotCommandScopeDefault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ForumTopic.html">ForumTopic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ForumTopicCreated.html">ForumTopicCreated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ForumTopicClosed.html">ForumTopicClosed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ForumTopicEdited.html">ForumTopicEdited</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ForumTopicReopened.html">ForumTopicReopened</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/GeneralForumTopicHidden.html">GeneralForumTopicHidden</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/GeneralForumTopicUnhidden.html">GeneralForumTopicUnhidden</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InputMedia.html">InputMedia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InputMediaPhoto.html">InputMediaPhoto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InputMediaVideo.html">InputMediaVideo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InputMediaAudio.html">InputMediaAudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InputMediaAnimation.html">InputMediaAnimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InputMediaDocument.html">InputMediaDocument</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InputPhoneContact.html">InputPhoneContact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/LinkPreviewOptions.html">LinkPreviewOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InputPaidMedia.html">InputPaidMedia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InputPaidMediaPhoto.html">InputPaidMediaPhoto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InputPaidMediaVideo.html">InputPaidMediaVideo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ChosenInlineResult.html">ChosenInlineResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InlineQuery.html">InlineQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InlineQueryResult.html">InlineQueryResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InlineQueryResultCachedAnimation.html">InlineQueryResultCachedAnimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InlineQueryResultCachedAudio.html">InlineQueryResultCachedAudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InlineQueryResultCachedDocument.html">InlineQueryResultCachedDocument</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InlineQueryResultCachedPhoto.html">InlineQueryResultCachedPhoto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InlineQueryResultCachedSticker.html">InlineQueryResultCachedSticker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InlineQueryResultCachedVideo.html">InlineQueryResultCachedVideo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InlineQueryResultCachedVoice.html">InlineQueryResultCachedVoice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InlineQueryResultAnimation.html">InlineQueryResultAnimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InlineQueryResultAudio.html">InlineQueryResultAudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InlineQueryResultDocument.html">InlineQueryResultDocument</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InlineQueryResultPhoto.html">InlineQueryResultPhoto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InlineQueryResultVideo.html">InlineQueryResultVideo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InlineQueryResultVoice.html">InlineQueryResultVoice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InlineQueryResultArticle.html">InlineQueryResultArticle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InlineQueryResultContact.html">InlineQueryResultContact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InlineQueryResultLocation.html">InlineQueryResultLocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InlineQueryResultVenue.html">InlineQueryResultVenue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InputMessageContent.html">InputMessageContent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InputTextMessageContent.html">InputTextMessageContent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InputLocationMessageContent.html">InputLocationMessageContent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InputVenueMessageContent.html">InputVenueMessageContent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InputContactMessageContent.html">InputContactMessageContent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/InputInvoiceMessageContent.html">InputInvoiceMessageContent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ActiveSession.html">ActiveSession</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ActiveSessions.html">ActiveSessions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/SentCode.html">SentCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/TermsOfService.html">TermsOfService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/BusinessConnection.html">BusinessConnection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/BusinessIntro.html">BusinessIntro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/BusinessLocation.html">BusinessLocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/BusinessOpeningHours.html">BusinessOpeningHours</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/BusinessOpeningHoursInterval.html">BusinessOpeningHoursInterval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/CollectibleItemInfo.html">CollectibleItemInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/LabeledPrice.html">LabeledPrice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/Invoice.html">Invoice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ShippingAddress.html">ShippingAddress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/OrderInfo.html">OrderInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ShippingOption.html">ShippingOption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/PaymentForm.html">PaymentForm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/SuccessfulPayment.html">SuccessfulPayment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/RefundedPayment.html">RefundedPayment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/ShippingQuery.html">ShippingQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../types/PreCheckoutQuery.html">PreCheckoutQuery</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../bound-methods/index.html">Bound Methods</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Bound Methods</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.click.html">click</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.delete.html">delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.download.html">download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.forward.html">forward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.copy.html">copy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.pin.html">pin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.unpin.html">unpin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.edit.html">edit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.edit_text.html">edit_text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.edit_cached_media.html">edit_cached_media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.edit_caption.html">edit_caption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.edit_media.html">edit_media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.edit_reply_markup.html">edit_reply_markup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply.html">reply</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_text.html">reply_text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_animation.html">reply_animation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_audio.html">reply_audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_cached_media.html">reply_cached_media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_chat_action.html">reply_chat_action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_contact.html">reply_contact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_document.html">reply_document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_game.html">reply_game</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_inline_bot_result.html">reply_inline_bot_result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_location.html">reply_location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_media_group.html">reply_media_group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_photo.html">reply_photo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_poll.html">reply_poll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_sticker.html">reply_sticker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_venue.html">reply_venue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_video.html">reply_video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_video_note.html">reply_video_note</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.reply_voice.html">reply_voice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.get_media_group.html">get_media_group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.react.html">react</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.read.html">read</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.view.html">view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.translate.html">translate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.pay.html">pay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Message.star.html">star</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.archive.html">archive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.unarchive.html">unarchive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.set_title.html">set_title</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.set_description.html">set_description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.set_photo.html">set_photo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.ban_member.html">ban_member</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.unban_member.html">unban_member</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.restrict_member.html">restrict_member</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.promote_member.html">promote_member</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.get_member.html">get_member</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.get_members.html">get_members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.add_members.html">add_members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.join.html">join</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.leave.html">leave</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.mark_unread.html">mark_unread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.set_protected_content.html">set_protected_content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.unpin_all_messages.html">unpin_all_messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Chat.set_message_auto_delete_time.html">set_message_auto_delete_time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/User.archive.html">archive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/User.unarchive.html">unarchive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/User.block.html">block</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/User.unblock.html">unblock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/CallbackQuery.answer.html">answer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/CallbackQuery.edit_message_text.html">edit_message_text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/CallbackQuery.edit_message_caption.html">edit_message_caption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/CallbackQuery.edit_message_media.html">edit_message_media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/CallbackQuery.edit_message_reply_markup.html">edit_message_reply_markup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/InlineQuery.answer.html">answer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/PreCheckoutQuery.answer.html">answer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/ShippingQuery.answer.html">answer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/ChatJoinRequest.approve.html">approve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/ChatJoinRequest.decline.html">decline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Story.react.html">react</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/Story.download.html">download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bound-methods/ActiveSession.terminate.html">terminate</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../enums/index.html">Enumerations</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Enumerations</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../enums/ChatAction.html">ChatAction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/ChatEventAction.html">ChatEventAction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/ChatMemberStatus.html">ChatMemberStatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/ChatMembersFilter.html">ChatMembersFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/ChatType.html">ChatType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/ChatJoinType.html">ChatJoinType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/ClientPlatform.html">ClientPlatform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/MessageEntityType.html">MessageEntityType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/MessageMediaType.html">MessageMediaType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/MessageServiceType.html">MessageServiceType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/MessagesFilter.html">MessagesFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/ParseMode.html">ParseMode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/PollType.html">PollType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/ProfileColor.html">ProfileColor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/AccentColor.html">AccentColor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/SentCodeType.html">SentCodeType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/NextCodeType.html">NextCodeType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enums/UserStatus.html">UserStatus</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../handlers.html">Update Handlers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../decorators.html">Decorators</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">RPC Errors</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of RPC Errors</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="see-other.html">303 - SeeOther</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">400 - BadRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unauthorized.html">401 - Unauthorized</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forbidden.html">403 - Forbidden</a></li>
+<li class="toctree-l2"><a class="reference internal" href="not-acceptable.html">406 - NotAcceptable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flood.html">420 - Flood</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internal-server-error.html">500 - InternalServerError</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../filters.html">Update Filters</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Topic Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/use-filters.html">Using Filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/create-filters.html">Creating Filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/more-on-updates.html">More on Updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/client-settings.html">Client Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/speedups.html">Speedups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/text-formatting.html">Text Formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/storage-engines.html">Storage Engines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/synchronous.html">Synchronous Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/smart-plugins.html">Smart Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/serializing.html">Object Serialization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/proxy.html">Proxy Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/scheduling.html">Scheduling Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/mtproto-vs-botapi.html">MTProto vs. Bot API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/test-servers.html">Test Servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/message-identifiers.html">Message identifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/advanced-usage.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/voice-calls.html">Voice Calls</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../faq/index.html">Frequently Asked Questions</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Frequently Asked Questions</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/why-is-the-api-key-needed-for-bots.html">Why is the API key needed for bots?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/how-to-use-webhooks.html">How to use webhooks?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/using-the-same-file-id-across-different-accounts.html">Using the same file_id across different accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/using-multiple-clients-at-once-on-the-same-account.html">Using multiple clients at once on the same account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/client-started-but-nothing-happens.html">Client started, but nothing happens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/what-are-the-ip-addresses-of-telegram-data-centers.html">What are the IP addresses of Telegram Data Centers?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/migrating-the-account-to-another-data-center.html">Migrating the account to another data center</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/why-is-the-client-reacting-slowly-in-supergroups-channels.html">Why is the client reacting slowly in supergroups/channels?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/peer-id-invalid-error.html">PEER_ID_INVALID error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/code-hangs-when-calling-stop-restart-add-remove-handler.html">Code hangs when calling stop, restart, add/remove_handler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/unicodeencodeerror-codec-cant-encode.html">UnicodeEncodeError: ‘…’ codec can’t encode …</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/uploading-with-urls-gives-error-webpage-curl-failed.html">Uploading with URLs gives error WEBPAGE_CURL_FAILED</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/sqlite3-operationalerror-database-is-locked.html">sqlite3.OperationalError: database is locked</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/sqlite3-interfaceerror-error-binding-parameter.html">sqlite3.InterfaceError: Error binding parameter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/socket-send-oserror-timeouterror-connection-lost-reset.html">socket.send(), OSError(), TimeoutError(), Connection lost/reset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/how-to-avoid-flood-waits.html">How to avoid Flood Waits?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/the-account-has-been-limited-deactivated.html">The account has been limited/deactivated</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../support.html">Support Pyrogram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../releases/index.html">Release Notes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Telegram Raw API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://telegramplayground.github.io/schema.tl/">TL Schema Explorer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://telegramplayground.github.io/TG-APIs/TL/diff/tdesktop.html">TL Diff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../telegram/functions/index.html">Raw Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../telegram/types/index.html">Raw Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../telegram/base/index.html">Raw Base</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <div class="article">
+            <article role="main" id="furo-main-content" class="article__content">
+            <section id="badrequest">
+<h1>400 - BadRequest<a class="headerlink" href="#badrequest" title="Link to this heading">#</a></h1>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>id</p></th>
+<th class="head"><p>message</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ABOUT_TOO_LONG</p></td>
+<td><p>About string too long.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ACCESS_TOKEN_EXPIRED</p></td>
+<td><p>Access token expired.</p></td>
+</tr>
+<tr class="row-even"><td><p>ACCESS_TOKEN_INVALID</p></td>
+<td><p>Access token invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ADDRESS_INVALID</p></td>
+<td><p>The specified geopoint address is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>ADMINS_TOO_MUCH</p></td>
+<td><p>There are too many admins.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ADMIN_ID_INVALID</p></td>
+<td><p>The specified admin ID is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>ADMIN_RANK_EMOJI_NOT_ALLOWED</p></td>
+<td><p>An admin rank cannot contain emojis.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ADMIN_RANK_INVALID</p></td>
+<td><p>The specified admin rank is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>ADMIN_RIGHTS_EMPTY</p></td>
+<td><p>The chatAdminRights constructor passed in keyboardButtonRequestPeer.peer_type.user_admin_rights has no rights set (i.e. flags is 0).</p></td>
+</tr>
+<tr class="row-odd"><td><p>AD_EXPIRED</p></td>
+<td><p>The ad has expired (too old or not found).</p></td>
+</tr>
+<tr class="row-even"><td><p>ALBUM_PHOTOS_TOO_MANY</p></td>
+<td><p>You have uploaded too many profile photos, delete some before retrying.</p></td>
+</tr>
+<tr class="row-odd"><td><p>API_ID_INVALID</p></td>
+<td><p>API ID invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>API_ID_PUBLISHED_FLOOD</p></td>
+<td><p>This API id was published somewhere, you can’t use it now.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ARTICLE_TITLE_EMPTY</p></td>
+<td><p>The title of the article is empty.</p></td>
+</tr>
+<tr class="row-even"><td><p>AUDIO_CONTENT_URL_EMPTY</p></td>
+<td><p>The remote URL specified in the content field is empty.</p></td>
+</tr>
+<tr class="row-odd"><td><p>AUDIO_TITLE_EMPTY</p></td>
+<td><p>An empty audio title was provided.</p></td>
+</tr>
+<tr class="row-even"><td><p>AUTH_BYTES_INVALID</p></td>
+<td><p>The provided authorization is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>AUTH_TOKEN_ALREADY_ACCEPTED</p></td>
+<td><p>The specified auth token was already accepted.</p></td>
+</tr>
+<tr class="row-even"><td><p>AUTH_TOKEN_EXCEPTION</p></td>
+<td><p>An error occurred while importing the auth token.</p></td>
+</tr>
+<tr class="row-odd"><td><p>AUTH_TOKEN_EXPIRED</p></td>
+<td><p>The authorization token has expired.</p></td>
+</tr>
+<tr class="row-even"><td><p>AUTH_TOKEN_INVALID</p></td>
+<td><p>The specified auth token is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>AUTH_TOKEN_INVALIDX</p></td>
+<td><p>The specified auth token is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>AUTOARCHIVE_NOT_AVAILABLE</p></td>
+<td><p>The autoarchive setting is not available at this time: please check the value of the [autoarchive_setting_available field in client config](<a class="reference external" href="https://core.telegram.org/api/config#client-configuration">https://core.telegram.org/api/config#client-configuration</a>) before calling this method.</p></td>
+</tr>
+<tr class="row-odd"><td><p>BALANCE_TOO_LOW</p></td>
+<td><p>Your stars balance too low</p></td>
+</tr>
+<tr class="row-even"><td><p>BANK_CARD_NUMBER_INVALID</p></td>
+<td><p>The specified card number is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>BANNED_RIGHTS_INVALID</p></td>
+<td><p>You provided some invalid flags in the banned rights.</p></td>
+</tr>
+<tr class="row-even"><td><p>BASE_PORT_LOC_INVALID</p></td>
+<td><p>The base port location is invalid</p></td>
+</tr>
+<tr class="row-odd"><td><p>BIRTHDAY_INVALID</p></td>
+<td><p>The age should be less than 150 year old in Telegram</p></td>
+</tr>
+<tr class="row-even"><td><p>BOOSTS_EMPTY</p></td>
+<td><p>No boost slots were specified.</p></td>
+</tr>
+<tr class="row-odd"><td><p>BOOSTS_REQUIRED</p></td>
+<td><p>The specified channel must first be [boosted by its users](<a class="reference external" href="https://core.telegram.org/api/boost">https://core.telegram.org/api/boost</a>) in order to perform this action.</p></td>
+</tr>
+<tr class="row-even"><td><p>BOOST_NOT_MODIFIED</p></td>
+<td><p>You’re already [boosting](<a class="reference external" href="https://core.telegram.org/api/boost">https://core.telegram.org/api/boost</a>) the specified channel.</p></td>
+</tr>
+<tr class="row-odd"><td><p>BOOST_PEER_INVALID</p></td>
+<td><p>The specified <cite>boost_peer</cite> is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>BOTS_TOO_MUCH</p></td>
+<td><p>There are too many bots in this chat/channel.</p></td>
+</tr>
+<tr class="row-odd"><td><p>BOT_ALREADY_DISABLED</p></td>
+<td><p>The connected business bot was already disabled for the specified peer.</p></td>
+</tr>
+<tr class="row-even"><td><p>BOT_APP_BOT_INVALID</p></td>
+<td><p>The bot_id passed in the inputBotAppShortName constructor is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>BOT_APP_INVALID</p></td>
+<td><p>The specified bot app is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>BOT_APP_SHORTNAME_INVALID</p></td>
+<td><p>The specified bot app short name is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>BOT_BUSINESS_MISSING</p></td>
+<td><p>The specified bot is not a business bot (the [user](<a class="reference external" href="https://core.telegram.org/constructor/user">https://core.telegram.org/constructor/user</a>).`bot_business` flag is not set).</p></td>
+</tr>
+<tr class="row-even"><td><p>BOT_CHANNELS_NA</p></td>
+<td><p>Bots can’t edit admin privileges.</p></td>
+</tr>
+<tr class="row-odd"><td><p>BOT_COMMAND_DESCRIPTION_INVALID</p></td>
+<td><p>The specified command description is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>BOT_COMMAND_INVALID</p></td>
+<td><p>The specified command is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>BOT_DOMAIN_INVALID</p></td>
+<td><p>Bot domain invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>BOT_GAMES_DISABLED</p></td>
+<td><p>Bot games cannot be used in this type of chat</p></td>
+</tr>
+<tr class="row-odd"><td><p>BOT_GROUPS_BLOCKED</p></td>
+<td><p>This bot can’t be added to groups.</p></td>
+</tr>
+<tr class="row-even"><td><p>BOT_INLINE_DISABLED</p></td>
+<td><p>This bot can’t be used in inline mode.</p></td>
+</tr>
+<tr class="row-odd"><td><p>BOT_INVALID</p></td>
+<td><p>This is not a valid bot.</p></td>
+</tr>
+<tr class="row-even"><td><p>BOT_METHOD_INVALID</p></td>
+<td><p>The method can’t be used by bots</p></td>
+</tr>
+<tr class="row-odd"><td><p>BOT_MISSING</p></td>
+<td><p>Only bots can call this method, please use [&#64;stickers](<a class="reference external" href="https://t.me/stickers">https://t.me/stickers</a>) if you’re a user.</p></td>
+</tr>
+<tr class="row-even"><td><p>BOT_NOT_CONNECTED_YET</p></td>
+<td><p>No [business bot](<a class="reference external" href="https://core.telegram.org/api/business#connected-bots">https://core.telegram.org/api/business#connected-bots</a>) is connected to the currently logged in user.</p></td>
+</tr>
+<tr class="row-odd"><td><p>BOT_ONESIDE_NOT_AVAIL</p></td>
+<td><p>Bots can’t pin messages in PM just for themselves.</p></td>
+</tr>
+<tr class="row-even"><td><p>BOT_PAYMENTS_DISABLED</p></td>
+<td><p>Please enable bot payments in botfather before calling this method.</p></td>
+</tr>
+<tr class="row-odd"><td><p>BOT_POLLS_DISABLED</p></td>
+<td><p>Sending polls by bots has been disabled</p></td>
+</tr>
+<tr class="row-even"><td><p>BOT_RESPONSE_TIMEOUT</p></td>
+<td><p>A timeout occurred while fetching data from the bot.</p></td>
+</tr>
+<tr class="row-odd"><td><p>BOT_SCORE_NOT_MODIFIED</p></td>
+<td><p>The score wasn’t modified.</p></td>
+</tr>
+<tr class="row-even"><td><p>BOT_WEBVIEW_DISABLED</p></td>
+<td><p>A webview cannot be opened in the specified conditions: emitted for example if <cite>from_bot_menu</cite> or <cite>url</cite> are set and <cite>peer</cite> is not the chat with the bot.</p></td>
+</tr>
+<tr class="row-odd"><td><p>BROADCAST_ID_INVALID</p></td>
+<td><p>Broadcast ID invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>BROADCAST_PUBLIC_VOTERS_FORBIDDEN</p></td>
+<td><p>You can’t forward polls with public voters.</p></td>
+</tr>
+<tr class="row-odd"><td><p>BROADCAST_REQUIRED</p></td>
+<td><p>This method can only be called on a channel, please use stats.getMegagroupStats for supergroups.</p></td>
+</tr>
+<tr class="row-even"><td><p>BUSINESS_PEER_INVALID</p></td>
+<td><p>Messages can’t be set to the specified peer through the current [business connection](<a class="reference external" href="https://core.telegram.org/api/business#connected-bots">https://core.telegram.org/api/business#connected-bots</a>).</p></td>
+</tr>
+<tr class="row-odd"><td><p>BUSINESS_RECIPIENTS_EMPTY</p></td>
+<td><p>You didn’t set any flag in inputBusinessBotRecipients, thus the bot cannot work with <em>any</em> peer.</p></td>
+</tr>
+<tr class="row-even"><td><p>BUSINESS_WORK_HOURS_EMPTY</p></td>
+<td><p>No work hours were specified.</p></td>
+</tr>
+<tr class="row-odd"><td><p>BUSINESS_WORK_HOURS_PERIOD_INVALID</p></td>
+<td><p>The specified work hours are invalid, see [here »](<a class="reference external" href="https://core.telegram.org/api/business#opening-hours">https://core.telegram.org/api/business#opening-hours</a>) for the exact requirements.</p></td>
+</tr>
+<tr class="row-even"><td><p>BUTTON_COPY_TEXT_INVALID</p></td>
+<td><p>The <cite>copy_text</cite> of one or more of the buttons you provided is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>BUTTON_DATA_INVALID</p></td>
+<td><p>The data of one or more of the buttons you provided is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>BUTTON_ID_INVALID</p></td>
+<td><p>The button_id parameter is invalid</p></td>
+</tr>
+<tr class="row-odd"><td><p>BUTTON_POS_INVALID</p></td>
+<td><p>The position of one of the keyboard buttons is invalid (i.e. a Game or Pay button not in the first position, and so on…).</p></td>
+</tr>
+<tr class="row-even"><td><p>BUTTON_TEXT_INVALID</p></td>
+<td><p>The specified button text is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>BUTTON_TYPE_INVALID</p></td>
+<td><p>The type of one or more of the buttons you provided is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>BUTTON_URL_INVALID</p></td>
+<td><p>Button URL invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>BUTTON_USER_INVALID</p></td>
+<td><p>The user_id passed to inputKeyboardButtonUserProfile is invalid</p></td>
+</tr>
+<tr class="row-even"><td><p>BUTTON_USER_PRIVACY_RESTRICTED</p></td>
+<td><p>The privacy setting of the user specified in a [inputKeyboardButtonUserProfile](/constructor/inputKeyboardButtonUserProfile) button do not allow creating such a button.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CALL_ALREADY_ACCEPTED</p></td>
+<td><p>The call was already accepted.</p></td>
+</tr>
+<tr class="row-even"><td><p>CALL_ALREADY_DECLINED</p></td>
+<td><p>The call was already declined.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CALL_OCCUPY_FAILED</p></td>
+<td><p>The call failed because the user is already making another call.</p></td>
+</tr>
+<tr class="row-even"><td><p>CALL_PEER_INVALID</p></td>
+<td><p>The provided call peer object is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CALL_PROTOCOL_FLAGS_INVALID</p></td>
+<td><p>Call protocol flags invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>CDN_METHOD_INVALID</p></td>
+<td><p>You can’t call this method in a CDN DC.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CHANNELS_ADMIN_LOCATED_TOO_MUCH</p></td>
+<td><p>The user has reached the limit of public geogroups.</p></td>
+</tr>
+<tr class="row-even"><td><p>CHANNELS_ADMIN_PUBLIC_TOO_MUCH</p></td>
+<td><p>You’re admin of too many public channels, make some channels private to change the username of this channel.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CHANNELS_TOO_MUCH</p></td>
+<td><p>You have joined too many channels/supergroups.</p></td>
+</tr>
+<tr class="row-even"><td><p>CHANNEL_ADD_INVALID</p></td>
+<td><p>Internal error.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CHANNEL_BANNED</p></td>
+<td><p>The channel is banned</p></td>
+</tr>
+<tr class="row-even"><td><p>CHANNEL_FORUM_MISSING</p></td>
+<td><p>This supergroup is not a forum.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CHANNEL_ID_INVALID</p></td>
+<td><p>The specified supergroup ID is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>CHANNEL_INVALID</p></td>
+<td><p>The provided channel is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CHANNEL_PARICIPANT_MISSING</p></td>
+<td><p>The current user is not in the channel.</p></td>
+</tr>
+<tr class="row-even"><td><p>CHANNEL_PRIVATE</p></td>
+<td><p>You haven’t joined this channel/supergroup.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CHANNEL_TOO_BIG</p></td>
+<td><p>This channel has too many participants (&gt;1000) to be deleted.</p></td>
+</tr>
+<tr class="row-even"><td><p>CHANNEL_TOO_LARGE</p></td>
+<td><p>Channel is too large to be deleted; this error is issued when trying to delete channels with more than 1000 members (subject to change).</p></td>
+</tr>
+<tr class="row-odd"><td><p>CHARGE_ALREADY_REFUNDED</p></td>
+<td><p>The charge id was already used for a refund.</p></td>
+</tr>
+<tr class="row-even"><td><p>CHARGE_NOT_FOUND</p></td>
+<td><p>The charge id was not found.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CHATLINKS_TOO_MUCH</p></td>
+<td><p>Too many [business chat links](<a class="reference external" href="https://core.telegram.org/api/business#business-chat-links">https://core.telegram.org/api/business#business-chat-links</a>) were created, please delete some older links.</p></td>
+</tr>
+<tr class="row-even"><td><p>CHATLINK_SLUG_EMPTY</p></td>
+<td><p>The specified slug is empty.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CHATLINK_SLUG_EXPIRED</p></td>
+<td><p>The specified [business chat link](<a class="reference external" href="https://core.telegram.org/api/business#business-chat-links">https://core.telegram.org/api/business#business-chat-links</a>) has expired.</p></td>
+</tr>
+<tr class="row-even"><td><p>CHATLIST_EXCLUDE_INVALID</p></td>
+<td><p>The specified <cite>exclude_peers</cite> are invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CHAT_ABOUT_NOT_MODIFIED</p></td>
+<td><p>About text has not changed.</p></td>
+</tr>
+<tr class="row-even"><td><p>CHAT_ABOUT_TOO_LONG</p></td>
+<td><p>Chat about too long.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CHAT_ADMIN_REQUIRED</p></td>
+<td><p>You must be an admin in this chat to do this.</p></td>
+</tr>
+<tr class="row-even"><td><p>CHAT_DISCUSSION_UNALLOWED</p></td>
+<td><p>You can’t enable forum topics in a discussion group linked to a channel.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CHAT_FORWARDS_RESTRICTED</p></td>
+<td><p>You can’t forward messages from a protected chat.</p></td>
+</tr>
+<tr class="row-even"><td><p>CHAT_ID_EMPTY</p></td>
+<td><p>The provided chat ID is empty.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CHAT_ID_INVALID</p></td>
+<td><p>The provided chat id is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>CHAT_INVALID</p></td>
+<td><p>Invalid chat.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CHAT_INVITE_PERMANENT</p></td>
+<td><p>You can’t set an expiration date on permanent invite links.</p></td>
+</tr>
+<tr class="row-even"><td><p>CHAT_LINK_EXISTS</p></td>
+<td><p>The chat is public, you can’t hide the history to new users.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CHAT_NOT_MODIFIED</p></td>
+<td><p>No changes were made to chat information because the new information you passed is identical to the current information.</p></td>
+</tr>
+<tr class="row-even"><td><p>CHAT_PUBLIC_REQUIRED</p></td>
+<td><p>You can only enable join requests in public groups.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CHAT_RESTRICTED</p></td>
+<td><p>You can’t send messages in this chat, you were restricted.</p></td>
+</tr>
+<tr class="row-even"><td><p>CHAT_REVOKE_DATE_UNSUPPORTED</p></td>
+<td><p><cite>min_date</cite> and <cite>max_date</cite> are not available for using with non-user peers.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CHAT_SEND_INLINE_FORBIDDEN</p></td>
+<td><p>You can’t send inline messages in this group.</p></td>
+</tr>
+<tr class="row-even"><td><p>CHAT_TITLE_EMPTY</p></td>
+<td><p>No chat title provided.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CHAT_TOO_BIG</p></td>
+<td><p>This method is not available for groups with more than <cite>chat_read_mark_size_threshold</cite> members, [see client configuration](<a class="reference external" href="https://core.telegram.org/api/config#client-configuration">https://core.telegram.org/api/config#client-configuration</a>).</p></td>
+</tr>
+<tr class="row-even"><td><p>CODE_EMPTY</p></td>
+<td><p>The provided code is empty.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CODE_HASH_INVALID</p></td>
+<td><p>Code hash invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>CODE_INVALID</p></td>
+<td><p>Code invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>COLLECTIBLE_INVALID</p></td>
+<td><p>The specified collectible is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>COLLECTIBLE_NOT_FOUND</p></td>
+<td><p>The specified collectible could not be found.</p></td>
+</tr>
+<tr class="row-odd"><td><p>COLOR_INVALID</p></td>
+<td><p>The specified color palette ID was invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>CONNECTION_API_ID_INVALID</p></td>
+<td><p>The provided API id is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CONNECTION_APP_VERSION_EMPTY</p></td>
+<td><p>App version is empty.</p></td>
+</tr>
+<tr class="row-even"><td><p>CONNECTION_DEVICE_MODEL_EMPTY</p></td>
+<td><p>The device model is empty</p></td>
+</tr>
+<tr class="row-odd"><td><p>CONNECTION_ID_INVALID</p></td>
+<td><p>The specified connection ID is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>CONNECTION_LANG_PACK_INVALID</p></td>
+<td><p>The specified language pack is not valid</p></td>
+</tr>
+<tr class="row-odd"><td><p>CONNECTION_LAYER_INVALID</p></td>
+<td><p>Layer invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>CONNECTION_NOT_INITED</p></td>
+<td><p>The connection was not initialized</p></td>
+</tr>
+<tr class="row-odd"><td><p>CONNECTION_SYSTEM_EMPTY</p></td>
+<td><p>The connection to the system is empty</p></td>
+</tr>
+<tr class="row-even"><td><p>CONNECTION_SYSTEM_LANG_CODE_EMPTY</p></td>
+<td><p>The system language code is empty</p></td>
+</tr>
+<tr class="row-odd"><td><p>CONTACT_ADD_MISSING</p></td>
+<td><p>Contact to add is missing.</p></td>
+</tr>
+<tr class="row-even"><td><p>CONTACT_ID_INVALID</p></td>
+<td><p>The provided contact ID is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CONTACT_MISSING</p></td>
+<td><p>The specified user is not a contact.</p></td>
+</tr>
+<tr class="row-even"><td><p>CONTACT_NAME_EMPTY</p></td>
+<td><p>Contact name empty.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CONTACT_REQ_MISSING</p></td>
+<td><p>Missing contact request.</p></td>
+</tr>
+<tr class="row-even"><td><p>CREATE_CALL_FAILED</p></td>
+<td><p>An error occurred while creating the call.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CURRENCY_TOTAL_AMOUNT_INVALID</p></td>
+<td><p>The total amount of all prices is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>CUSTOM_REACTIONS_TOO_MANY</p></td>
+<td><p>Too many custom reactions were specified.</p></td>
+</tr>
+<tr class="row-odd"><td><p>DATA_INVALID</p></td>
+<td><p>Encrypted data invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>DATA_JSON_INVALID</p></td>
+<td><p>The provided JSON data is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>DATA_TOO_LONG</p></td>
+<td><p>Data too long.</p></td>
+</tr>
+<tr class="row-even"><td><p>DATE_EMPTY</p></td>
+<td><p>Date empty.</p></td>
+</tr>
+<tr class="row-odd"><td><p>DC_ID_INVALID</p></td>
+<td><p>The provided DC ID is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>DH_G_A_INVALID</p></td>
+<td><p>g_a invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>DOCUMENT_INVALID</p></td>
+<td><p>The specified document is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>EMAIL_HASH_EXPIRED</p></td>
+<td><p>Email hash expired.</p></td>
+</tr>
+<tr class="row-odd"><td><p>EMAIL_INVALID</p></td>
+<td><p>The specified email is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>EMAIL_NOT_ALLOWED</p></td>
+<td><p>The specified email cannot be used to complete the operation.</p></td>
+</tr>
+<tr class="row-odd"><td><p>EMAIL_NOT_SETUP</p></td>
+<td><p>In order to change the login email with emailVerifyPurposeLoginChange, an existing login email must already be set using emailVerifyPurposeLoginSetup.</p></td>
+</tr>
+<tr class="row-even"><td><p>EMAIL_UNCONFIRMED</p></td>
+<td><p>Email unconfirmed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>EMAIL_UNCONFIRMED_X</p></td>
+<td><p>The provided email isn’t confirmed, {value} is the length of the verification code that was just sent to the email: use [account.verifyEmail](<a class="reference external" href="https://core.telegram.org/method/account.verifyEmail">https://core.telegram.org/method/account.verifyEmail</a>) to enter the received verification code and enable the recovery email.</p></td>
+</tr>
+<tr class="row-even"><td><p>EMAIL_VERIFY_EXPIRED</p></td>
+<td><p>The verification email has expired.</p></td>
+</tr>
+<tr class="row-odd"><td><p>EMOJI_INVALID</p></td>
+<td><p>The specified theme emoji is valid.</p></td>
+</tr>
+<tr class="row-even"><td><p>EMOJI_MARKUP_INVALID</p></td>
+<td><p>The specified <cite>video_emoji_markup</cite> was invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>EMOJI_NOT_MODIFIED</p></td>
+<td><p>The theme wasn’t changed.</p></td>
+</tr>
+<tr class="row-even"><td><p>EMOTICON_EMPTY</p></td>
+<td><p>The emoji is empty.</p></td>
+</tr>
+<tr class="row-odd"><td><p>EMOTICON_INVALID</p></td>
+<td><p>The specified emoji is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>EMOTICON_STICKERPACK_MISSING</p></td>
+<td><p>inputStickerSetDice.emoji cannot be empty.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ENCRYPTED_MESSAGE_INVALID</p></td>
+<td><p>Encrypted message invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>ENCRYPTION_ALREADY_ACCEPTED</p></td>
+<td><p>Secret chat already accepted.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ENCRYPTION_ALREADY_DECLINED</p></td>
+<td><p>The secret chat was already declined.</p></td>
+</tr>
+<tr class="row-even"><td><p>ENCRYPTION_DECLINED</p></td>
+<td><p>The secret chat was declined.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ENCRYPTION_ID_INVALID</p></td>
+<td><p>The provided secret chat ID is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>ENTITIES_TOO_LONG</p></td>
+<td><p>You provided too many styled message entities.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ENTITY_BOUNDS_INVALID</p></td>
+<td><p>A specified [entity offset or length](<a class="reference external" href="https://core.telegram.org/api/entities#entity-length">https://core.telegram.org/api/entities#entity-length</a>) is invalid, see [here](<a class="reference external" href="https://core.telegram.org/api/entities#entity-length">https://core.telegram.org/api/entities#entity-length</a>) for info on how to properly compute the entity offset/length.</p></td>
+</tr>
+<tr class="row-even"><td><p>ENTITY_MENTION_USER_INVALID</p></td>
+<td><p>You mentioned an invalid user.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ERROR_TEXT_EMPTY</p></td>
+<td><p>The provided error message is empty.</p></td>
+</tr>
+<tr class="row-even"><td><p>EXPIRE_DATE_INVALID</p></td>
+<td><p>The specified expiration date is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>EXPORT_CARD_INVALID</p></td>
+<td><p>Provided card is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>EXTENDED_MEDIA_AMOUNT_INVALID</p></td>
+<td><p>The maximum amount of <cite>star_count</cite> should be less than the <cite>stars_paid_post_amount_max</cite> [client configuration parameters](<a class="reference external" href="https://core.telegram.org/api/config">https://core.telegram.org/api/config</a>).</p></td>
+</tr>
+<tr class="row-odd"><td><p>EXTENDED_MEDIA_PEER_INVALID</p></td>
+<td><p>The specified chat type is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>EXTENDED_MEDIA_TYPE_INVALID</p></td>
+<td><p>The specified extended media type is unsupported.</p></td>
+</tr>
+<tr class="row-odd"><td><p>EXTERNAL_URL_INVALID</p></td>
+<td><p>External URL invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>FIELD_NAME_EMPTY</p></td>
+<td><p>The field with the name FIELD_NAME is missing</p></td>
+</tr>
+<tr class="row-odd"><td><p>FIELD_NAME_INVALID</p></td>
+<td><p>The field with the name FIELD_NAME is invalid</p></td>
+</tr>
+<tr class="row-even"><td><p>FILE_CONTENT_TYPE_INVALID</p></td>
+<td><p>File content-type is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FILE_EMTPY</p></td>
+<td><p>An empty file was provided.</p></td>
+</tr>
+<tr class="row-even"><td><p>FILE_ID_INVALID</p></td>
+<td><p>The provided file id is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FILE_MIGRATE_X</p></td>
+<td><p>The file is in Data Center No. {value}</p></td>
+</tr>
+<tr class="row-even"><td><p>FILE_PARTS_INVALID</p></td>
+<td><p>The number of file parts is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FILE_PART_EMPTY</p></td>
+<td><p>The provided file part is empty.</p></td>
+</tr>
+<tr class="row-even"><td><p>FILE_PART_INVALID</p></td>
+<td><p>The file part number is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FILE_PART_LENGTH_INVALID</p></td>
+<td><p>The length of a file part is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>FILE_PART_SIZE_CHANGED</p></td>
+<td><p>Provided file part size has changed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FILE_PART_SIZE_INVALID</p></td>
+<td><p>The provided file part size is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>FILE_PART_TOO_BIG</p></td>
+<td><p>The uploaded file part is too big.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FILE_PART_X_MISSING</p></td>
+<td><p>Part {value} of the file is missing from storage</p></td>
+</tr>
+<tr class="row-even"><td><p>FILE_REFERENCE_EMPTY</p></td>
+<td><p>An empty [file reference](<a class="reference external" href="https://core.telegram.org/api/file_reference">https://core.telegram.org/api/file_reference</a>) was specified.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FILE_REFERENCE_EXPIRED</p></td>
+<td><p>File reference expired, it must be refetched as described in [the documentation](<a class="reference external" href="https://core.telegram.org/api/file_reference">https://core.telegram.org/api/file_reference</a>).</p></td>
+</tr>
+<tr class="row-even"><td><p>FILE_REFERENCE_INVALID</p></td>
+<td><p>The specified [file reference](<a class="reference external" href="https://core.telegram.org/api/file_reference">https://core.telegram.org/api/file_reference</a>) is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FILE_REFERENCE_X_EXPIRED</p></td>
+<td><p>The file reference of the media file at index {value} in the passed media array expired, it [must be refreshed](<a class="reference external" href="https://core.telegram.org/api/file_reference">https://core.telegram.org/api/file_reference</a>).</p></td>
+</tr>
+<tr class="row-even"><td><p>FILE_REFERENCE_X_INVALID</p></td>
+<td><p>The file reference of the media file at index {value} in the passed media array is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FILE_TITLE_EMPTY</p></td>
+<td><p>An empty file title was specified.</p></td>
+</tr>
+<tr class="row-even"><td><p>FILE_TOKEN_INVALID</p></td>
+<td><p>The specified file token is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FILTER_ID_INVALID</p></td>
+<td><p>The specified filter ID is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>FILTER_INCLUDE_EMPTY</p></td>
+<td><p>The include_peers vector of the filter is empty.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FILTER_NOT_SUPPORTED</p></td>
+<td><p>The specified filter cannot be used in this context.</p></td>
+</tr>
+<tr class="row-even"><td><p>FILTER_TITLE_EMPTY</p></td>
+<td><p>The title field of the filter is empty.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FIRSTNAME_INVALID</p></td>
+<td><p>The first name is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>FOLDER_ID_EMPTY</p></td>
+<td><p>An empty folder ID was specified.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FOLDER_ID_INVALID</p></td>
+<td><p>Invalid folder ID.</p></td>
+</tr>
+<tr class="row-even"><td><p>FORM_EXPIRED</p></td>
+<td><p>The form was generated more than 10 minutes ago and has expired, please re-generate it using [payments.getPaymentForm](<a class="reference external" href="https://core.telegram.org/method/payments.getPaymentForm">https://core.telegram.org/method/payments.getPaymentForm</a>) and pass the new <cite>form_id</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FORM_ID_EXPIRED</p></td>
+<td><p>The specified id has expired.</p></td>
+</tr>
+<tr class="row-even"><td><p>FORUM_ENABLED</p></td>
+<td><p>You can’t execute the specified action because the group is a [forum](<a class="reference external" href="https://core.telegram.org/api/forum">https://core.telegram.org/api/forum</a>), disable forum functionality to continue.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FRESH_CHANGE_ADMINS_FORBIDDEN</p></td>
+<td><p>You were just elected admin, you can’t add or modify other admins yet.</p></td>
+</tr>
+<tr class="row-even"><td><p>FROM_MESSAGE_BOT_DISABLED</p></td>
+<td><p>Bots can’t use fromMessage min constructors.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FROM_PEER_INVALID</p></td>
+<td><p>The specified from_id is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>GAME_BOT_INVALID</p></td>
+<td><p>Bots can’t send another bot’s game.</p></td>
+</tr>
+<tr class="row-odd"><td><p>GENERAL_MODIFY_ICON_FORBIDDEN</p></td>
+<td><p>You can’t modify the icon of the “General” topic.</p></td>
+</tr>
+<tr class="row-even"><td><p>GEO_POINT_INVALID</p></td>
+<td><p>Invalid geoposition provided.</p></td>
+</tr>
+<tr class="row-odd"><td><p>GIFT_SLUG_EXPIRED</p></td>
+<td><p>The specified gift slug has expired.</p></td>
+</tr>
+<tr class="row-even"><td><p>GIFT_SLUG_INVALID</p></td>
+<td><p>The specified slug is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>GIF_CONTENT_TYPE_INVALID</p></td>
+<td><p>GIF content-type invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>GIF_ID_INVALID</p></td>
+<td><p>The provided GIF ID is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>GRAPH_EXPIRED_RELOAD</p></td>
+<td><p>This graph has expired, please obtain a new graph token.</p></td>
+</tr>
+<tr class="row-even"><td><p>GRAPH_INVALID_RELOAD</p></td>
+<td><p>Invalid graph token provided, please reload the stats and provide the updated token.</p></td>
+</tr>
+<tr class="row-odd"><td><p>GRAPH_OUTDATED_RELOAD</p></td>
+<td><p>The graph is outdated, please get a new async token using stats.getBroadcastStats.</p></td>
+</tr>
+<tr class="row-even"><td><p>GROUPCALL_ALREADY_DISCARDED</p></td>
+<td><p>The group call was already discarded.</p></td>
+</tr>
+<tr class="row-odd"><td><p>GROUPCALL_FORBIDDEN</p></td>
+<td><p>The group call has already ended.</p></td>
+</tr>
+<tr class="row-even"><td><p>GROUPCALL_INVALID</p></td>
+<td><p>The specified group call is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>GROUPCALL_JOIN_MISSING</p></td>
+<td><p>You haven’t joined this group call.</p></td>
+</tr>
+<tr class="row-even"><td><p>GROUPCALL_NOT_MODIFIED</p></td>
+<td><p>Group call settings weren’t modified.</p></td>
+</tr>
+<tr class="row-odd"><td><p>GROUPCALL_SSRC_DUPLICATE_MUCH</p></td>
+<td><p>The app needs to retry joining the group call with a new SSRC value.</p></td>
+</tr>
+<tr class="row-even"><td><p>GROUPED_MEDIA_INVALID</p></td>
+<td><p>Invalid grouped media.</p></td>
+</tr>
+<tr class="row-odd"><td><p>GROUP_CALL_INVALID</p></td>
+<td><p>The group call is invalid</p></td>
+</tr>
+<tr class="row-even"><td><p>HASHTAG_INVALID</p></td>
+<td><p>The specified hashtag is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>HASH_INVALID</p></td>
+<td><p>The provided hash is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>HIDE_REQUESTER_MISSING</p></td>
+<td><p>The join request was missing or was already handled.</p></td>
+</tr>
+<tr class="row-odd"><td><p>IMAGE_PROCESS_FAILED</p></td>
+<td><p>Failure while processing image.</p></td>
+</tr>
+<tr class="row-even"><td><p>IMPORT_FILE_INVALID</p></td>
+<td><p>The specified chat export file is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>IMPORT_FORMAT_DATE_INVALID</p></td>
+<td><p>The date specified in the import file is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>IMPORT_FORMAT_UNRECOGNIZED</p></td>
+<td><p>The specified chat export file was exported from an unsupported chat app.</p></td>
+</tr>
+<tr class="row-odd"><td><p>IMPORT_ID_INVALID</p></td>
+<td><p>The specified import ID is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>IMPORT_TOKEN_INVALID</p></td>
+<td><p>The specified token is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>INLINE_RESULT_EXPIRED</p></td>
+<td><p>The inline query expired.</p></td>
+</tr>
+<tr class="row-even"><td><p>INPUT_CHATLIST_INVALID</p></td>
+<td><p>The specified folder is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>INPUT_CONSTRUCTOR_INVALID</p></td>
+<td><p>The provided constructor is invalid</p></td>
+</tr>
+<tr class="row-even"><td><p>INPUT_FETCH_ERROR</p></td>
+<td><p>An error occurred while deserializing TL parameters</p></td>
+</tr>
+<tr class="row-odd"><td><p>INPUT_FETCH_FAIL</p></td>
+<td><p>Failed deserializing TL payload</p></td>
+</tr>
+<tr class="row-even"><td><p>INPUT_FILE_INVALID</p></td>
+<td><p>The specified [InputFile](<a class="reference external" href="https://core.telegram.org/type/InputFile">https://core.telegram.org/type/InputFile</a>) is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>INPUT_FILTER_INVALID</p></td>
+<td><p>The specified filter is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>INPUT_LAYER_INVALID</p></td>
+<td><p>The provided layer is invalid</p></td>
+</tr>
+<tr class="row-odd"><td><p>INPUT_METHOD_INVALID</p></td>
+<td><p>The method invoked is invalid in the current schema</p></td>
+</tr>
+<tr class="row-even"><td><p>INPUT_REQUEST_TOO_LONG</p></td>
+<td><p>The input request is too long</p></td>
+</tr>
+<tr class="row-odd"><td><p>INPUT_TEXT_EMPTY</p></td>
+<td><p>The specified text is empty.</p></td>
+</tr>
+<tr class="row-even"><td><p>INPUT_TEXT_TOO_LONG</p></td>
+<td><p>The specified text is too long.</p></td>
+</tr>
+<tr class="row-odd"><td><p>INPUT_USER_DEACTIVATED</p></td>
+<td><p>The specified user was deleted.</p></td>
+</tr>
+<tr class="row-even"><td><p>INVITES_TOO_MUCH</p></td>
+<td><p>The maximum number of per-folder invites specified by the <cite>chatlist_invites_limit_default</cite>/<cite>chatlist_invites_limit_premium</cite> [client configuration parameters](<a class="reference external" href="https://core.telegram.org/api/config#chatlist-invites-limit-default">https://core.telegram.org/api/config#chatlist-invites-limit-default</a>) was reached.</p></td>
+</tr>
+<tr class="row-odd"><td><p>INVITE_FORBIDDEN_WITH_JOINAS</p></td>
+<td><p>If the user has anonymously joined a group call as a channel, they can’t invite other users to the group call because that would cause deanonymization, because the invite would be sent using the original user ID, not the anonymized channel ID.</p></td>
+</tr>
+<tr class="row-even"><td><p>INVITE_HASH_EMPTY</p></td>
+<td><p>The invite hash is empty.</p></td>
+</tr>
+<tr class="row-odd"><td><p>INVITE_HASH_EXPIRED</p></td>
+<td><p>The invite link has expired.</p></td>
+</tr>
+<tr class="row-even"><td><p>INVITE_HASH_INVALID</p></td>
+<td><p>The invite hash is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>INVITE_REQUEST_SENT</p></td>
+<td><p>You have successfully requested to join this chat or channel.</p></td>
+</tr>
+<tr class="row-even"><td><p>INVITE_REVOKED_MISSING</p></td>
+<td><p>The specified invite link was already revoked or is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>INVITE_SLUG_EMPTY</p></td>
+<td><p>The specified invite slug is empty.</p></td>
+</tr>
+<tr class="row-even"><td><p>INVITE_SLUG_EXPIRED</p></td>
+<td><p>The specified chat folder link has expired.</p></td>
+</tr>
+<tr class="row-odd"><td><p>INVOICE_PAYLOAD_INVALID</p></td>
+<td><p>The specified invoice payload is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>JOIN_AS_PEER_INVALID</p></td>
+<td><p>The specified peer cannot be used to join a group call.</p></td>
+</tr>
+<tr class="row-odd"><td><p>LANGUAGE_INVALID</p></td>
+<td><p>The specified lang_code is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>LANG_CODE_INVALID</p></td>
+<td><p>The specified language code is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>LANG_CODE_NOT_SUPPORTED</p></td>
+<td><p>The specified language code is not supported.</p></td>
+</tr>
+<tr class="row-even"><td><p>LANG_PACK_INVALID</p></td>
+<td><p>The provided language pack is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>LASTNAME_INVALID</p></td>
+<td><p>The last name is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>LIMIT_INVALID</p></td>
+<td><p>The provided limit is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>LINK_NOT_MODIFIED</p></td>
+<td><p>Discussion link not modified.</p></td>
+</tr>
+<tr class="row-even"><td><p>LOCATION_INVALID</p></td>
+<td><p>The provided location is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>MAX_DATE_INVALID</p></td>
+<td><p>The specified maximum date is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>MAX_ID_INVALID</p></td>
+<td><p>The provided max ID is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>MAX_QTS_INVALID</p></td>
+<td><p>The specified max_qts is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>MD5_CHECKSUM_INVALID</p></td>
+<td><p>The MD5 checksums do not match.</p></td>
+</tr>
+<tr class="row-odd"><td><p>MEDIA_ALREADY_PAID</p></td>
+<td><p>The specified paid media is already paid.</p></td>
+</tr>
+<tr class="row-even"><td><p>MEDIA_CAPTION_TOO_LONG</p></td>
+<td><p>The caption is too long.</p></td>
+</tr>
+<tr class="row-odd"><td><p>MEDIA_EMPTY</p></td>
+<td><p>The provided media object is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>MEDIA_FILE_INVALID</p></td>
+<td><p>The specified media file is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>MEDIA_GROUPED_INVALID</p></td>
+<td><p>You tried to send media of different types in an album.</p></td>
+</tr>
+<tr class="row-even"><td><p>MEDIA_INVALID</p></td>
+<td><p>Media invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>MEDIA_NEW_INVALID</p></td>
+<td><p>The new media is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>MEDIA_PREV_INVALID</p></td>
+<td><p>Previous media invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>MEDIA_TTL_INVALID</p></td>
+<td><p>The specified media TTL is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>MEDIA_TYPE_INVALID</p></td>
+<td><p>The specified media type cannot be used in stories.</p></td>
+</tr>
+<tr class="row-odd"><td><p>MEDIA_VIDEO_STORY_MISSING</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>MEGAGROUP_GEO_REQUIRED</p></td>
+<td><p>This method can only be invoked on a geogroup.</p></td>
+</tr>
+<tr class="row-odd"><td><p>MEGAGROUP_ID_INVALID</p></td>
+<td><p>Invalid supergroup ID.</p></td>
+</tr>
+<tr class="row-even"><td><p>MEGAGROUP_PREHISTORY_HIDDEN</p></td>
+<td><p>Group with hidden history for new members can’t be set as discussion groups.</p></td>
+</tr>
+<tr class="row-odd"><td><p>MEGAGROUP_REQUIRED</p></td>
+<td><p>You can only use this method on a supergroup.</p></td>
+</tr>
+<tr class="row-even"><td><p>MESSAGE_EDIT_TIME_EXPIRED</p></td>
+<td><p>You can’t edit this message anymore, too much time has passed since its creation.</p></td>
+</tr>
+<tr class="row-odd"><td><p>MESSAGE_EMPTY</p></td>
+<td><p>The provided message is empty.</p></td>
+</tr>
+<tr class="row-even"><td><p>MESSAGE_IDS_EMPTY</p></td>
+<td><p>No message ids were provided.</p></td>
+</tr>
+<tr class="row-odd"><td><p>MESSAGE_ID_INVALID</p></td>
+<td><p>The provided message id is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>MESSAGE_NOT_MODIFIED</p></td>
+<td><p>The provided message data is identical to the previous message data, the message wasn’t modified.</p></td>
+</tr>
+<tr class="row-odd"><td><p>MESSAGE_NOT_READ_YET</p></td>
+<td><p>The specified message wasn’t read yet.</p></td>
+</tr>
+<tr class="row-even"><td><p>MESSAGE_POLL_CLOSED</p></td>
+<td><p>Poll closed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>MESSAGE_TOO_LONG</p></td>
+<td><p>The provided message is too long.</p></td>
+</tr>
+<tr class="row-even"><td><p>MESSAGE_TOO_OLD</p></td>
+<td><p>The message is too old, the requested information is not available.</p></td>
+</tr>
+<tr class="row-odd"><td><p>METHOD_INVALID</p></td>
+<td><p>The specified method is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>MIN_DATE_INVALID</p></td>
+<td><p>The specified minimum date is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>MSG_ID_INVALID</p></td>
+<td><p>Invalid message ID provided.</p></td>
+</tr>
+<tr class="row-even"><td><p>MSG_TOO_OLD</p></td>
+<td><p>[<cite>chat_read_mark_expire_period</cite> seconds](<a class="reference external" href="https://core.telegram.org/api/config#chat-read-mark-expire-period">https://core.telegram.org/api/config#chat-read-mark-expire-period</a>) have passed since the message was sent, read receipts were deleted.</p></td>
+</tr>
+<tr class="row-odd"><td><p>MSG_VOICE_MISSING</p></td>
+<td><p>The message does not contain a voice message</p></td>
+</tr>
+<tr class="row-even"><td><p>MSG_WAIT_FAILED</p></td>
+<td><p>A waiting call returned an error.</p></td>
+</tr>
+<tr class="row-odd"><td><p>MULTI_MEDIA_TOO_LONG</p></td>
+<td><p>Too many media files for album.</p></td>
+</tr>
+<tr class="row-even"><td><p>NEW_SALT_INVALID</p></td>
+<td><p>The new salt is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>NEW_SETTINGS_EMPTY</p></td>
+<td><p>No password is set on the current account, and no new password was specified in <cite>new_settings</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p>NEW_SETTINGS_INVALID</p></td>
+<td><p>The new password settings are invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>NEXT_OFFSET_INVALID</p></td>
+<td><p>The specified offset is longer than 64 bytes.</p></td>
+</tr>
+<tr class="row-even"><td><p>NOGENERAL_HIDE_FORBIDDEN</p></td>
+<td><p>The hidden parameter is only valid for the General topic message_thread_id=1</p></td>
+</tr>
+<tr class="row-odd"><td><p>NOT_ELIGIBLE</p></td>
+<td><p>The current user is not eligible to join the Peer-to-Peer Login Program.</p></td>
+</tr>
+<tr class="row-even"><td><p>NOT_JOINED</p></td>
+<td><p>The current user hasn’t joined the Peer-to-Peer Login Program.</p></td>
+</tr>
+<tr class="row-odd"><td><p>OFFSET_INVALID</p></td>
+<td><p>The provided offset is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>OFFSET_PEER_ID_INVALID</p></td>
+<td><p>The provided offset peer is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>OPTIONS_TOO_MUCH</p></td>
+<td><p>Too many options provided.</p></td>
+</tr>
+<tr class="row-even"><td><p>OPTION_INVALID</p></td>
+<td><p>Invalid option selected.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ORDER_INVALID</p></td>
+<td><p>The specified username order is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>PACK_SHORT_NAME_INVALID</p></td>
+<td><p>Short pack name invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PACK_SHORT_NAME_OCCUPIED</p></td>
+<td><p>A stickerpack with this name already exists.</p></td>
+</tr>
+<tr class="row-even"><td><p>PACK_TITLE_INVALID</p></td>
+<td><p>The stickerpack title is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PARTICIPANTS_TOO_FEW</p></td>
+<td><p>Not enough participants.</p></td>
+</tr>
+<tr class="row-even"><td><p>PARTICIPANT_ID_INVALID</p></td>
+<td><p>The specified participant ID is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PARTICIPANT_JOIN_MISSING</p></td>
+<td><p>Trying to enable a presentation, when the user hasn’t joined the Video Chat with [phone.joinGroupCall](<a class="reference external" href="https://core.telegram.org/method/phone.joinGroupCall">https://core.telegram.org/method/phone.joinGroupCall</a>).</p></td>
+</tr>
+<tr class="row-even"><td><p>PARTICIPANT_VERSION_OUTDATED</p></td>
+<td><p>The other participant does not use an up to date telegram client with support for calls.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PASSWORD_EMPTY</p></td>
+<td><p>The provided password is empty.</p></td>
+</tr>
+<tr class="row-even"><td><p>PASSWORD_HASH_INVALID</p></td>
+<td><p>The provided password hash is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PASSWORD_MISSING</p></td>
+<td><p>You must enable 2FA in order to transfer ownership of a channel.</p></td>
+</tr>
+<tr class="row-even"><td><p>PASSWORD_RECOVERY_EXPIRED</p></td>
+<td><p>The recovery code has expired.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PASSWORD_RECOVERY_NA</p></td>
+<td><p>No email was set, can’t recover password via email.</p></td>
+</tr>
+<tr class="row-even"><td><p>PASSWORD_REQUIRED</p></td>
+<td><p>A [2FA password](<a class="reference external" href="https://core.telegram.org/api/srp">https://core.telegram.org/api/srp</a>) must be configured to use Telegram Passport.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PASSWORD_TOO_FRESH_X</p></td>
+<td><p>The password was modified less than 24 hours ago, try again in {value} seconds.</p></td>
+</tr>
+<tr class="row-even"><td><p>PAYMENT_PROVIDER_INVALID</p></td>
+<td><p>The specified payment provider is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PEERS_LIST_EMPTY</p></td>
+<td><p>The specified list of peers is empty.</p></td>
+</tr>
+<tr class="row-even"><td><p>PEER_FLOOD</p></td>
+<td><p>The method can’t be used because your account is currently limited</p></td>
+</tr>
+<tr class="row-odd"><td><p>PEER_HISTORY_EMPTY</p></td>
+<td><p>You can’t pin an empty chat with a user.</p></td>
+</tr>
+<tr class="row-even"><td><p>PEER_ID_INVALID</p></td>
+<td><p>The provided peer id is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PEER_ID_NOT_SUPPORTED</p></td>
+<td><p>The provided peer ID is not supported.</p></td>
+</tr>
+<tr class="row-even"><td><p>PERSISTENT_TIMESTAMP_EMPTY</p></td>
+<td><p>Persistent timestamp empty.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PERSISTENT_TIMESTAMP_INVALID</p></td>
+<td><p>Persistent timestamp invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>PHONE_CODE_EMPTY</p></td>
+<td><p>phone_code is missing.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PHONE_CODE_EXPIRED</p></td>
+<td><p>The phone code you provided has expired.</p></td>
+</tr>
+<tr class="row-even"><td><p>PHONE_CODE_HASH_EMPTY</p></td>
+<td><p>phone_code_hash is missing.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PHONE_CODE_INVALID</p></td>
+<td><p>The provided phone code is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>PHONE_HASH_EXPIRED</p></td>
+<td><p>An invalid or expired <cite>phone_code_hash</cite> was provided.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PHONE_NOT_OCCUPIED</p></td>
+<td><p>No user is associated to the specified phone number.</p></td>
+</tr>
+<tr class="row-even"><td><p>PHONE_NUMBER_APP_SIGNUP_FORBIDDEN</p></td>
+<td><p>You can’t sign up using this app.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PHONE_NUMBER_BANNED</p></td>
+<td><p>The provided phone number is banned from telegram.</p></td>
+</tr>
+<tr class="row-even"><td><p>PHONE_NUMBER_FLOOD</p></td>
+<td><p>You asked for the code too many times.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PHONE_NUMBER_INVALID</p></td>
+<td><p>The phone number is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>PHONE_NUMBER_OCCUPIED</p></td>
+<td><p>The phone number is already in use.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PHONE_NUMBER_UNOCCUPIED</p></td>
+<td><p>The phone number is not yet being used.</p></td>
+</tr>
+<tr class="row-even"><td><p>PHONE_PASSWORD_PROTECTED</p></td>
+<td><p>This phone is password protected.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PHOTO_CONTENT_TYPE_INVALID</p></td>
+<td><p>Photo mime-type invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>PHOTO_CONTENT_URL_EMPTY</p></td>
+<td><p>Photo URL invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PHOTO_CROP_FILE_MISSING</p></td>
+<td><p>Photo crop file missing.</p></td>
+</tr>
+<tr class="row-even"><td><p>PHOTO_CROP_SIZE_SMALL</p></td>
+<td><p>Photo is too small.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PHOTO_EXT_INVALID</p></td>
+<td><p>The extension of the photo is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>PHOTO_FILE_MISSING</p></td>
+<td><p>Profile photo file missing.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PHOTO_ID_INVALID</p></td>
+<td><p>Photo ID invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>PHOTO_INVALID</p></td>
+<td><p>Photo invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PHOTO_INVALID_DIMENSIONS</p></td>
+<td><p>The photo dimensions are invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>PHOTO_SAVE_FILE_INVALID</p></td>
+<td><p>Internal issues, try again later.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PHOTO_THUMB_URL_EMPTY</p></td>
+<td><p>Photo thumbnail URL is empty.</p></td>
+</tr>
+<tr class="row-even"><td><p>PHOTO_THUMB_URL_INVALID</p></td>
+<td><p>The photo thumb URL is invalid</p></td>
+</tr>
+<tr class="row-odd"><td><p>PINNED_DIALOGS_TOO_MUCH</p></td>
+<td><p>Too many pinned dialogs.</p></td>
+</tr>
+<tr class="row-even"><td><p>PIN_RESTRICTED</p></td>
+<td><p>You can’t pin messages.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PLATFORM_INVALID</p></td>
+<td><p>The provided platform is invalid. Allowed values are “android”, “ios”, “wp”, “bb”, “desktop”, “web”, “ubp”, “other”.</p></td>
+</tr>
+<tr class="row-even"><td><p>POLL_ANSWERS_INVALID</p></td>
+<td><p>Invalid poll answers were provided.</p></td>
+</tr>
+<tr class="row-odd"><td><p>POLL_ANSWER_INVALID</p></td>
+<td><p>One of the poll answers is not acceptable.</p></td>
+</tr>
+<tr class="row-even"><td><p>POLL_OPTION_DUPLICATE</p></td>
+<td><p>Duplicate poll options provided.</p></td>
+</tr>
+<tr class="row-odd"><td><p>POLL_OPTION_INVALID</p></td>
+<td><p>Invalid poll option provided.</p></td>
+</tr>
+<tr class="row-even"><td><p>POLL_QUESTION_INVALID</p></td>
+<td><p>One of the poll questions is not acceptable.</p></td>
+</tr>
+<tr class="row-odd"><td><p>POLL_UNSUPPORTED</p></td>
+<td><p>This layer does not support polls in the invoked method</p></td>
+</tr>
+<tr class="row-even"><td><p>POLL_VOTE_REQUIRED</p></td>
+<td><p>Cast a vote in the poll before calling this method</p></td>
+</tr>
+<tr class="row-odd"><td><p>PREMIUM_ACCOUNT_REQUIRED</p></td>
+<td><p>A premium account is required to execute this action.</p></td>
+</tr>
+<tr class="row-even"><td><p>PREMIUM_GIFTCODE_WAS_REFUNDED</p></td>
+<td><p>This gift code can’t be redeemed because the giveaway organizer requested a refund</p></td>
+</tr>
+<tr class="row-odd"><td><p>PRIVACY_KEY_INVALID</p></td>
+<td><p>The privacy key is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>PRIVACY_TOO_LONG</p></td>
+<td><p>Too many privacy rules were specified, the current limit is 1000.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PRIVACY_VALUE_INVALID</p></td>
+<td><p>The specified privacy rule combination is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>PUBLIC_KEY_REQUIRED</p></td>
+<td><p>A public key is required.</p></td>
+</tr>
+<tr class="row-odd"><td><p>QUERY_ID_EMPTY</p></td>
+<td><p>The query ID is empty.</p></td>
+</tr>
+<tr class="row-even"><td><p>QUERY_ID_INVALID</p></td>
+<td><p>The query ID is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>QUERY_TOO_SHORT</p></td>
+<td><p>The query string is too short.</p></td>
+</tr>
+<tr class="row-even"><td><p>QUICK_REPLIES_TOO_MUCH</p></td>
+<td><p>A maximum of [appConfig.`quick_replies_limit`](<a class="reference external" href="https://core.telegram.org/api/config#quick-replies-limit">https://core.telegram.org/api/config#quick-replies-limit</a>) shortcuts may be created, the limit was reached.</p></td>
+</tr>
+<tr class="row-odd"><td><p>QUIZ_ANSWER_MISSING</p></td>
+<td><p>You can forward a quiz while hiding the original author only after choosing an option in the quiz.</p></td>
+</tr>
+<tr class="row-even"><td><p>QUIZ_CORRECT_ANSWERS_EMPTY</p></td>
+<td><p>No correct quiz answer was specified.</p></td>
+</tr>
+<tr class="row-odd"><td><p>QUIZ_CORRECT_ANSWERS_TOO_MUCH</p></td>
+<td><p>You specified too many correct answers in a quiz, quizzes can only have one right answer!</p></td>
+</tr>
+<tr class="row-even"><td><p>QUIZ_CORRECT_ANSWER_INVALID</p></td>
+<td><p>An invalid value was provided to the correct_answers field.</p></td>
+</tr>
+<tr class="row-odd"><td><p>QUIZ_MULTIPLE_INVALID</p></td>
+<td><p>Quizzes can’t have the multiple_choice flag set!</p></td>
+</tr>
+<tr class="row-even"><td><p>QUOTE_TEXT_INVALID</p></td>
+<td><p>The quote_text is invalid</p></td>
+</tr>
+<tr class="row-odd"><td><p>RAISE_HAND_FORBIDDEN</p></td>
+<td><p>You cannot raise your hand.</p></td>
+</tr>
+<tr class="row-even"><td><p>RANDOM_ID_EMPTY</p></td>
+<td><p>Random ID empty.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RANDOM_ID_INVALID</p></td>
+<td><p>A provided random ID is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>RANDOM_LENGTH_INVALID</p></td>
+<td><p>Random length invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RANGES_INVALID</p></td>
+<td><p>Invalid range provided.</p></td>
+</tr>
+<tr class="row-even"><td><p>REACTIONS_COUNT_INVALID</p></td>
+<td><p>The count of the reactions should be less than <cite>stars_paid_reaction_amount_max</cite> stars, you can’t react with more number of stars, see [the docs for more info](<a class="reference external" href="https://core.telegram.org/api/config#client-configuration">https://core.telegram.org/api/config#client-configuration</a>).</p></td>
+</tr>
+<tr class="row-odd"><td><p>REACTIONS_TOO_MANY</p></td>
+<td><p>The message already has exactly <cite>reactions_uniq_max</cite> reaction emojis, you can’t react with a new emoji, see [the docs for more info](<a class="reference external" href="https://core.telegram.org/api/config#client-configuration">https://core.telegram.org/api/config#client-configuration</a>).</p></td>
+</tr>
+<tr class="row-even"><td><p>REACTION_EMPTY</p></td>
+<td><p>Empty reaction provided.</p></td>
+</tr>
+<tr class="row-odd"><td><p>REACTION_INVALID</p></td>
+<td><p>The specified reaction is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>RECEIPT_EMPTY</p></td>
+<td><p>The specified receipt is empty.</p></td>
+</tr>
+<tr class="row-odd"><td><p>REFLECTOR_NOT_AVAILABLE</p></td>
+<td><p>The call reflector is not available</p></td>
+</tr>
+<tr class="row-even"><td><p>REPLY_MARKUP_BUY_EMPTY</p></td>
+<td><p>Reply markup for buy button empty.</p></td>
+</tr>
+<tr class="row-odd"><td><p>REPLY_MARKUP_GAME_EMPTY</p></td>
+<td><p>The provided reply markup for the game is empty</p></td>
+</tr>
+<tr class="row-even"><td><p>REPLY_MARKUP_INVALID</p></td>
+<td><p>The provided reply markup is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>REPLY_MARKUP_TOO_LONG</p></td>
+<td><p>The specified reply_markup is too long.</p></td>
+</tr>
+<tr class="row-even"><td><p>REPLY_MESSAGES_TOO_MUCH</p></td>
+<td><p>Each shortcut can contain a maximum of [appConfig.`quick_reply_messages_limit`](<a class="reference external" href="https://core.telegram.org/api/config#quick-reply-messages-limit">https://core.telegram.org/api/config#quick-reply-messages-limit</a>) messages, the limit was reached.</p></td>
+</tr>
+<tr class="row-odd"><td><p>REPLY_MESSAGE_ID_INVALID</p></td>
+<td><p>The specified reply-to message ID is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>REPLY_TO_INVALID</p></td>
+<td><p>The specified <cite>reply_to</cite> field is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>REPLY_TO_USER_INVALID</p></td>
+<td><p>The replied-to user is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>REQUEST_TOKEN_INVALID</p></td>
+<td><p>The master DC did not accept the <cite>request_token</cite> from the CDN DC. Continue downloading the file from the master DC using upload.getFile.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RESET_REQUEST_MISSING</p></td>
+<td><p>No password reset is in progress.</p></td>
+</tr>
+<tr class="row-even"><td><p>RESULTS_TOO_MUCH</p></td>
+<td><p>Too many results were provided.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RESULT_ID_DUPLICATE</p></td>
+<td><p>You provided a duplicate result ID.</p></td>
+</tr>
+<tr class="row-even"><td><p>RESULT_ID_EMPTY</p></td>
+<td><p>Result ID empty.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RESULT_ID_INVALID</p></td>
+<td><p>One of the specified result IDs is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>RESULT_TYPE_INVALID</p></td>
+<td><p>Result type invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>REVOTE_NOT_ALLOWED</p></td>
+<td><p>You cannot change your vote.</p></td>
+</tr>
+<tr class="row-even"><td><p>RIGHTS_NOT_MODIFIED</p></td>
+<td><p>The new admin rights are equal to the old rights, no change was made.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RINGTONE_INVALID</p></td>
+<td><p>The specified ringtone is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>RINGTONE_MIME_INVALID</p></td>
+<td><p>The MIME type for the ringtone is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RSA_DECRYPT_FAILED</p></td>
+<td><p>Internal RSA decryption failed.</p></td>
+</tr>
+<tr class="row-even"><td><p>SAVED_DIALOGS_UNSUPPORTED</p></td>
+<td><p>You cannot use this method</p></td>
+</tr>
+<tr class="row-odd"><td><p>SCHEDULE_BOT_NOT_ALLOWED</p></td>
+<td><p>Bots cannot schedule messages.</p></td>
+</tr>
+<tr class="row-even"><td><p>SCHEDULE_DATE_INVALID</p></td>
+<td><p>Invalid schedule date provided.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SCHEDULE_DATE_TOO_LATE</p></td>
+<td><p>You can’t schedule a message this far in the future.</p></td>
+</tr>
+<tr class="row-even"><td><p>SCHEDULE_STATUS_PRIVATE</p></td>
+<td><p>Can’t schedule until user is online, if the user’s last seen timestamp is hidden by their privacy settings.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SCHEDULE_TOO_MUCH</p></td>
+<td><p>There are too many scheduled messages.</p></td>
+</tr>
+<tr class="row-even"><td><p>SCORE_INVALID</p></td>
+<td><p>The specified game score is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SEARCH_QUERY_EMPTY</p></td>
+<td><p>The search query is empty.</p></td>
+</tr>
+<tr class="row-even"><td><p>SEARCH_WITH_LINK_NOT_SUPPORTED</p></td>
+<td><p>You cannot provide a search query and an invite link at the same time.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SECONDS_INVALID</p></td>
+<td><p>Invalid duration provided.</p></td>
+</tr>
+<tr class="row-even"><td><p>SECURE_SECRET_REQUIRED</p></td>
+<td><p>A secure secret is required.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SEND_AS_PEER_INVALID</p></td>
+<td><p>You can’t send messages as the specified peer.</p></td>
+</tr>
+<tr class="row-even"><td><p>SEND_MESSAGE_MEDIA_INVALID</p></td>
+<td><p>Invalid media provided.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SEND_MESSAGE_TYPE_INVALID</p></td>
+<td><p>The message type is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>SESSION_TOO_FRESH_X</p></td>
+<td><p>This session was created less than 24 hours ago, try again in {value} seconds.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SETTINGS_INVALID</p></td>
+<td><p>Invalid settings were provided.</p></td>
+</tr>
+<tr class="row-even"><td><p>SHA256_HASH_INVALID</p></td>
+<td><p>The provided SHA256 hash is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SHORTCUT_INVALID</p></td>
+<td><p>The specified shortcut is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>SHORTNAME_OCCUPY_FAILED</p></td>
+<td><p>An error occurred when trying to register the short-name used for the sticker pack. Try a different name</p></td>
+</tr>
+<tr class="row-odd"><td><p>SHORT_NAME_INVALID</p></td>
+<td><p>The specified short name is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>SHORT_NAME_OCCUPIED</p></td>
+<td><p>The specified short name is already in use.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SLOTS_EMPTY</p></td>
+<td><p>The specified slot list is empty.</p></td>
+</tr>
+<tr class="row-even"><td><p>SLOWMODE_MULTI_MSGS_DISABLED</p></td>
+<td><p>Slowmode is enabled, you cannot forward multiple messages to this group.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SLUG_INVALID</p></td>
+<td><p>The specified invoice slug is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>SMSJOB_ID_INVALID</p></td>
+<td><p>The specified job ID is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMS_CODE_CREATE_FAILED</p></td>
+<td><p>An error occurred while creating the SMS code.</p></td>
+</tr>
+<tr class="row-even"><td><p>SRP_ID_INVALID</p></td>
+<td><p>Invalid SRP ID provided.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SRP_PASSWORD_CHANGED</p></td>
+<td><p>Password has changed.</p></td>
+</tr>
+<tr class="row-even"><td><p>START_PARAM_EMPTY</p></td>
+<td><p>The start parameter is empty.</p></td>
+</tr>
+<tr class="row-odd"><td><p>START_PARAM_INVALID</p></td>
+<td><p>Start parameter invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>START_PARAM_TOO_LONG</p></td>
+<td><p>Start parameter is too long.</p></td>
+</tr>
+<tr class="row-odd"><td><p>STICKERPACK_STICKERS_TOO_MUCH</p></td>
+<td><p>There are too many stickers in this stickerpack, you can’t add any more.</p></td>
+</tr>
+<tr class="row-even"><td><p>STICKERSET_INVALID</p></td>
+<td><p>The provided sticker set is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>STICKERSET_NOT_MODIFIED</p></td>
+<td><p>The sticker set is not modified</p></td>
+</tr>
+<tr class="row-even"><td><p>STICKERS_EMPTY</p></td>
+<td><p>No sticker provided.</p></td>
+</tr>
+<tr class="row-odd"><td><p>STICKERS_TOO_MUCH</p></td>
+<td><p>There are too many stickers in this stickerpack, you can’t add any more.</p></td>
+</tr>
+<tr class="row-even"><td><p>STICKER_DOCUMENT_INVALID</p></td>
+<td><p>The specified sticker document is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>STICKER_EMOJI_INVALID</p></td>
+<td><p>Sticker emoji invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>STICKER_FILE_INVALID</p></td>
+<td><p>Sticker file invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>STICKER_GIF_DIMENSIONS</p></td>
+<td><p>The specified video sticker has invalid dimensions.</p></td>
+</tr>
+<tr class="row-even"><td><p>STICKER_ID_INVALID</p></td>
+<td><p>The provided sticker ID is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>STICKER_INVALID</p></td>
+<td><p>The provided sticker is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>STICKER_MIME_INVALID</p></td>
+<td><p>The specified sticker MIME type is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>STICKER_PNG_DIMENSIONS</p></td>
+<td><p>Sticker png dimensions invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>STICKER_PNG_NOPNG</p></td>
+<td><p>One of the specified stickers is not a valid PNG file.</p></td>
+</tr>
+<tr class="row-odd"><td><p>STICKER_TGS_NODOC</p></td>
+<td><p>You must send the animated sticker as a document.</p></td>
+</tr>
+<tr class="row-even"><td><p>STICKER_TGS_NOTGS</p></td>
+<td><p>Invalid TGS sticker provided.</p></td>
+</tr>
+<tr class="row-odd"><td><p>STICKER_THUMB_PNG_NOPNG</p></td>
+<td><p>Incorrect stickerset thumb file provided, PNG / WEBP expected.</p></td>
+</tr>
+<tr class="row-even"><td><p>STICKER_THUMB_TGS_NOTGS</p></td>
+<td><p>Incorrect stickerset TGS thumb file provided.</p></td>
+</tr>
+<tr class="row-odd"><td><p>STICKER_VIDEO_BIG</p></td>
+<td><p>The specified video sticker is too big.</p></td>
+</tr>
+<tr class="row-even"><td><p>STICKER_VIDEO_NODOC</p></td>
+<td><p>You must send the video sticker as a document.</p></td>
+</tr>
+<tr class="row-odd"><td><p>STICKER_VIDEO_NOWEBM</p></td>
+<td><p>The specified video sticker is not in webm format.</p></td>
+</tr>
+<tr class="row-even"><td><p>STORAGE_KEY_REQUIRED</p></td>
+<td><p>A cloud storage key is required.</p></td>
+</tr>
+<tr class="row-odd"><td><p>STORIES_NEVER_CREATED</p></td>
+<td><p>This peer hasn’t ever posted any stories.</p></td>
+</tr>
+<tr class="row-even"><td><p>STORIES_TOO_MUCH</p></td>
+<td><p>You have hit the maximum active stories limit as specified by the [<cite>story_expiring_limit_*</cite> client configuration parameters](<a class="reference external" href="https://core.telegram.org/api/config#story-expiring-limit-default">https://core.telegram.org/api/config#story-expiring-limit-default</a>): you should buy a [Premium](<a class="reference external" href="https://core.telegram.org/api/premium">https://core.telegram.org/api/premium</a>) subscription, delete an active story, or wait for the oldest story to expire.</p></td>
+</tr>
+<tr class="row-odd"><td><p>STORY_ID_EMPTY</p></td>
+<td><p>You specified no story IDs.</p></td>
+</tr>
+<tr class="row-even"><td><p>STORY_ID_INVALID</p></td>
+<td><p>The specified story ID is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>STORY_NOT_MODIFIED</p></td>
+<td><p>The new story information you passed is equal to the previous story information, thus it wasn’t modified.</p></td>
+</tr>
+<tr class="row-even"><td><p>STORY_PERIOD_INVALID</p></td>
+<td><p>The specified story period is invalid for this account.</p></td>
+</tr>
+<tr class="row-odd"><td><p>STORY_SEND_FLOOD_MONTHLY_X</p></td>
+<td><p>You’ve hit the monthly story limit as specified by the [<cite>stories_sent_monthly_limit_*</cite> client configuration parameters](<a class="reference external" href="https://core.telegram.org/api/config#stories-sent-monthly-limit-default">https://core.telegram.org/api/config#stories-sent-monthly-limit-default</a>): wait for the specified number of seconds before posting a new story.</p></td>
+</tr>
+<tr class="row-even"><td><p>STORY_SEND_FLOOD_WEEKLY_X</p></td>
+<td><p>You’ve hit the weekly story limit as specified by the [<cite>stories_sent_weekly_limit_*</cite> client configuration parameters](<a class="reference external" href="https://core.telegram.org/api/config#stories-sent-weekly-limit-default">https://core.telegram.org/api/config#stories-sent-weekly-limit-default</a>): wait for the specified number of seconds before posting a new story.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SWITCH_PM_TEXT_EMPTY</p></td>
+<td><p>The switch_pm.text field was empty.</p></td>
+</tr>
+<tr class="row-even"><td><p>SWITCH_WEBVIEW_URL_INVALID</p></td>
+<td><p>The URL specified in switch_webview.url is invalid!</p></td>
+</tr>
+<tr class="row-odd"><td><p>TAKEOUT_INVALID</p></td>
+<td><p>The specified takeout ID is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>TAKEOUT_REQUIRED</p></td>
+<td><p>A [takeout](<a class="reference external" href="https://core.telegram.org/api/takeout">https://core.telegram.org/api/takeout</a>) session needs to be initialized first, [see here for more info](<a class="reference external" href="https://core.telegram.org/api/takeout">https://core.telegram.org/api/takeout</a>).</p></td>
+</tr>
+<tr class="row-odd"><td><p>TASK_ALREADY_EXISTS</p></td>
+<td><p>An email reset was already requested.</p></td>
+</tr>
+<tr class="row-even"><td><p>TEMP_AUTH_KEY_ALREADY_BOUND</p></td>
+<td><p>The passed temporary key is already bound to another <strong>perm_auth_key_id</strong>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>TEMP_AUTH_KEY_EMPTY</p></td>
+<td><p>No temporary auth key provided.</p></td>
+</tr>
+<tr class="row-even"><td><p>THEME_FILE_INVALID</p></td>
+<td><p>Invalid theme file provided.</p></td>
+</tr>
+<tr class="row-odd"><td><p>THEME_FORMAT_INVALID</p></td>
+<td><p>Invalid theme format provided.</p></td>
+</tr>
+<tr class="row-even"><td><p>THEME_INVALID</p></td>
+<td><p>Invalid theme provided.</p></td>
+</tr>
+<tr class="row-odd"><td><p>THEME_MIME_INVALID</p></td>
+<td><p>The theme’s MIME type is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>THEME_TITLE_INVALID</p></td>
+<td><p>The specified theme title is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>TIMEZONE_INVALID</p></td>
+<td><p>The specified timezone does not exist.</p></td>
+</tr>
+<tr class="row-even"><td><p>TITLE_INVALID</p></td>
+<td><p>The specified stickerpack title is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>TMP_PASSWORD_DISABLED</p></td>
+<td><p>The temporary password is disabled.</p></td>
+</tr>
+<tr class="row-even"><td><p>TMP_PASSWORD_INVALID</p></td>
+<td><p>The temporary password is invalid</p></td>
+</tr>
+<tr class="row-odd"><td><p>TOKEN_EMPTY</p></td>
+<td><p>The specified token is empty.</p></td>
+</tr>
+<tr class="row-even"><td><p>TOKEN_INVALID</p></td>
+<td><p>The provided token is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>TOKEN_TYPE_INVALID</p></td>
+<td><p>The specified token type is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>TOPICS_EMPTY</p></td>
+<td><p>You specified no topic IDs.</p></td>
+</tr>
+<tr class="row-odd"><td><p>TOPIC_CLOSED</p></td>
+<td><p>This topic was closed, you can’t send messages to it anymore.</p></td>
+</tr>
+<tr class="row-even"><td><p>TOPIC_CLOSE_SEPARATELY</p></td>
+<td><p>The <cite>close</cite> flag cannot be provided together with any of the other flags.</p></td>
+</tr>
+<tr class="row-odd"><td><p>TOPIC_DELETED</p></td>
+<td><p>The specified topic was deleted.</p></td>
+</tr>
+<tr class="row-even"><td><p>TOPIC_HIDE_SEPARATELY</p></td>
+<td><p>The <cite>hide</cite> flag cannot be provided together with any of the other flags.</p></td>
+</tr>
+<tr class="row-odd"><td><p>TOPIC_ID_INVALID</p></td>
+<td><p>The specified topic ID is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>TOPIC_NOT_MODIFIED</p></td>
+<td><p>The updated topic info is equal to the current topic info, nothing was changed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>TOPIC_TITLE_EMPTY</p></td>
+<td><p>The specified topic title is empty.</p></td>
+</tr>
+<tr class="row-even"><td><p>TO_LANG_INVALID</p></td>
+<td><p>The specified destination language is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>TRANSCRIPTION_FAILED</p></td>
+<td><p>Audio transcription failed.</p></td>
+</tr>
+<tr class="row-even"><td><p>TRANSLATE_REQ_QUOTA_EXCEEDED</p></td>
+<td><p>Translation is currently unavailable due to a temporary server-side lack of resources.</p></td>
+</tr>
+<tr class="row-odd"><td><p>TTL_DAYS_INVALID</p></td>
+<td><p>The provided TTL is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>TTL_MEDIA_INVALID</p></td>
+<td><p>Invalid media Time To Live was provided.</p></td>
+</tr>
+<tr class="row-odd"><td><p>TTL_PERIOD_INVALID</p></td>
+<td><p>The specified TTL period is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>TYPES_EMPTY</p></td>
+<td><p>No top peer type was provided.</p></td>
+</tr>
+<tr class="row-odd"><td><p>TYPE_CONSTRUCTOR_INVALID</p></td>
+<td><p>The type constructor is invalid</p></td>
+</tr>
+<tr class="row-even"><td><p>UNTIL_DATE_INVALID</p></td>
+<td><p>Invalid until date provided.</p></td>
+</tr>
+<tr class="row-odd"><td><p>URL_INVALID</p></td>
+<td><p>Invalid URL provided.</p></td>
+</tr>
+<tr class="row-even"><td><p>USAGE_LIMIT_INVALID</p></td>
+<td><p>The specified usage limit is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>USERNAMES_ACTIVE_TOO_MUCH</p></td>
+<td><p>The maximum number of active usernames was reached.</p></td>
+</tr>
+<tr class="row-even"><td><p>USERNAME_INVALID</p></td>
+<td><p>The provided username is not valid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>USERNAME_NOT_MODIFIED</p></td>
+<td><p>The username was not modified.</p></td>
+</tr>
+<tr class="row-even"><td><p>USERNAME_NOT_OCCUPIED</p></td>
+<td><p>The provided username is not occupied.</p></td>
+</tr>
+<tr class="row-odd"><td><p>USERNAME_OCCUPIED</p></td>
+<td><p>The provided username is already occupied.</p></td>
+</tr>
+<tr class="row-even"><td><p>USERNAME_PURCHASE_AVAILABLE</p></td>
+<td><p>The specified username can be purchased on <a class="reference external" href="https://fragment.com">https://fragment.com</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>USERPIC_UPLOAD_REQUIRED</p></td>
+<td><p>You must have a profile picture to publish your geolocation.</p></td>
+</tr>
+<tr class="row-even"><td><p>USERS_TOO_FEW</p></td>
+<td><p>Not enough users (to create a chat, for example).</p></td>
+</tr>
+<tr class="row-odd"><td><p>USERS_TOO_MUCH</p></td>
+<td><p>The maximum number of users has been exceeded (to create a chat, for example).</p></td>
+</tr>
+<tr class="row-even"><td><p>USER_ADMIN_INVALID</p></td>
+<td><p>You’re not an admin.</p></td>
+</tr>
+<tr class="row-odd"><td><p>USER_ALREADY_INVITED</p></td>
+<td><p>You have already invited this user.</p></td>
+</tr>
+<tr class="row-even"><td><p>USER_ALREADY_PARTICIPANT</p></td>
+<td><p>The user is already in the group.</p></td>
+</tr>
+<tr class="row-odd"><td><p>USER_BANNED_IN_CHANNEL</p></td>
+<td><p>You’re banned from sending messages in supergroups/channels.</p></td>
+</tr>
+<tr class="row-even"><td><p>USER_BLOCKED</p></td>
+<td><p>User blocked.</p></td>
+</tr>
+<tr class="row-odd"><td><p>USER_BOT</p></td>
+<td><p>Bots can only be admins in channels.</p></td>
+</tr>
+<tr class="row-even"><td><p>USER_BOT_INVALID</p></td>
+<td><p>User accounts must provide the <cite>bot</cite> method parameter when calling this method. If there is no such method parameter, this method can only be invoked by bot accounts.</p></td>
+</tr>
+<tr class="row-odd"><td><p>USER_BOT_REQUIRED</p></td>
+<td><p>This method can only be called by a bot.</p></td>
+</tr>
+<tr class="row-even"><td><p>USER_CHANNELS_TOO_MUCH</p></td>
+<td><p>One of the users you tried to add is already in too many channels/supergroups.</p></td>
+</tr>
+<tr class="row-odd"><td><p>USER_CREATOR</p></td>
+<td><p>You can’t leave this channel, because you’re its creator.</p></td>
+</tr>
+<tr class="row-even"><td><p>USER_ID_INVALID</p></td>
+<td><p>The provided user ID is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>USER_INVALID</p></td>
+<td><p>Invalid user provided.</p></td>
+</tr>
+<tr class="row-even"><td><p>USER_IS_BLOCKED</p></td>
+<td><p>You were blocked by this user.</p></td>
+</tr>
+<tr class="row-odd"><td><p>USER_IS_BOT</p></td>
+<td><p>Bots can’t send messages to other bots.</p></td>
+</tr>
+<tr class="row-even"><td><p>USER_KICKED</p></td>
+<td><p>This user was kicked from this supergroup/channel.</p></td>
+</tr>
+<tr class="row-odd"><td><p>USER_NOT_MUTUAL_CONTACT</p></td>
+<td><p>The provided user is not a mutual contact.</p></td>
+</tr>
+<tr class="row-even"><td><p>USER_NOT_PARTICIPANT</p></td>
+<td><p>You’re not a member of this supergroup/channel.</p></td>
+</tr>
+<tr class="row-odd"><td><p>USER_PUBLIC_MISSING</p></td>
+<td><p>Cannot generate a link to stories posted by a peer without a username.</p></td>
+</tr>
+<tr class="row-even"><td><p>USER_VOLUME_INVALID</p></td>
+<td><p>The specified user volume is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>VENUE_ID_INVALID</p></td>
+<td><p>The specified venue ID is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>VIDEO_CONTENT_TYPE_INVALID</p></td>
+<td><p>The video’s content type is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>VIDEO_FILE_INVALID</p></td>
+<td><p>The specified video file is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>VIDEO_PAUSE_FORBIDDEN</p></td>
+<td><p>You cannot pause the video stream.</p></td>
+</tr>
+<tr class="row-odd"><td><p>VIDEO_STOP_FORBIDDEN</p></td>
+<td><p>You cannot stop the video stream.</p></td>
+</tr>
+<tr class="row-even"><td><p>VIDEO_TITLE_EMPTY</p></td>
+<td><p>The specified video title is empty.</p></td>
+</tr>
+<tr class="row-odd"><td><p>VOICE_MESSAGES_FORBIDDEN</p></td>
+<td><p>This user’s privacy settings forbid you from sending voice messages.</p></td>
+</tr>
+<tr class="row-even"><td><p>VOLUME_LOC_NOT_FOUND</p></td>
+<td><p>The volume location can’t be found</p></td>
+</tr>
+<tr class="row-odd"><td><p>WALLPAPER_FILE_INVALID</p></td>
+<td><p>The specified wallpaper file is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>WALLPAPER_INVALID</p></td>
+<td><p>The specified wallpaper is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WALLPAPER_MIME_INVALID</p></td>
+<td><p>The specified wallpaper MIME type is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>WALLPAPER_NOT_FOUND</p></td>
+<td><p>The specified wallpaper could not be found.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WC_CONVERT_URL_INVALID</p></td>
+<td><p>WC convert URL invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>WEBDOCUMENT_INVALID</p></td>
+<td><p>Invalid webdocument URL provided.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WEBDOCUMENT_MIME_INVALID</p></td>
+<td><p>Invalid webdocument mime type provided.</p></td>
+</tr>
+<tr class="row-even"><td><p>WEBDOCUMENT_SIZE_TOO_BIG</p></td>
+<td><p>Webdocument is too big!</p></td>
+</tr>
+<tr class="row-odd"><td><p>WEBDOCUMENT_URL_EMPTY</p></td>
+<td><p>The web document URL is empty</p></td>
+</tr>
+<tr class="row-even"><td><p>WEBDOCUMENT_URL_INVALID</p></td>
+<td><p>The specified webdocument URL is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WEBPAGE_CURL_FAILED</p></td>
+<td><p>Failure while fetching the webpage with cURL.</p></td>
+</tr>
+<tr class="row-even"><td><p>WEBPAGE_MEDIA_EMPTY</p></td>
+<td><p>Webpage media empty.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WEBPAGE_NOT_FOUND</p></td>
+<td><p>A preview for the specified webpage <cite>url</cite> could not be generated.</p></td>
+</tr>
+<tr class="row-even"><td><p>WEBPAGE_URL_INVALID</p></td>
+<td><p>The specified webpage <cite>url</cite> is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WEBPUSH_AUTH_INVALID</p></td>
+<td><p>The specified web push authentication secret is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>WEBPUSH_KEY_INVALID</p></td>
+<td><p>The specified web push elliptic curve Diffie-Hellman public key is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WEBPUSH_TOKEN_INVALID</p></td>
+<td><p>The specified web push token is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>YOU_BLOCKED_USER</p></td>
+<td><p>You blocked this user.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
+            </article>
+        </div>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="unauthorized.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">401 - Unauthorized</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="see-other.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">303 - SeeOther</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://Pyrogram.t.me" aria-label="Telegram Channel"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z"></path></svg></a>
+              <a class="muted-link " href="https://github.com/TelegramPlayGround/pyrogram/tree/36a9a44" aria-label="GitHub"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=3b5cce75"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=a56c686a"></script>
+    </body>
+</html>
