@@ -3348,6 +3348,7 @@ class Message(Object, Update):
         ttl_seconds: int = None,
         view_once: bool = None,
         file_name: str = None,
+        mime_type: str = None,
         schedule_date: datetime = None,
         reply_to_message_id: int = None,
         progress: Callable = None,
@@ -3444,6 +3445,9 @@ class Message(Object, Update):
                 File name of the video sent.
                 Defaults to file's path basename.
 
+            mime_type (``str``, *optional*):
+                no docs!
+
             schedule_date (:py:obj:`~datetime.datetime`, *optional*):
                 Date when the message will be automatically sent.
 
@@ -3508,6 +3512,7 @@ class Message(Object, Update):
             ttl_seconds=ttl_seconds,
             view_once=view_once,
             file_name=file_name,
+            mime_type=mime_type,
             schedule_date=schedule_date,
             reply_to_message_id=reply_to_message_id,
             progress=progress,
