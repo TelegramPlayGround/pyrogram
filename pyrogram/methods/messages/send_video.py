@@ -154,7 +154,7 @@ class SendVideo:
                 Defaults to file's path basename.
             
             mime_type (``str``, *optional*):
-                MIME type of the file that can be FOoL defined by the sender.
+                no docs!
 
             schedule_date (:py:obj:`~datetime.datetime`, *optional*):
                 Date when the message will be automatically sent.
