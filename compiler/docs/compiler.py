@@ -396,7 +396,7 @@ def pyrogram_api():
             get_collectible_item_info
             get_payment_form
             send_payment_form
-            get_star_gifts
+            get_available_gifts
             sell_gift
             send_gift
             toggle_gift_is_saved
@@ -513,7 +513,7 @@ def pyrogram_api():
             Poll
             Location
             Venue
-            StarGift
+            Gift
             WebAppData
             MessageAutoDeleteTimerChanged
             ChatBoostAdded

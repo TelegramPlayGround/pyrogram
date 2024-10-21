@@ -24,32 +24,31 @@ from pyrogram import types
 from ..object import Object
 
 
-class StarGift(Object):
-    """A star gift.
+class Gift(Object):
+    """Describes a gift that can be sent to another user.
 
     Parameters:
         id (``int``):
-            Unique star gift identifier.
+            Unique identifier of the gift.
 
         sticker (:obj:`~pyrogram.types.Sticker`):
-            Information about the star gift sticker.
+            The sticker representing the gift.
 
-        price (``int``):
-            Price of this gift in stars.
+        star_count (``int``):
+            Number of Telegram Stars that must be paid for the gift.
 
-        convert_price (``int``):
-            The number of stars you get if you convert this gift.
+        default_sell_star_count (``int``):
+            Number of Telegram Stars that can be claimed by the receiver instead of the gift by default. If the gift was paid with just bought Telegram Stars, then full value can be claimed.
 
-        available_amount (``int``, *optional*):
-            The number of gifts available for purchase.
-            Returned only if is_limited is True.
+        remaining_count (``int``, *optional*):
+            Number of remaining times the gift can be purchased by all users; None if not limited or the gift was sold out.
 
-        total_amount (``int``, *optional*):
-            Total amount of gifts.
-            Returned only if is_limited is True.
+        total_count (``int``, *optional*):
+            Number of total times the gift can be purchased by all users; None if not limited.
 
         is_limited (``bool``, *optional*):
             True, if the number of gifts is limited.
+
     """
 
     def __init__(
@@ -58,20 +57,20 @@ class StarGift(Object):
         client: "pyrogram.Client" = None,
         id: int,
         sticker: "types.Sticker",
-        price: int,
-        convert_price: int,
-        available_amount: Optional[int] = None,
-        total_amount: Optional[int] = None,
+        star_count: int,
+        default_sell_star_count: int,
+        remaining_count: Optional[int] = None,
+        total_count: Optional[int] = None,
         is_limited: Optional[bool] = None,
     ):
         super().__init__(client)
 
         self.id = id
         self.sticker = sticker
-        self.price = price
-        self.convert_price = convert_price
-        self.available_amount = available_amount
-        self.total_amount = total_amount
+        self.star_count = star_count
+        self.default_sell_star_count = default_sell_star_count
+        self.remaining_count = remaining_count
+        self.total_count = total_count
         self.is_limited = is_limited
 
     @staticmethod
@@ -85,9 +84,9 @@ class StarGift(Object):
         return StarGift(
             id=star_gift.id,
             sticker=await types.Sticker._parse(client, doc, attributes),
-            price=star_gift.stars,
-            convert_price=star_gift.convert_stars,
-            available_amount=getattr(star_gift, "availability_remains", None),
-            total_amount=getattr(star_gift, "availability_total", None),
+            star_count=star_gift.stars,
+            default_sell_star_count=star_gift.convert_stars,
+            remaining_count=getattr(star_gift, "availability_remains", None),
+            total_count=getattr(star_gift, "availability_total", None),
             is_limited=getattr(star_gift, "limited", None)
         )
