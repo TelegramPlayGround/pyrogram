@@ -399,6 +399,7 @@ def pyrogram_api():
             get_star_gifts
             sell_gift
             send_gift
+            toggle_gift_is_saved
         """,
         advanced="""
         Advanced
