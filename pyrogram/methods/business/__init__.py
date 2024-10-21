@@ -26,6 +26,7 @@ from .send_invoice import SendInvoice
 from .get_payment_from import GetPaymentForm
 from .send_payment_from import SendPaymentForm
 from .sell_gift import SellGift
+from .send_gift import SendGift
 
 
 class TelegramBusiness(
@@ -39,5 +40,6 @@ class TelegramBusiness(
     GetPaymentForm,
     SendPaymentForm,
     SellGift,
+    SendGift,
 ):
     pass
