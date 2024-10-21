@@ -397,6 +397,7 @@ def pyrogram_api():
             get_payment_form
             send_payment_form
             get_star_gifts
+            sell_gift
         """,
         advanced="""
         Advanced

@@ -25,6 +25,7 @@ from .refund_star_payment import RefundStarPayment
 from .send_invoice import SendInvoice
 from .get_payment_from import GetPaymentForm
 from .send_payment_from import SendPaymentForm
+from .sell_gift import SellGift
 
 
 class TelegramBusiness(
@@ -37,5 +38,6 @@ class TelegramBusiness(
     SendInvoice,
     GetPaymentForm,
     SendPaymentForm,
+    SellGift,
 ):
     pass
