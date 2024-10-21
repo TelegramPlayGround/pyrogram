@@ -19,8 +19,7 @@
 from typing import Optional
 
 import pyrogram
-from pyrogram import raw
-from pyrogram import types
+from pyrogram import raw, types, utils
 from ..object import Object
 
 
@@ -77,16 +76,45 @@ class Gift(Object):
     async def _parse(
         client,
         star_gift: "raw.types.StarGift",
-    ) -> "StarGift":
+    ) -> "Gift":
         doc = star_gift.sticker
         attributes = {type(i): i for i in doc.attributes}
 
-        return StarGift(
+        return Gift(
             id=star_gift.id,
             sticker=await types.Sticker._parse(client, doc, attributes),
             star_count=star_gift.stars,
             default_sell_star_count=star_gift.convert_stars,
             remaining_count=getattr(star_gift, "availability_remains", None),
             total_count=getattr(star_gift, "availability_total", None),
-            is_limited=getattr(star_gift, "limited", None)
+            is_limited=getattr(star_gift, "limited", None),
+            client=client
+        )
+
+    @staticmethod
+    async def _parse_action(
+        client,
+        message: "raw.base.Message",
+        users: dict
+    ) -> "Gift":
+        action = message.action
+
+        doc = action.gift.sticker
+        attributes = {type(i): i for i in doc.attributes}
+
+        return Gift(
+            id=action.gift.id,
+            sticker=await types.Sticker._parse(client, doc, attributes),
+            star_count=action.gift.stars,
+            default_sell_star_count=action.gift.convert_stars,
+            remaining_count=getattr(action.gift, "availability_remains", None),
+            total_count=getattr(action.gift, "availability_total", None),
+            is_limited=getattr(action.gift, "limited", None),
+            # date=utils.timestamp_to_datetime(message.date),
+            # is_name_hidden=getattr(action, "name_hidden", None),
+            # is_saved=getattr(action, "saved", None),
+            # from_user=types.User._parse(client, users.get(utils.get_raw_peer_id(message.peer_id))),
+            # message_id=message.id,
+            # **utils.parse_text_with_entities(client, getattr(action, "message", None), users),
+            client=client
         )

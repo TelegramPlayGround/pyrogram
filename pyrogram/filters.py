@@ -372,7 +372,7 @@ async def star_gift_filter(_, __, m: Message):
 
 
 star_gift = create(star_gift_filter)
-"""Filter messages that contain :obj:`~pyrogram.types.StarGift` objects."""
+"""Filter messages that contain :obj:`~pyrogram.types.Gift` objects."""
 
 
 # endregion

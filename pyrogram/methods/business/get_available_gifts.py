@@ -24,13 +24,13 @@ from pyrogram import raw, types
 class GetAvailableGifts:
     async def get_available_gifts(
         self: "pyrogram.Client",
-    ) -> List["types.StarGift"]:
+    ) -> List["types.Gift"]:
         """Get all gifts that can be sent to other users.
 
         .. include:: /_includes/usable-by/users.rst
 
         Returns:
-            List of :obj:`~pyrogram.types.StarGift`: On success, a list of star gifts is returned.
+            List of :obj:`~pyrogram.types.Gift`: On success, a list of star gifts is returned.
 
         Example:
             .. code-block:: python
