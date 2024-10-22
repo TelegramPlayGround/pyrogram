@@ -28,7 +28,7 @@ class UserGift(Object):
     """Represents a gift received by a user.
 
     Parameters:
-        sender_user_id (:obj:`~pyrogram.types.User`, *optional*):
+        sender_user (:obj:`~pyrogram.types.User`, *optional*):
             Identifier of the user that sent the gift; None if unknown.
 
         text (``str``, *optional*):
@@ -61,7 +61,7 @@ class UserGift(Object):
         self,
         *,
         client: "pyrogram.Client" = None,
-        sender_user_id: Optional["types.User"] = None,
+        sender_user: Optional["types.User"] = None,
         text: Optional[str] = None,
         entities: List["types.MessageEntity"] = None,
         date: datetime,
@@ -77,7 +77,7 @@ class UserGift(Object):
         self.gift = gift
         self.is_private = is_private
         self.is_saved = is_saved
-        self.sender_user_id = sender_user_id
+        self.sender_user = sender_user
         self.text = text
         self.entities = entities
         self.message_id = message_id
@@ -100,7 +100,7 @@ class UserGift(Object):
             gift=await types.Gift._parse(client, user_star_gift.gift),
             is_private=getattr(user_star_gift, "name_hidden", None),
             is_saved=not user_star_gift.unsaved if getattr(user_star_gift, "unsaved", None) else None,
-            sender_user_id=types.User._parse(client, users.get(user_star_gift.from_id)) if getattr(user_star_gift, "from_id", None) else None,
+            sender_user=types.User._parse(client, users.get(user_star_gift.from_id)) if getattr(user_star_gift, "from_id", None) else None,
             text=user_star_gift.message.text if getattr(user_star_gift, "message", None) else None,
             message_id=getattr(user_star_gift, "msg_id", None),
             sell_star_count=getattr(user_star_gift, "convert_stars", None),
@@ -139,9 +139,40 @@ class UserGift(Object):
             date=utils.timestamp_to_datetime(message.date),
             is_private=getattr(action, "name_hidden", None),
             is_saved=getattr(action, "saved", None),
-            sender_user_id=types.User._parse(client, users.get(utils.get_raw_peer_id(message.peer_id))),
+            sender_user=types.User._parse(client, users.get(utils.get_raw_peer_id(message.peer_id))),
             message_id=message.id,
             text=text,
             entities=entities,
             client=client
+        )
+
+    async def toggle(self, is_saved: bool) -> bool:
+        """Bound method *toggle* of :obj:`~pyrogram.types.UserGift`.
+
+        Use as a shortcut for:
+
+        .. code-block:: python
+
+            await client.toggle_gift_is_saved(
+                sender_user_id=user_id,
+                message_id=message_id
+            )
+
+        Parameters:
+            is_saved (``bool``):
+                Pass True to display the gift on the user's profile page; pass False to remove it from the profile page.
+
+        Example:
+            .. code-block:: python
+
+                await user_gift.toggle(is_saved=False)
+
+        Returns:
+            ``bool``: On success, True is returned.
+
+        """
+        return await self._client.toggle_gift_is_saved(
+            sender_user_id=self.sender_user.id,
+            message_id=self.message_id,
+            is_saved=is_saved
         )
