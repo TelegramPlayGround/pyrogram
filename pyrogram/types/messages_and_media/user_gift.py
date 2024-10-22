@@ -91,7 +91,10 @@ class UserGift(Object):
     ) -> "UserGift":
         text, entities = None, None
         if getattr(user_star_gift, "message", None):
-            text, entities = (await utils.parse_text_entities(self, user_star_gift.message.text, None, user_star_gift.message.entities)).values()
+            text = user_star_gift.message.text or None
+            entities = [types.MessageEntity._parse(client, entity, users) for entity in user_star_gift.message.entities]
+            entities = types.List(filter(lambda x: x is not None, entities))
+
         return UserGift(
             date=utils.timestamp_to_datetime(user_star_gift.date),
             gift=await types.Gift._parse(client, user_star_gift.gift),
@@ -119,7 +122,9 @@ class UserGift(Object):
 
         text, entities = None, None
         if getattr(action, "message", None):
-            text, entities = (await utils.parse_text_entities(self, action.message.text, None, action.message.entities)).values()
+            text = action.message.text or None
+            entities = [types.MessageEntity._parse(client, entity, users) for entity in action.message.entities]
+            entities = types.List(filter(lambda x: x is not None, entities))
 
         return UserGift(
             gift=types.Gift(
