@@ -397,6 +397,7 @@ def pyrogram_api():
             get_payment_form
             send_payment_form
             get_available_gifts
+            get_user_gifts
             sell_gift
             send_gift
             toggle_gift_is_saved

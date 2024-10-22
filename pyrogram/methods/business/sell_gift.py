@@ -54,11 +54,7 @@ class SellGift:
         """
         peer = await self.resolve_peer(sender_user_id)
 
-        if isinstance(peer, raw.types.InputPeerUser):
-            peer = raw.types.InputUser(user_id=peer.user_id, access_hash=peer.access_hash)
-        elif isinstance(peer, raw.types.InputPeerSelf):
-            peer = raw.types.InputUserSelf()
-        else:
+        if not isinstance(peer, (raw.types.InputPeerUser, raw.types.InputPeerSelf)):
             raise ValueError("sender_user_id must belong to a user.")
 
         r = await self.invoke(
