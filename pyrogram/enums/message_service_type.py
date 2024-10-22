@@ -141,7 +141,7 @@ class MessageServiceType(AutoName):
     WRITE_ACCESS_ALLOWED = auto()
     "The user accepted webapp bot's request to send messages"
 
-    STAR_GIFT = auto()
+    USER_GIFT = auto()
     "Star gift"
 
     UNKNOWN = auto()

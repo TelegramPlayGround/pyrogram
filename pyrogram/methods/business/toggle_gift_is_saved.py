@@ -53,7 +53,7 @@ class ToggleGiftIsSaved:
             .. code-block:: python
 
                 # Hide gift
-                app.hide_star_gift(chat_id=chat_id, message_id=123)
+                app.toggle_gift_is_saved(sender_user_id=user_id, message_id=123, is_saved=False)
         """
         peer = await self.resolve_peer(sender_user_id)
 

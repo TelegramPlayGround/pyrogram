@@ -105,3 +105,38 @@ class UserGift(Object):
             entities=entities,
             client=client
         )
+
+    @staticmethod
+    async def _parse_action(
+        client,
+        message: "raw.base.Message",
+        users: dict
+    ) -> "UserGift":
+        action = message.action
+
+        doc = action.gift.sticker
+        attributes = {type(i): i for i in doc.attributes}
+
+        text, entities = None, None
+        if getattr(action, "message", None):
+            text, entities = (await utils.parse_text_entities(self, action.message.text, None, action.message.entities)).values()
+
+        return UserGift(
+            gift=types.Gift(
+                id=action.gift.id,
+                sticker=await types.Sticker._parse(client, doc, attributes),
+                star_count=action.gift.stars,
+                default_sell_star_count=action.gift.convert_stars,
+                remaining_count=getattr(action.gift, "availability_remains", None),
+                total_count=getattr(action.gift, "availability_total", None),
+                is_limited=getattr(action.gift, "limited", None),
+            )
+            date=utils.timestamp_to_datetime(message.date),
+            is_private=getattr(action, "name_hidden", None),
+            is_saved=getattr(action, "saved", None),
+            sender_user_id=types.User._parse(client, users.get(utils.get_raw_peer_id(message.peer_id))),
+            message_id=message.id,
+            text=text,
+            entities=entities,
+            client=client
+        )
