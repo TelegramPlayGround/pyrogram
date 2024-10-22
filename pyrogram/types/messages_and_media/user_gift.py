@@ -21,6 +21,7 @@ from typing import Optional, List
 
 import pyrogram
 from pyrogram import raw, types, utils
+from .message import Str
 from ..object import Object
 
 
@@ -104,7 +105,7 @@ class UserGift(Object):
             text=user_star_gift.message.text if getattr(user_star_gift, "message", None) else None,
             message_id=getattr(user_star_gift, "msg_id", None),
             sell_star_count=getattr(user_star_gift, "convert_stars", None),
-            text=text,
+            text=Str(text).init(entities) if text else None,
             entities=entities,
             client=client
         )
@@ -141,7 +142,7 @@ class UserGift(Object):
             is_saved=getattr(action, "saved", None),
             sender_user=types.User._parse(client, users.get(utils.get_raw_peer_id(message.peer_id))),
             message_id=message.id,
-            text=text,
+            text=Str(text).init(entities) if text else None,
             entities=entities,
             client=client
         )
