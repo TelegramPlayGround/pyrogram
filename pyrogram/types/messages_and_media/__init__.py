@@ -40,6 +40,7 @@ from .reaction import (
 )
 from .sponsored_message import SponsoredMessage
 from .gift import Gift
+from .user_gift import UserGift
 from .sticker import Sticker
 from .stripped_thumbnail import StrippedThumbnail
 from .thumbnail import Thumbnail
@@ -107,6 +108,7 @@ __all__ = [
     "PollOption",
     "SponsoredMessage",
     "Gift",
+    "UserGift",
     "Sticker",
     "Story",
     "Venue",
