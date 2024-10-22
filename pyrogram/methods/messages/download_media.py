@@ -120,11 +120,11 @@ class DownloadMedia:
                 file_bytes = bytes(file.getbuffer())
         """
 
-        media = message
+        media = [message]
 
         if isinstance(message, types.Message):
             if message.new_chat_photo:
-                media = message.new_chat_photo
+                media = [message.new_chat_photo]
 
             elif (
                 not (self.me and self.me.is_bot) and
@@ -132,32 +132,42 @@ class DownloadMedia:
             ):
                 story_media = message.story or message.reply_to_story or None
                 if story_media and story_media.media:
-                    media = getattr(story_media, story_media.media.value, None)
+                    media = [getattr(story_media, story_media.media.value, None)]
                 else:
-                    media = None
+                    media = []
+
+            elif message.paid_media:
+                if any([isinstance(paid_media, (types.PaidMediaPhoto, types.PaidMediaVideo)) for paid_media in message.paid_media.paid_media]):
+                    media = [getattr(paid_media, "photo", (getattr(paid_media, "video", None))) for paid_media in message.paid_media.paid_media]
+                else:
+                    media = []
 
             else:
                 if message.media:
-                    media = getattr(message, message.media.value, None)
+                    media = [getattr(message, message.media.value, None)]
                 else:
-                    media = None
+                    media = []
 
         elif isinstance(message, str):
-            media = message
+            media = [message]
 
         if isinstance(media, types.Story):
             if (self.me and self.me.is_bot):
                 raise ValueError("This method cannot be used by bots")
             else:
                 if media.media:
-                    media = getattr(message, message.media.value, None)
+                    media = [getattr(message, message.media.value, None)]
                 else:
-                    media = None
+                    media = []
 
-        if not media:
+        media = types.List(filter(lambda x: x is not None, media))
+
+        if len(media) == 0:
             raise ValueError(
                 f"The message {message if isinstance(message, str) else message.id} doesn't contain any downloadable media"
             )
+
+        media = media[0]
 
         if isinstance(media, str):
             file_id_str = media
